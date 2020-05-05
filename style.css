@@ -1,15 +1,11 @@
-﻿/*** COLOR PALETTE
-* Main blue:     #26AFEB
-* Dark grey:     #38464D
-* Light grey:    #F9FAFA
-* Accent orange: #FF951F
-***/
+﻿@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
-
-/********* PROJECT BASICS **********/
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Dosis&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+:root {
+  --primary-color: #26AFEB;
+  --secondary-color: #38464D;
+  --light-color: #F9FAFA;
+  --dark-color: #333;
+}
 
 * {
   margin: 0;
@@ -17,88 +13,94 @@
   box-sizing: border-box;
 }
 
-html, body {
-  font-family: 'Dosis', 'Arial', sans-serif;
+body {
   font-family: 'Lato', 'Arial', sans-serif;
-  /* font-family: 'Roboto', 'Arial', sans-serif; */
-  font-weight: 300;
-  color: #38464D;
-  font-size: 62.5%;
-  /* text-rendering: optimizeLegibility; */
+  color: var(--secondary-color);
+  background: var(--light-color);
 }
 
-/* .clearfix::after {
-  content: "";
-  display: table;
-  clear: both;
-} */
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-/**********
-* HEADER
-**********/
-
-.main-background {
-  background-image: -webkit-linear-gradient(bottom left, #4ED8F7, #26AFEB 70%);
-  background-image: linear-gradient(to top right, #4ED8F7, #26AFEB 70%);
-  color: #F9FAFA;
-}
-
+/********** HEADER**********/
 .master-header {
-  width: 100%;
-  height: 25vh;
-  position: relative;
-}
-
-
-.master-header__box {
+  background: var(--primary-color) ;
+  color: var(--secondary-color);
   display: flex;
   flex-direction: column;
-  max-width: 120rem;
-  position: absolute;
+  text-align: center;
   width: 100%;
-  top: 65%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -65%);
-  transform: translate(-50%, -65%);
-  align-items: center;
-}
-.master-header__box img{
-  display: inline-block;
-  align-items: center;
-  margin: 0 auto;
+  height: 100%;
 }
 
 .master-header__heading {
-  text-align: center;
-  font-size: 3.5rem;
-  font-weight: 300;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin: 0 auto;
-  width: 90%;
-  line-height: 1.5;
-  margin-bottom: 5rem;
-}
-
-.optin {
-  text-align: center;
-}
+  font-size: 3rem;
+  margin-bottom: 1rem;
+} 
 
 .optin__text {
-  font-size: 2.2rem;
-  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
+
 
 
 /********* RESSOURCES **********/
-.group { 
-  padding: 2.5rem 0; 
+.container {
+  max-width: 900px;
+  margin: 0 auto;
 }
+
+.container__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.resource {
+  border: solid blue 2px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 0.3rem;
+}
+
+.resource__text {
+  width: 90%;
+  /* position: absolute; */
+  /* top: 10px; */
+  /* left: 50%; */
+  /* height: 100%; */
+  /* width: 100%; */
+  /* background: rgba(0, 0, 0, 0.7); */
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* transform: translateY(-80px); */
+  transition: opacity 0.2s ease-in;
+  /* opacity: 0; */
+}
+
+.resource__text:hover {
+  opacity: 1;
+}
+
+
+
+/* .resource__heading a:hover {
+  opacity: 1;
+} */
+
+
+
+
 
 .group:nth-child(odd) { background-color: #dfe9e9; } /*#F9FAFA  */
 
@@ -109,57 +111,12 @@ html, body {
 }
 
 .group__heading img {
-  width: 7rem;
-}
-
-.group__heading--icon {
-  color: #26AFEB;
-  font-size: 4rem;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-/* .container__row { margin-bottom: 4rem; } */
-
-.container__row::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.resource {
-  width: 29.3333333333333%;
-  float: left;
-  margin: 0 2%;
+  width: 6rem;
 }
 
 .resource__logo {
-  display: block;
-  height: 4rem;
+  height: 3rem;
   margin-bottom: 2rem;
-}
-
-.resource__heading {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.resource__link:link,
-.resource__link:visited {
-  color: #26AFEB;
-  text-decoration: none;
-  -webkit-transition: color 0.2s;
-  transition: color 0.2s;
-}
-
-.resource__link:hover,
-.resource__link:active {
-  color: #FF951F;
-}
-
-.resource__text {
-  font-size: 1.6rem;
-  line-height: 1.8;
 }
 
 
@@ -169,10 +126,10 @@ footer .footer__text {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   margin: 0.5rem auto;
   line-height: 1.6;
-  padding: 2rem 0; 
+  padding: 1rem 0; 
 }
 
 footer .footer__text img {
@@ -180,64 +137,15 @@ footer .footer__text img {
 }
 
 
-/**************************************************************************************************
+/*************************
 * MEDIA QUERIES
-**************************************************************************************************/
-@media only screen and (max-width: 767px) {
-  
-  /* HEADER */
-  .master-header__heading {
-      font-size: 3rem;
-      line-height: 1.3;
-      margin-bottom: 4rem;
-  }
-  
-  /* RESOURCES*/
-  .group__heading { margin-bottom: 4rem; }
-  /* .container__row { margin-bottom: 3rem; } */
-
-  .resource {
-      width: 90%;
-      float: none;
-      /* margin: 0 6%; */
-      text-align: center;
-      margin: auto;
-  }
-  
-  .resource:not(:last-child) { margin-bottom: 3rem; }
-  
-  .resource__logo {
-      height: 3rem;
-      margin-bottom: 1rem;
-      align-items: center;
-      margin: auto;
-  }
-
-  .resource__heading { margin-bottom: 0.2rem; }
-  .resource__text { line-height: 1.5; }
-}
-
-
-
+**********************************************/
 @media only screen and (max-width: 500px) {
 
-  /* HEADER */
-  .master-header {
-    height: 50vh;
+  .container__row {
+    grid-template-columns: 1fr;
   }
-  
-  .master-header__box {
-      top: 70%;
-      -webkit-transform: translate(-50%, -70%);
-      transform: translate(-50%, -70%);
-  } 
+
 }
 
-@media only screen and (max-width: 320px) {
-  .master-header__heading {
-      font-size: 2rem;
-      line-height: 1.1;
-      margin-bottom: 2rem;
-  }
-}
 
