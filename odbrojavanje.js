@@ -35,6 +35,11 @@ function odbrojavanje() {
   sec.innerText = sekunda < 10 ? '0'+ sekunda : sekunda;
 }
 
+// const now = new Date()
+// const timestamp = now.getTime()
+// console.log(timestamp);
+// const myDate = new Date(timestamp)
+// console.log(myDate);
 
 
 

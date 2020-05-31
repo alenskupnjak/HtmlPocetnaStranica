@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- <meta charset="UTF.8"> -->
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <meta name="viewport" content="width=device.width, initial.scale=1.0">
+  <meta http.equiv="X.UA.Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/icon" href="img/help.ico">
+  <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+  <title>Pomoćna tablica</title>
+  <!-- TODO automatska paginacija -->
+  <!-- FIXME -->
+  <!-- TODO -->
+  <!-- BUG -->
+  <!-- TODO daj -->
+</head>
+<body>
+  <div class="container">
+    <table class="table  table-striped table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Opis naredbe</th>
+          <th>Naredba u command line</th>
+          <th>Modul</th>
+        </tr>
+      </thead>
+
+      <tbody id="sve">
+        <tr class="redak" >
+          <th class="row">x</th>
+          <td>Inicijalizacija package.json</td>
+          <td>npm init</td>
+          <td>NODE</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">2</th>
+          <td>Verzija npm</td>
+          <td>npm -v</td>
+          <td>NODE</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">2</th>
+          <td>Prikazuje usporednu tablicu instaliranih verzija paketa iz package.json</td>
+          <td>npm outdated</td>
+          <td>NODE</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">3</th>
+          <td>Verzija NODE</td>
+          <td>node -v</td>
+          <td>NODE</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">4</th>
+          <td>Kreiranje novog projekta</td>
+          <td>ng new mojprojekt</td>
+          <td>ANGULAR</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">5</th>
+          <td>Verzija Angular-CLI-a</td>
+          <td>ng version</td>
+          <td>ANGULAR</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">6</th>
+          <td>Prikazuje tabelu mogućih update verzija</td>
+          <td>ng update</td>
+          <td>ANGULAR</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">7</th>
+          <td>Instaliranje potrebnih modula LOKALNO (Imepaketa)</td>
+          <td>npm install --save-dev <strong style="color: blue;">Imepaketa</strong> </td>
+          </td>
+          <td>NODE</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">8</th>
+          <td>Instaliranje potrebnih modula</td>
+          <td>npm install</td>
+          <td>NODE</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">9</th>
+          <td>Za instalirenje Jquery</td>
+          <td>npm install jquery --save</td>
+          <td>NODE</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">10</th>
+          <td>Za pokretanje skripte</td>
+          <td>npm run NazivSkripte</td>
+          <td>NODE</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">11</th>
+          <td>Instaliranje</td>
+          <td>npm install -g babel-cli</td>
+          <td>BABEL</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">11</th>
+          <td>Ispis verzije Babela</td>
+          <td>babel --version</td>
+          <td>BABEL</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">11</th>
+          <td>Instaliranje (babel/preset-env)</td>
+          <td>npm install babel-preset-env</td>
+          <td>BABEL</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">11</th>
+          <td>Instaliranje</td>
+          <td>npm install --save-dev @babel/core @babel/preset-env babel-loader</td>
+          <td>BABEL</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">11</th>
+          <td>Instaliranje (potpora za webpack)</td>
+          <td>npm install babel-loader</td>
+          <td>BABEL</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">12</th>
+          <td>Install polifill</td>
+          <td>npm install babel-polyfill</td>
+          <td>BABEL</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">12</th>
+          <td>Install</td>
+          <td>npm install webpack webpack-cli</td>
+          <td>WEBPACK</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">12</th>
+          <td>Install</td>
+          <td>npm install webpack-dev-server</td>
+          <td>WEBPACK</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">13</th>
+          <td>Za automatsko pokretanje stranice</td>
+          <td>npm install live-server --global</td>
+          <td>NODE</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">14</th>
+          <td>Za automatsko pokretanje stranice</td>
+          <td>live-server</td>
+          <td>NODE</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">15</th>
+          <td>Za stavljanje aplikacije na server</td>
+          <td>ng build --prod --aot</td>
+          <td>ANGULAR</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">16</th>
+          <td>Instalacija odredene verzije (ver)</td>
+          <td>npm install --save bootstrap@ver</td>
+          <td>BOOTSTRAP</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row">17</th>
+          <td>Automatsko generiranje komponenti</td>
+          <td>ng g c naziv-foldera</td>
+          <td>ANGULAR</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">18</th>
+          <td>Automatsko generiranje directives</td>
+          <td>ng g d naziv-directive</td>
+          <td>ANGULAR</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">19</th>
+          <td>Automatsko generiranje potrebnih komponenti ako imamo vise modula u root-u</td>
+          <td>ng g c naziv --module app.module</td>
+          <td>ANGULAR</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">20</th>
+          <td>Automatsko pokretanje programa u pregledniku</td>
+          <td>ng serve</td>
+          <td>ANGULAR</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">21</th>
+          <td>Automatsko generiranja novog projekta (Novaaplikacija) u postojećem folderu</td>
+          <td>ng generate application Novaaplikacija</td>
+          <td>ANGULAR</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">22</th>
+          <td>Automatsko pokretanje (Novaaplikacija) u pregledniku</td>
+          <td>ng serve --project=Novaaplikacija</td>
+          <td>ANGULAR</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">23</th>
+          <td>Instaliranje SASS-a</td>
+          <td>npm install node-sass --save-dev</td>
+          <td>SASS</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">24</th>
+          <td>Pokretanje SASS-a</td>
+          <td>npm run sas</td>
+          <td>SASS</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">25</th>
+          <td>Instaliranje modula PIPE</td>
+          <td>ng g p imePipe</td>
+          <td>PIPE</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">26</th>
+          <td>Instaliranje Angular material na postojeci projekt</td>
+          <td>ng add @angular/material</td>
+          <td>ANGULAR MATERIAL</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">27</th>
+          <td>Instaliranje Angular material</td>
+          <td>npm install --save @angular/material @angular/cdk @angular/animations</td>
+          <td>ANGULAR MATERIAL</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">28</th>
+          <td>Instaliranje NODE Express-a</td>
+          <td>npm install --save express</td>
+          <td>EXPRESS</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">29</th>
+          <td>Instaliranje Express modula za slanje poste</td>
+          <td>npm install --save body-parser</td>
+          <td>EXPRESS</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">30</th>
+          <td>Instaliranje Express modula za slike</td>
+          <td>npm install --save multer</td>
+          <td>EXPRESS</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">31</th>
+          <td>Instalacija modula koja automatski restarta NODE ili JS datoteke</td>
+          <td>npm install --save-dev nodemon</td>
+          <td>NODE</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">32</th>
+          <td>Instalacija mongoose-unique-validator -a, (za paswworde)</td>
+          <td>npm install --save mongoose-unique-validator</td>
+          <td>MONGOOSE</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">33</th>
+          <td>Enkripcija za passworde</td>
+          <td>npm install --save bcrypt</td>
+          <td>NODE</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">34</th>
+          <td>Enkripcija za passworde za postavljanje na server</td>
+          <td>npm install --save bcryptjs</td>
+          <td>NODE</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">35</th>
+          <td>Usporeduje password u bazi sa paswordom iz logina</td>
+          <td>npm install -save jsonwebtoken</td>
+          <td>NODE</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">36</th>
+          <td>Pokretanje angulara na drugom portu npr.4141</td>
+          <td>ng serve --port 4141</td>
+          <td>ANGULAR</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">37</th>
+          <td>Omogučuje rad sa tokenom</td>
+          <td>npm install angular2-jwt --save</td>
+          <td>ANGULAR</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">38</th>
+          <td>Omogučuje rad sa tokenom</td>
+          <td>npm install angular2-jwt --save</td>
+          <td>ANGULAR</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">39</th>
+          <td>Prikazuje sve linkove</td>
+          <td>netstat -ano | findstr :tvojPortBroj</td>
+          <td>PORT</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">40</th>
+          <td>Prikazuje sve linkove</td>
+          <td>tskill tvojPortBroj</td>
+          <td>PORT</td>
+        </tr>
+        <tr class="redak">
+          <th class="row">41</th>
+          <td>Deinstalacija angularfire2</td>
+          <td>npm uninstall angularfire2 --save</td>
+          <td>FIREBASE</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script src="index.js"></script>
+</body>
+
+</html>
