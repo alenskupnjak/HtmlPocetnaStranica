@@ -20,6 +20,13 @@ body {
   background: var(--light-color);
 }
 
+/* .poravnaj {
+  display: flex;
+  margin:auto;
+  text-align: center;
+  align-content: space-between;
+} */
+
 
 /********** HEADER**********/
 .master-header {
@@ -121,10 +128,13 @@ body {
 .group:nth-child(odd) { background-color: #dfe9e9; } /*#F9FAFA  */
 
 .group__heading {
+  display: flex;
+  align-items: center;
+  justify-content:center;
   font-size: 2.6rem;
   /* margin-bottom: 1rem; */
   text-align: center;
-  /* margin-top: 10px; */
+  vertical-align: center;
 }
 
 .group__heading img {
