@@ -3,7 +3,7 @@ const sadrzaj = document.getElementById('sve');
 
 let poljeZapis = [];
 
-// pRebacjemo node listu u array jer nodelist.sort ne radi
+// prebacjemo node listu u array jer nodelist.sort ne radi
 sviReci.forEach((data, rednoBroj) => {
   poljeZapis.push(data);
 });
