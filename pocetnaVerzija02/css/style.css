@@ -1,1 +1,32 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+.sadrzaj {
+ padding-top: 50px;
+}
+
+#navbarsakrij {
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+.bgcolor.scrolled{
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  transition: 1s ease-in-out;
+}
+
+
+.navbar .nav-item.active {
+  border-bottom: yellow 3px solid;
+  padding-left: 0.1rem;
+}
+
+.navbar .nav-item .nav-link:hover {
+ color: red;
+}
+
+#js .js-inner {
+  padding-top: 40px;
+  /* margin-top: 100px; */
+}
+
+
+
