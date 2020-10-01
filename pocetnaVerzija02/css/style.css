@@ -37,3 +37,8 @@ body {
   width: 35px;
   height: 35px;
 }
+
+
+#osobno {
+  min-height: 800px
+};
