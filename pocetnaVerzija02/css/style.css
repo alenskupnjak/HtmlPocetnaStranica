@@ -5,6 +5,7 @@ body {
   font-family: 'Roboto', 'Arial';
 }
 
+
 #navbarsakrij {
   position: fixed;
   width: 100%;
@@ -25,6 +26,7 @@ body {
   color: #ffc107 !important;
   border-bottom: solid 2px #ffc107;
 }
+
 
 
 .rounded {

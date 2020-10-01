@@ -38,7 +38,7 @@
             <a class="nav-link text-white" href="#node">Node</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link text-white" href="#html">HTML</a>
+            <a class="nav-link text-white" href="#html-bootstrap">Html+Bootstrap</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="#osobno">Osobno</a>
@@ -52,19 +52,20 @@
   <div class="spinner">
     <div class="container mt-1">
 
-      <div class="col-md-12 py-5 display-2 text-warning text-center mt-5">
-        <h2>...
-          <span class="txt-type" data-wait="2000"
-            data-words='["stranica za učenje.", "stranica za predstavljanje.","stranica za pohranu projekata.","spremanje korisnih linkova."]'>
-          </span>
-        </h2>
-      </div>
 
 
       <!-- ANGULAR-->
-      <section id="angular" class="py-3">
+      <section id="angular">
+        <div class="col-md-12 py-4 display-2 text-warning text-center">
+          <h2 class="mt-5">...
+            <span class="txt-type" data-wait="2000"
+              data-words='["stranica za učenje.", "stranica za predstavljanje.","stranica za pohranu projekata.","spremanje korisnih linkova."]'>
+            </span>
+          </h2>
+        </div>
+
         <div class="container angulardark">
-          <h1 class="text-center "><img class="img-thumbnail" src="img/angularjs.png" alt="Angular"> </h1>
+          <h1 class="text-center "><img class="img-thumbnail" src="img/angularjs.png" width="80px" alt="Angular"> </h1>
           <!-- <p class="text-center">Check out our photos</p> -->
 
           <div class="row mb-4">
@@ -202,14 +203,16 @@
           </div>
         </div>
 
-
-        <h1 class="text-center"><img class="img-fluid img-thumbnail" width="50px" src="img/javascript.png"
-            alt="Javascript"> </h1>
+        <!--  JAVASCRIPT -->
         <section id="js">
+          <div class="mt-5 pt-5">
+            <h1 class="text-center"><img class="img-fluid img-thumbnail" width="80px" src="img/javascript.png"
+                alt="Javascript"> </h1>
+          </div>
           <div class="container py-2">
             <div class="row text-center">
               <!--  Prvi red javascript -->
-              <div class="col-md-3 shadow-sm rounded">
+              <div class="col-md-3 shadow-lg rounded my-2">
                 <img class="logo mb-1" src="img/logoDice.jpg">
                 <p class="lead">
                   <a target="_blank" href="https://www.ucim.eu/Javascript/igraKocka/index.html">Bacanje kocke</a>
@@ -217,7 +220,7 @@
                 <h6>Jednostavna igrica za zabavu.</h6>
                 <p>Git:/jsIgraKocka</p>
               </div>
-              <div class="col-md-3 shadow-sm rounded">
+              <div class="col-md-3 shadow-sm rounded my-2">
                 <img class="logo mb-1" src="img/home.svg">
                 <p class="lead">
                   <a target="_blank" href="https://www.ucim.eu/Budget/index.html">Kućni Budžet</a>
@@ -225,7 +228,7 @@
                 <h6>Tablica za izradu kućnog budžeta.</h6>
                 <p>Git:/budget</p>
               </div>
-              <div class="col-md-3 shadow-sm rounded">
+              <div class="col-md-3 shadow-lg rounded my-2">
                 <img class="logo mb-1" src="img/hangman.png">
                 <p class="lead">
                   <a target="_blank" href="https://www.ucim.eu/Javascript/igraVjesanja/index.html">Igra vješanja</a>
@@ -233,7 +236,7 @@
                 <h6>Igra pogadanja Hrvatskih imenica.</h6>
                 <p>Git:/igraVjesanja</p>
               </div>
-              <div class="col-md-3 shadow-sm rounded">
+              <div class="col-md-3 shadow-sm rounded my-2">
                 <img class="logo mb-1" src="img\location.png">
                 <p class="lead">
                   <a target="_blank" href="https://www.ucim.eu/Javascript/myPlace/index.html">Pronađi lokaciju</a>
@@ -252,7 +255,7 @@
                 <p>Git:/prognozaVremena</p>
               </div>
 
-              <div class="col-md-3 shadow-sm rounded my-2">
+              <div class="col-md-3 shadow-lg rounded my-2">
                 <img class="logo mb-1" src="img/food.png">
                 <p class="lead">
                   <a target="_blank" href="https://www.ucim.eu/Javascript/receptiMealDB/index.html">Recepti MealDB</a>
@@ -270,7 +273,7 @@
                 <p>Git:/igraLoptica</p>
               </div>
 
-              <div class="col-md-3 shadow-sm rounded my-2">
+              <div class="col-md-3 shadow-lg rounded my-2">
                 <img class="logo mb-1" src="img/recipe.png">
                 <p class="lead">
                   <a target="_blank" href="https://www.ucim.eu/receptpretrazivac/dist/index.html">Recepti</a>
@@ -279,7 +282,7 @@
                 <p>Git:/receptPretrazivac</p>
               </div>
               <!--  TRECI red javascript -->
-              <div class="col-md-3 shadow-sm rounded my-2">
+              <div class="col-md-3 shadow-lg rounded my-2">
                 <img class="logo mb-1" src="img/listaZadataka.png">
                 <p class="lead">
                   <a target="_blank" href="https://www.ucim.eu/listaZadataka/public/index.html">Lista Zadatak</a>
@@ -296,15 +299,119 @@
                 <h6>Jednostavniji primjeri JS.</h6>
                 <p>Git:...</p>
               </div>
+            </div>
+          </div>
+        </section>
 
+        <!--  NODEJS -->
+        <section id="node">
+          <div class="mt-5 pt-5">
+            <h1 class="text-center"><img class="img-fluid img-thumbnail" width="80px" src="img/nodejs.png" alt="NodeJS">
+            </h1>
+          </div>
+          <div class="container py-2">
+            <div class="row text-center">
 
+              <div class="col-md-3 text-center item shadow-lg  rounded">
+                <img class="logo mb-1" src="img/book.png">
+                <p class="lead">
+                  <a target="_blank" href="https://campbrad.herokuapp.com/api/v1/view/index">Kampovi za učenje</a>
+                </p>
+                <h6>NodeJS. JS. MongoDB. Mongoose. Express. Heroku.</h6>
+                <p class="resource__text">Git:/angular8ClientCloudFire</p>
+                <div class="item-text">
+                  <div class="item-text-wrap">
+                    <img src="img/nodejs.png" width="70px" alt="Angular">
+                    <h4>
+                      <a target="_blank" href="https://campbrad.herokuapp.com/api/v1/view/index">Kampovi za učenje</a>
+                    </h4>
+                    <!-- <h3 class="item-text-title">Angular 8</h3> -->
+                    <p class="item-text-category bg-danger text-white">Potrebno je do 10 sekundi za učitavanje podataka!
+                    </p>
+                  </div>
+                </div>
+              </div>
 
+              <div class="col-md-3 text-center item shadow-lg  rounded">
+                <img class="logo mb-1" src="img/shopping-cart.png">
+                <p class="lead">
+                  <a target="_blank" href="https://onlineshopmongoose.herokuapp.com">Online Shop</a>
+                </p>
+                <h6>NodeJS. JS. MongoDB. Mongoose. Express. Heroku.</h6>
+                <p class="resource__text">Git:/angular8ClientCloudFire</p>
+                <div class="item-text">
+                  <div class="item-text-wrap">
+                    <img src="img/nodejs.png" width="70px" alt="Angular">
+                    <h4>
+                      <a target="_blank" href="https://onlineshopmongoose.herokuapp.com">Online Shop</a>
+                    </h4>
+                    <!-- <h3 class="item-text-title">Angular 8</h3> -->
+                    <p class="item-text-category bg-danger text-white">Potrebno je do 10 sekundi za učitavanje podataka!
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3 text-center item shadow-lg  rounded">
+                <img class="logo mb-1" src="img/camps.png">
+                <p class="lead">
+                  <a target="_blank" href="https://naturcamp.herokuapp.com/">Kampovi</a>
+                </p>
+                <h6>NodeJS. JS. MongoDB. Mongoose. Express. Heroku.</h6>
+                <p class="resource__text">Git:/angular8ClientCloudFire</p>
+                <div class="item-text">
+                  <div class="item-text-wrap">
+                    <img src="img/nodejs.png" width="70px" alt="Angular">
+                    <h4>
+                      <a target="_blank" href="https://naturcamp.herokuapp.com/">Kampovi</a>
+                    </h4>
+                    <!-- <h3 class="item-text-title">Angular 8</h3> -->
+                    <p class="item-text-category bg-danger text-white">Potrebno je do 10 sekundi za učitavanje podataka!
+                    </p>
+                  </div>
+                </div>
+              </div>
 
             </div>
           </div>
         </section>
 
 
+        <!--  HTML + BOOTSTRAP -->
+        <section id="html-bootstrap">
+          <div class="row col-md-3 mt-5 pt-5 text-center mx-auto">
+            <span class="mx-auto">
+              <img class="img-thumbnail" width="80px" src="img/html5.png" alt="HTML">
+            </span>
+            <span class="mx-auto">
+              <img class="img-thumbnail" width="80px" src="img/bootstrap.ico" alt="Bootstrap">
+            </span>
+          </div>
+
+          <div class="container py-2">
+
+
+            <div class="row text-center">
+              <!--  Prvi red javascript -->
+              <div class="col-md-4 shadow-sm rounded my-2">
+                <img class="logo mb-1" src="img/book.png">
+                <p class="lead">
+                  <a target="_blank" href="https://campbrad.herokuapp.com/api/v1/view/index">Kampovi za učenje</a>
+                </p>
+                <h6>NodeJS. JS. MongoDB. Mongoose. Express. Heroku.</h6>
+                <p>Git:/nodecoursebrad</p>
+              </div>
+
+
+
+
+            </div>
+
+
+
+        </section>
+
+        <!--  FOOTER  -->
         <footer id="main-footer" class="bg-dark">
           <div class="container">
             <div class="col text-center col-md-12 m-auto text-white py-2">
