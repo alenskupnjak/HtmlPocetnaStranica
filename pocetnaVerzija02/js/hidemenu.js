@@ -16,7 +16,3 @@ $(document).ready(function () {
 });
 
 
-// promjeni boju
-$(window).scroll(function () {
-  $('nav').toggleClass('scrolled', $(this).scrollTop() > 400);
-});
