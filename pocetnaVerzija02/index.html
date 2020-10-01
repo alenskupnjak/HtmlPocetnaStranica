@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="stylesheet" href="css/spinner.css">
+  <link rel="stylesheet" href="css/prekrivalo.css">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
 
@@ -18,9 +19,9 @@
 <body data-spy="scroll" data-target="#main-nav" id="angular">
 
   <!-- NAVIGACIJA -->
-  <nav id="main-nav" class="navbar navbar-expand-sm navbar-light bg-dark mb-5 bgcolor fixed-top">
+  <nav id="main-nav" class="navbar navbar-expand-sm navbar-light bg-dark mb-3 bgcolor fixed-top">
     <div class="container">
-      <a class="navbar-brand text-white" href="#">https://github.com/alenskupnjak</a>
+      <a class="navbar-brand text-white" href="https://github.com/alenskupnjak">https://github.com/alenskupnjak</a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -48,26 +49,27 @@
 
 
   <div class="spinner">
-    <div class="container mt-3">
+    <div class="container mt-1">
 
       <div class="col-md-12 py-5 display-2 text-warning text-center mt-5">
         <h2>...
           <span class="txt-type" data-wait="2000"
-            data-words='["stranica za učenje.", "stranica za predstavljanje.","stranica za stvaranje baze projekata."]'></span>
+            data-words='["stranica za učenje.", "stranica za predstavljanje.","stranica za pohranu projekata.","spremanje korisnih linkova."]'>
+          </span>
         </h2>
       </div>
 
 
       <!-- ANGULAR-->
-      <section id="angular" class="py-5">
+      <section id="angular" class="py-3">
         <div class="container angulardark">
-          <h1 class="text-center"><img src="img/angularjs.png" alt="Angular"> </h1>
+          <h1 class="text-center "><img class="img-thumbnail" src="img/angularjs.png" alt="Angular"> </h1>
           <!-- <p class="text-center">Check out our photos</p> -->
 
           <div class="row mb-4">
-            <div class="col-md-4 py-2 text-center item">
+            <div class="col-md-4 py-2 text-center item shadow-lg p-2 rounded">
               <img class="logo" src="img/notepad.png">
-              <h2><a target="_blank" href="https://www.ucim.eu/Angular/receptMax/index.html">Recepti</a></h2>
+              <h2><a target="_blank" href="https://www.ucim.eu/Angular/receptMax/index.html">Knjiga recepta</a></h2>
               <p>Angular 8. Firebase. Arhiva recepata.</p>
               <p>Git:/receptMax</p>
               <!-- <div class="item"> -->
@@ -78,7 +80,7 @@
                 <div class="item-text-wrap">
                   <img src="img/angularjs.png" alt="Angular">
                   <h1>
-                    <a target="_blank" href="https://www.ucim.eu/Angular/receptMax/index.html">Recepti</a>
+                    <a target="_blank" href="https://www.ucim.eu/Angular/receptMax/index.html">Knjiga recepta</a>
                   </h1>
                   <h3 class="item-text-title">Angular 8</h3>
                   <p class="item-text-category">Treba par sekundi za učitavanje podataka!</p>
@@ -86,113 +88,162 @@
               </div>
             </div>
 
-            <div class="col-md-4 py-2 text-center item">
-              <img class="logo" src="img/notepad.png">
-              <h2><a target="_blank" href="https://www.ucim.eu/Angular/receptMax/index.html">Recepti</a></h2>
-              <p>Angular 8. Firebase. Arhiva recepata.</p>
-              <p>Git:/receptMax</p>
+            <div class="col-md-4 py-2 text-center item shadow-lg p-2 rounded">
+              <img class="logo" src="img/list.png">
+              <h2><a target="_blank" href="https://www.ucim.eu/postanodeangular/index.html">Pošta</a></h2>
+              <p>Angular 8. CRUD aplikacija. NodeJS.</p>
+              <p>Git:/angular-8-MEAN-posta</p>
               <!-- <div class="item"> -->
               <div class="item-image">
-                <!-- <img src="img/camps.png" width="10px" alt="" /> -->
+                <img src="img/list.png" width="10px" alt="" />
               </div>
               <div class="item-text">
                 <div class="item-text-wrap">
-                  <h2 class="item-text-title">Angular 10</h2>
-                  <h3>
-                    <a target="_blank" href="https://www.ucim.eu/Angular/receptMax/index.html">Recepti</a>
-                  </h3>
+                  <img src="img/angularjs.png" alt="Angular">
+                  <h1>
+                    <a target="_blank" href="https://www.ucim.eu/Angular/receptMax/index.html">Pošta</a>
+                  </h1>
+                  <h3 class="item-text-title">Angular 8</h3>
+                  <p class="item-text-category">Treba par sekundi za učitavanje podataka!</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 py-2 text-center item shadow-lg p-2 rounded">
+              <img class="logo" src="img\completed-task.png">
+              <h2><a target="_blank" href="https://www.ucim.eu/Angular/crudFK/index.html">Tablica</a></h2>
+              <p>Angular 7. CRUD aplikacija. Firebase.</p>
+              <p>Git:/crudFK</p>
+              <!-- <div class="item"> -->
+              <div class="item-image">
+                <img src="img/completed-task.png" width="10px" alt="" />
+              </div>
+              <div class="item-text">
+                <div class="item-text-wrap">
+                  <img src="img/angularjs.png" alt="Angular">
+                  <h1>
+                    <a target="_blank" href="https://www.ucim.eu/Angular/receptMax/index.html">Tablica</a>
+                  </h1>
+                  <h3 class="item-text-title">Angular 7</h3>
+                  <p class="item-text-category">Treba par sekundi za učitavanje podataka!</p>
                 </div>
               </div>
             </div>
           </div>
-
-
-
-          <div class="col-md-4 py-2">
-            <img class="logo" src="img/list.png">
-            <h2><a target="_blank" href="https://www.ucim.eu/postanodeangular/index.html">Pošta</a></h2>
-            <p>Angular 8. CRUD aplikacija. NodeJS.</p>
-            <p>Git:.../angular-8-MEAN-posta</p>
-          </div>
-
-          <div class="col-md-4 kucica py-2">
-            <img class="logo" src="img\completed-task.png">
-            <h2><a target="_blank" href="https://www.ucim.eu/Angular/crudFK/index.html">Tablica</a></h2>
-            <p>Angular 7. CRUD aplikacija. Firebase.</p>
-            <p>Git:/crudFK</p>
-          </div>
-          <div class="col-md-4 py-2">
-
-            <!-- <div class="item">
+          <!-- drugi red ANGULAR -->
+          <div class="row mb-4">
+            <div class="col-md-4 py-2 text-center item shadow-lg p-2 rounded">
+              <img class="logo" src="img/clients.png">
+              <h2><a target="_blank" class="resource__link"
+                  href="https://www.ucim.eu/angular8ClientCloudFire/index.html">Client Panel</a>
+              </h2>
+              <p>Evidencija Klijenata.</p>
+              <p class="resource__text">Git:/angular8ClientCloudFire</p>
+              <!-- <div class="item"> -->
               <div class="item-image">
-                <img src="img/camps.png" alt="" />
+                <img src="img/clients.png" width="10px" alt="" />
               </div>
               <div class="item-text">
                 <div class="item-text-wrap">
-                  <p class="item-text-category">Design</p>
-                  <h2 class="item-text-title">Great Gradients</h2>
+                  <img src="img/angularjs.png" alt="Angular">
+                  <h1>
+                    <a target="_blank" href="https://www.ucim.eu/angular8ClientCloudFire/index.html">Client Panel</a>
+                  </h1>
+                  <h3 class="item-text-title">Angular 8</h3>
+                  <p class="item-text-category">Treba par sekundi za učitavanje podataka!</p>
                 </div>
               </div>
-            </div> -->
+            </div>
+
+            <div class="col-md-4 py-2 text-center item shadow-lg p-2 rounded">
+              <img class="logo" src="img/trening.png">
+              <h2>
+                <a target="_blank" href="https://www.ucim.eu/angular10trening/index.html">Evidencija treninga</a>
+              </h2>
+              <p>Angular 10. Firebase cloud.</p>
+              <p>Git:/angular10Trening</p>
+              <!-- <div class="item"> -->
+              <div class="item-image">
+                <img src="img/trening.png" width="10px" alt="" />
+              </div>
+              <div class="item-text">
+                <div class="item-text-wrap">
+                  <img src="img/angularjs.png" alt="Angular">
+                  <h1>
+                    <a target="_blank" href="https://www.ucim.eu/angular10trening/index.html">Evidencija treninga</a>
+                  </h1>
+                  <h3 class="item-text-title">Angular 10</h3>
+                  <p class="item-text-category">Treba par sekundi za učitavanje podataka!</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 py-2 text-center item shadow-lg p-2 rounded">
+              <img class="logo" src="img\completed-task.png">
+              <h2> <a target="_blank" href="https://www.ucim.eu/Angular/Index.html">Razni primjeri</a></h2>
+              <p>Primjeri raznih riješenja.</p>
+              <p>Git:/...</p>
+              <!-- <div class="item"> -->
+              <div class="item-image">
+                <img src="img/recepti.JPG" width="10px" alt="" />
+              </div>
+              <div class="item-text">
+                <div class="item-text-wrap">
+                  <img src="img/angularjs.png" alt="Angular">
+                  <h1>
+                    <a target="_blank" href="https://www.ucim.eu/Angular/Index.html">Razni primjeri</a>
+                  </h1>
+                  <h3 class="item-text-title">Desetak manjih vježbi...</h3>
+                  <p class="item-text-category">Treba par sekundi za učitavanje podataka!</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
 
+        <h1 class="text-center"><img class="img-fluid img-thumbnail" width="50px" src="img/javascript.png"
+            alt="Javascript"> </h1>
+        <section id="js">
+          <div class="container py-2">
+            <div class="row text-center">
 
+              <div class="col-md-2 shadow-sm rounded">
+                <img class="logo" src="img/logoDice.jpg">
+                <p class="lead">
+                  <a target="_blank" href="https://www.ucim.eu/Javascript/igraKocka/index.html">Bacanje kocke</a>
+                </p>
+                <h6>Jednostavna igrica za zabavu.</h6>
+                <p>Git:/jsIgraKocka</p>
+              </div>
+
+              <div class="col-md-2 shadow-sm rounded">
+                <img class="logo" src="img/home.svg">
+                <p class="lead">
+                  <a target="_blank" href="https://www.ucim.eu/Budget/index.html">Kućni Budžet</a>
+                </p>
+                <h6>Tablica za izradu kućnog budžeta.</h6>
+                <p>Git:/budget</p>
+              </div>
+
+
+
+
+            </div>
+          </div>
+        </section>
+
+
+        <footer id="main-footer" class="bg-dark">
+          <div class="container">
+            <div class="row footer__text col-md-12 m-auto text-white py-2">
+              <p class="lead">Izrađeno u <span style="color: green;">&#9752;</span> Zagrebu, Hrvatska.</p>
+              <small>&copy; v2.07 2019 alenskupnjak@yahoo.com</small>
+            </div>
+        </footer>
     </div>
-    </section>
-
-
-
-
-    <section id="js">
-      <div class="container js-inner">
-        <div class="row">
-          <div class="bg-light py-2  bg-info">
-            <h1>Hello, Welcome to my website</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat quibusdam voluptatum magnam
-              temporibus
-              amet
-              recusandae dolor, quod id voluptates neque officiis deserunt culpa. Magnam, explicabo, rem sed excepturi
-              voluptates, repellat ducimus necessitatibus
-              aspernatur consequatur ipsum aperiam odit iusto id nostrum!</p>
-
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto repellendus veritatis minus,
-              molestiae
-              perspiciatis laborum laboriosam animi quibusdam reprehenderit recusandae ipsum, odit, esse voluptatum
-              soluta
-              quidem rem. Quidem, eveniet. Quidem?</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto repellendus veritatis minus,
-              molestiae
-              perspiciatis laborum laboriosam animi quibusdam reprehenderit recusandae ipsum, odit, esse voluptatum
-              soluta
-              quidem rem. Quidem, eveniet. Quidem?</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto repellendus veritatis minus,
-              molestiae
-              perspiciatis laborum laboriosam animi quibusdam reprehenderit recusandae ipsum, odit, esse voluptatum
-              soluta
-              quidem rem. Quidem, eveniet. Quidem?</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto repellendus veritatis minus,
-              molestiae
-              perspiciatis laborum laboriosam animi quibusdam reprehenderit recusandae ipsum, odit, esse voluptatum
-              soluta
-              xxxxxxxxxxxxxxxxxxx?</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer id="main-footer" class="bg-dark">
-      <div class="container">
-        <div class="row footer__text col-md-12 m-auto text-white py-2">
-          <p class="lead">Izrađeno u <span style="color: green;">&#9752;</span> Zagrebu, Hrvatska.</p>
-          <small>&copy; v2.07 2019 alenskupnjak@yahoo.com</small>
-        </div>
-    </footer>
   </div>
   </div>
-
-
 
 
   <!-- Optional JavaScript -->
