@@ -9,6 +9,7 @@
 
 # dependencies
 /node_modules
+.vscode
 
 
 # IDEs and editors
@@ -20,20 +21,5 @@
 .settings/
 *.sublime-workspace
 
-# IDE - VSCode
-.vscode
-.history/*
-# .vscode\sftp.json
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
 
-# System Files
-.DS_Store
-Thumbs.db
+
