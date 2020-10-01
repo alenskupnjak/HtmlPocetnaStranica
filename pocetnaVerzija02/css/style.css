@@ -42,3 +42,16 @@ body {
 #osobno {
   min-height: 800px
 };
+
+
+.navbar-toggler-icon {
+color: #ffc107 !important;
+/* background-color: aqua; */
+}
+
+.navbar-custom .navbar-toggle {
+  background-color:#eeeeee;
+}
+.navbar-custom .icon-bar {
+  background-color:#33aa33;
+}

@@ -5,4 +5,4 @@ document.querySelector(".spinner").classList.add("spinner-3");
 setTimeout(() => {
   document.querySelector(".spinner").classList.remove("spinner-3");
   document.querySelector(".spinner .container").style.display = "block";
-}, 150);
+}, 1000);
