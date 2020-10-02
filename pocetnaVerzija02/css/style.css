@@ -5,7 +5,6 @@ body {
   font-family: 'Roboto', 'Arial';
 }
 
-
 #navbarsakrij {
   position: fixed;
   width: 100%;
@@ -27,8 +26,6 @@ body {
   border-bottom: solid 2px #ffc107;
 }
 
-
-
 .rounded {
   border-radius: 0.5rem !important;
 }
@@ -38,20 +35,28 @@ body {
   height: 35px;
 }
 
-
 #osobno {
-  min-height: 800px
-};
-
+  min-height: 800px;
+}
 
 .navbar-toggler-icon {
-color: #ffc107 !important;
-/* background-color: aqua; */
+  color:  !important;
+  /* background-color: aqua; */
 }
 
 .navbar-custom .navbar-toggle {
-  background-color:#eeeeee;
+  background-color: #eeeeee;
 }
 .navbar-custom .icon-bar {
-  background-color:#33aa33;
+  background-color: #33aa33;
 }
+
+/* Set the border color to the desired color */ 
+.custom-toggler.navbar-toggler { 
+	border-color: rgb(255, 193, 7); 
+}
+
+.custom-toggler .navbar-toggler-icon { 
+  background-image: url( 
+"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 193, 7, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); 
+} 
