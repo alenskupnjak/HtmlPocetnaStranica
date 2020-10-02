@@ -3,6 +3,7 @@
 body {
   background-color: #f9fafa;
   font-family: 'Roboto', 'Arial';
+  min-height: 800px;
 }
 
 #navbarsakrij {
@@ -13,17 +14,28 @@ body {
 
 .bgcolor.scrolled {
   background-color: rgba(0, 0, 0, 0.5) !important;
+  /* border-bottom: solid 0px 	rgb(52, 58, 64, 0.5) !important; */
+  border-bottom: none !important;
   transition: 1s ease-in-out;
 }
 
 .navbar .nav-item .nav-link:hover {
   color: #ffc107 !important;
-  border-bottom: solid 2px #ffc107 !important;
+  border-left: solid 2px #ffc107 !important;
+  padding-left: 0.5rem;
+}
+
+.navbar a {
+  border-left: solid 2px #343a40;
+}
+
+.navbar a.scrolled {
+  border-left: solid 0px rgb(52, 58, 64, 0.5) !important;
 }
 
 .navbar a:hover {
   color: #ffc107 !important;
-  border-bottom: solid 2px #ffc107;
+  border-left: solid 2px #ffc107;
 }
 
 .rounded {
@@ -33,15 +45,11 @@ body {
 .logo {
   width: 35px;
   height: 35px;
+  margin-bottom: 5px;
 }
 
 #osobno {
   min-height: 800px;
-}
-
-.navbar-toggler-icon {
-  color:  !important;
-  /* background-color: aqua; */
 }
 
 .navbar-custom .navbar-toggle {
@@ -51,12 +59,18 @@ body {
   background-color: #33aa33;
 }
 
-/* Set the border color to the desired color */ 
-.custom-toggler.navbar-toggler { 
-	border-color: rgb(255, 193, 7); 
+/* Set the border color to the desired color */
+.custom-toggler.navbar-toggler {
+  border-color: rgb(255, 193, 7);
 }
 
-.custom-toggler .navbar-toggler-icon { 
-  background-image: url( 
-"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 193, 7, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); 
-} 
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 193, 7, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/* footer {
+  position: fixed;
+  height: 100px;
+  bottom: 0;
+  width: 100%;
+} */
