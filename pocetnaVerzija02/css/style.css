@@ -12,6 +12,22 @@ body {
   top: 0;
 }
 
+.navbar-toggler {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .bgcolor.scrolled {
   background-color: rgba(0, 0, 0, 0.5) !important;
   /* border-bottom: solid 0px 	rgb(52, 58, 64, 0.5) !important; */
