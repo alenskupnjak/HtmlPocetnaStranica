@@ -2933,7 +2933,7 @@ input[type="button"].btn-block {
   position: relative;
   height: 0;
   overflow: hidden;
-  transition: height 0.35s ease;
+  transition: height 0.7s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {

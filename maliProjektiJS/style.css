@@ -47,7 +47,7 @@ body {
 
 .master-header {
   width: 100%;
-  height: 25vh;
+  height: 15vh;
   position: relative;
 }
 
@@ -240,13 +240,13 @@ footer {
   /* HEADER */
   /* HEADER */
   .master-header {
-    height: 15vh;
+    height: 5vh;
   }
 
   .master-header__heading {
     font-size: 3rem;
     line-height: 1.3;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
   }
 
   .logo-box {
@@ -319,7 +319,7 @@ footer {
 @media only screen and (max-width: 500px) {
   /* HEADER */
   .master-header {
-    height: 20vh;
+    height: 10vh;
   }
 
   .master-header__box {

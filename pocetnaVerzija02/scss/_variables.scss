@@ -256,7 +256,7 @@ $caret-spacing:               $caret-width * .85 !default;
 
 $transition-base:             all .2s ease-in-out !default;
 $transition-fade:             opacity .15s linear !default;
-$transition-collapse:         height .35s ease !default;
+$transition-collapse:         height 0.7s ease !default;
 
 $embed-responsive-aspect-ratios: () !default;
 $embed-responsive-aspect-ratios: join(
