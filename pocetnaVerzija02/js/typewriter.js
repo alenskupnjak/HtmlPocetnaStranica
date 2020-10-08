@@ -2,7 +2,7 @@
 //***************************************** */
 // ES6 CLASS
 class TypeWriter {
-  constructor(txtElement, poljeRijeci, cekajNaKrajuRijeci = 5000) {
+  constructor(txtElement, poljeRijeci, cekajNaKrajuRijeci = 3000) {
     this.txtElement = txtElement;
     this.poljeRijeci = poljeRijeci;
 
@@ -56,7 +56,7 @@ class TypeWriter {
       // Move to next word
       this.wordIndex++;
       // Pause before start typing
-      typeSpeed = 1000;
+      typeSpeed = 800;
     }
 
     // neprestano ponavlja
