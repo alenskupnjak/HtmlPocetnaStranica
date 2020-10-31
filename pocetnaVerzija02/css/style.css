@@ -29,29 +29,38 @@ body {
 }
 
 .bgcolor.scrolled {
-  background-color: rgba(0, 0, 0, 0.5) !important;
-  /* border-bottom: solid 0px 	rgb(52, 58, 64, 0.5) !important; */
-  border-bottom: none !important;
+  /* background-color: rgba(0, 0, 0, 0.5) !important; */
+  border-bottom: solid 2px rgb(52, 58, 64, 0.5) !important;
+  /* border-bottom: none !important; */
   transition: 1s ease-in-out;
 }
 
 .navbar .nav-item .nav-link:hover {
   color: #ffc107 !important;
-  border-left: solid 2px #ffc107 !important;
+  /* border-left: solid 2px #ffc107 !important; */
+  border-left: solid 2px rgb(52, 58, 64, 0.5) !important;
+  border-bottom: solid 2px #ffc107 !important;
   padding-left: 0.5rem;
 }
 
-.navbar a {
-  border-left: solid 2px #343a40;
+.navbar .nav-item .nav-link:hover .sakrij-git {
+  opacity: 1;
 }
 
-.navbar a.scrolled {
-  border-left: solid 0px rgb(52, 58, 64, 0.5) !important;
+
+
+.navbar a {
+  border-left: solid 2px #343a40;
+  border-bottom: solid 2px #343a40 !important;
 }
+
+/* .navbar a.scrolled {
+  border-left: solid 2px rgb(52, 58, 64, 0.5) !important;
+} */
 
 .navbar a:hover {
   color: #ffc107 !important;
-  border-left: solid 2px #ffc107;
+  border-bottom: solid 2px #ffc107 !important ;
 }
 
 .rounded {
@@ -84,21 +93,14 @@ body {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 193, 7, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-
 #pomoc {
   margin-bottom: 50px;
 }
 
-/* footer {
-  position: fixed;
-  height: 100px;
-  bottom: 0;
-  width: 100%;
-} */
 
 /* spinerr circle */
 .loader {
-  opacity:1;
+  opacity: 1;
   display: flex;
   position: relative;
   bottom: 50px;
@@ -134,5 +136,39 @@ body {
 
   50% {
     transform: translateY(-10px);
+  }
+}
+
+/* GITHUB */
+.git {
+  opacity: 0;
+}
+.collapse:hover .git {
+  opacity: 1;
+  color: #ffc107;
+}
+/* END GITHUB */
+
+
+.druga-icona{
+  height: 30px;
+  display: none;
+ }
+
+
+@media only screen and (max-width: 576px) {
+  .navbar .nav-item .nav-link:hover {
+    color: #ffc107 !important;
+    border-left: solid 2px #ffc107 !important;
+    border-bottom: none !important;
+    padding-left: 0.5rem;
+  }
+
+  .git {
+   display: none;
+  }
+
+  .druga-icona{
+   display: inline-block;
   }
 }
