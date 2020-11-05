@@ -135,9 +135,10 @@ body {
   }
 
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
   }
 }
+
 
 /* GITHUB */
 .git {
@@ -171,4 +172,42 @@ body {
   .druga-icona{
    display: inline-block;
   }
+}
+
+.flash-efekat {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+}
+.flash-efekat img {
+  width: 200px;
+  height: 200px;
+}
+
+.flash-efekat #flash1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  color: green;
+}
+
+.flash-efekat #flash2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  color: yellow;
+  visibility: hidden;
+}
+
+.flash-efekat #flash3 {
+  position: absolute;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(-50%);
+  color: red;
+  top: 50%;
+  left: 50%;
 }
