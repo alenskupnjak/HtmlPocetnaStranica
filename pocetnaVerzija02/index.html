@@ -18,18 +18,17 @@
 
   <link rel="shortcut icon" type="image/icon" href="img/logo.ico">
 
-  <title>Alen</title>
+  <title>A.S.</title>
 </head>
 
 
 <body data-spy="scroll" data-target="#main-nav" id="angular">
   
-  
-  
+  <!-- Flash efekat  -->
   <div class="flash-efekat">
-    <h1 id="flash3"> <img src="img/javascript.png" alt=""></h1>
-    <h1 id="flash2"><img src="img/angular-icon.svg" alt=""></h1>
-    <h1 id="flash1"> <img src="img/nodejs.png" alt=""></h1>
+    <h1 id="flash3"><img src="img/javascript.png" alt="JS"></h1>
+    <h1 id="flash2"><img src="img/angular-icon.svg" alt="Angular"></h1>
+    <h1 id="flash1"><img src="img/nodejs.png" alt="NodeJS"></h1>
   </div>
   
   <!-- NAVIGACIJA -->
@@ -37,11 +36,9 @@
     <div class="container ">
       
       
-
       <button class="navbar-toggler custom-toggler" data-toggle="collapse" data-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-
 
 
       <div class="collapse navbar-collapse text-white" id="navbarNav">
@@ -63,7 +60,7 @@
             <a class="nav-link text-white" href="#node">Node</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link text-white" href="#html-bootstrap">Bootstrap</a>
+            <a class="nav-link text-white" href="#HTML">HTML</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="#pomoc">Pomoć</a>
@@ -514,7 +511,7 @@
 
 
         <!--  HTML + BOOTSTRAP -->
-        <section id="html-bootstrap">
+        <section id="HTML">
           <div class="row col-md-3 mt-5 pt-5 text-center mx-auto">
             <span class="mx-auto">
               <img class="img-thumbnail" width="80px" src="img/html5.png" alt="HTML">
@@ -630,6 +627,34 @@
               </div>
             </div>
         </section>
+
+        <!--  LINKOVI -->
+        <section id="pomoc">
+          <div class="container">
+            <div class="row text-center">
+
+              <div class="col-md-4 shadow-sm rounded my-2 osobno">
+                <p class="lead my-2">
+                  <a target="_blank" href="img/AlenSkupnjakCV.pdf">CV</a>
+                </p>
+                <!-- <h6>Git upute.</h6> -->
+              </div>
+
+              <div class="col-md-4 shadow-sm rounded my-2 osobno">
+                <p class="lead my-2">
+                  <a target="_blank" href="img/CoverLetter.pdf">Cover letter</a>
+                </p>
+                <!-- <h6>Pomoćna tablica.</h6> -->
+              </div>
+
+              <div class="col-md-4 shadow-sm rounded my-2 osobno">
+                <p class="lead my-2">
+                  <a target="_blank" href="img/Preporuka.pdf">Preporuka</a>
+                </p>
+                <!-- <h6>Bootstrap pomoćni meni.</h6> -->
+              </div>
+            </div>
+        </section>
     </div>
   </div>
   <!--  FOOTER  -->
@@ -693,18 +718,18 @@
       const target2 = $("#flash2");
       const target3 = $("#flash3");
       const target4 = $(".flash-efekat");
-      target1.animate({ opacity: 0 }, 2000, 
+      target1.animate({ opacity: 0 }, 1500, 
             function () {
             target2.css("visibility", "visible")
-            target2.animate(  { opacity: 0 }, 3000, 
+            target2.animate(  { opacity: 0 }, 1500, 
                 function () {
                 target3.css("visibility", "visible")
-                target3.animate({ opacity: 0 }, 3000, 
+                target3.animate({ opacity: 0 }, 1500, 
                       function () {
                       target3.remove();
                         setTimeout(() => {
                           target4.remove();
-                        }, 500);
+                        }, 300);
                       });
                 });
           target1.remove();
