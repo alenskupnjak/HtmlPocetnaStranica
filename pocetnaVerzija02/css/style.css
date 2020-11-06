@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 body {
-  background-color: #f9fafa;
+  /* background-color: #f9fafa; */
+  background: #ddd url(../img/pozadina.jpg) repeat top left;
+  font-family: 'Open Sans Condensed','Arial Narrow', serif;
+  font-weight: 400;
   font-family: 'Roboto', 'Arial';
   min-height: 1200px;
+  overflow: scroll;
+	overflow-x: hidden;
 }
 
 #navbarsakrij {
@@ -163,6 +168,18 @@ body {
   text-align: center;
   justify-content: center;
 }
+
+
+logonaslov{
+  opacity: 0.5 !important;
+}
+
+.img-thumbnail {
+ border: none;
+ background-color: transparent;
+}
+
+
 
 @media only screen and (max-width: 576px) {
   .navbar .nav-item .nav-link:hover {
