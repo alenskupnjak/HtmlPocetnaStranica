@@ -23,19 +23,19 @@
 
 
 <body data-spy="scroll" data-target="#main-nav" id="angular">
-  
+
   <!-- Flash efekat  -->
   <div class="flash-efekat">
     <h1 id="flash3"><img src="img/javascript.png" alt="JS"></h1>
     <h1 id="flash2"><img src="img/angular-icon.svg" alt="Angular"></h1>
     <h1 id="flash1"><img src="img/nodejs.png" alt="NodeJS"></h1>
   </div>
-  
+
   <!-- NAVIGACIJA -->
   <nav id="main-nav" class="navbar navbar-expand-sm navbar-light bg-dark mb-3 bgcolor fixed-top">
     <div class="container ">
-      
-      
+
+
       <button class="navbar-toggler custom-toggler" data-toggle="collapse" data-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -91,7 +91,8 @@
 
         <!-- ANGULAR  poglavlje-->
         <div class="container angulardark">
-          <h1 class="text-center "><img class="img-thumbnail logonaslov" src="img/angularjs.png" width="80px" alt="Angular"> </h1>
+          <h1 class="text-center "><img class="img-thumbnail logonaslov" src="img/angularjs.png" width="80px"
+              alt="Angular"> </h1>
           <!-- <p class="text-center">Check out our photos</p> -->
 
           <div class="row mb-4">
@@ -449,7 +450,7 @@
               </div>
 
               <div class="col-md-3 text-center item shadow-lg  rounded">
-                <img class="logo mb-1"   src="img/shopping-cart.png">
+                <img class="logo mb-1" src="img/shopping-cart.png">
                 <p class="lead">
                   <a target="_blank" href="https://onlineshopmongoose.herokuapp.com">Online Shop</a>
                 </p>
@@ -469,7 +470,7 @@
               </div>
 
               <div class="col-md-3 text-center item shadow-lg  rounded">
-                <img class="logo mb-1"  src="img/camps.png">
+                <img class="logo mb-1" src="img/camps.png">
                 <p class="lead">
                   <a target="_blank" href="https://naturcamp.herokuapp.com/">Kampovi</a>
                 </p>
@@ -645,7 +646,7 @@
     <div class="container">
       <div class="col text-center col-md-12 m-auto text-white py-1">
         <!-- <small>Zagreb, 2019 v2.10 &copy;</small> -->
-        <small><span style="color: green;">&#9752;</span> alenskupnjak@yahoo.com</small>
+        <small> alenskupnjak@yahoo.com <span style="color: green;">&#9752;</span>&nbspv2.29</small>
       </div>
   </footer>
   </div>
@@ -697,27 +698,31 @@
 
   // Flash efekat
   (function ($) {
-      const target1 = $("#flash1");
-      const target2 = $("#flash2");
-      const target3 = $("#flash3");
-      const target4 = $(".flash-efekat");
-      target1.animate({ opacity: 0 }, 1500, 
-            function () {
-            target2.css("visibility", "visible")
-            target2.animate(  { opacity: 0 }, 1500, 
-                function () {
-                target3.css("visibility", "visible")
-                target3.animate({ opacity: 0 }, 1500, 
-                      function () {
-                      target3.remove();
-                        setTimeout(() => {
-                          target4.remove();
-                        }, 300);
-                      });
-                });
-          target1.remove();
-        });
-    })(jQuery);
+    const target1 = $("#flash1");
+    const target2 = $("#flash2");
+    const target3 = $("#flash3");
+    const target4 = $(".flash-efekat");
+    target1.animate({ opacity: 0 }, 1000,
+      function () {
+        target2.css("visibility", "visible")
+        target2.animate({
+          opacity: 0
+        }, 1500,
+          function () {
+            target3.css("visibility", "visible")
+            target3.animate({ opacity: 0 }, 1000,
+              function () {
+                target4.animate({ opacity: 0 }, 1500,
+                  function () {
+                    target4.remove();
+                  })
+                target3.remove();
+              });
+            target2.remove();
+          });
+        target1.remove();
+      });
+  })(jQuery);
 
 </script>
 

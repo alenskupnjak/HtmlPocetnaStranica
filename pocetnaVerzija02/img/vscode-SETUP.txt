@@ -1,0 +1,21 @@
+{
+  "files.autoSave": "onFocusChange",
+  "editor.wordWrap": "on"
+  "editor.fontSize": 16,
+  "editor.tabSize": 2,    
+}
+
+
+Instalirane Extenzije:
+1- Live Server (Ritwick Dey)
+2 - Prettier - (Esben Petersen)
+3 - Bootstrap 4, (Ashok Koyi)
+4 - JavaScript (ES6) (charalampos karypidis)
+5 - Bracket Pair Colorizer (CoenraadS)
+6 - vscode-icons (VSCode Icons Team)
+7 - Material Icon Theme (Philipp Kief)
+8 - Angular Snippets (John Papa)
+9 - Auto Rename (Tag Jun Han)
+10 - Peacock (John Papa)
+11 - Night Owl (sarah.drasner)
+12 - Window Colors (Stuart Robinson")
