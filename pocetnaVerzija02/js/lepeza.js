@@ -1,8 +1,6 @@
 const lepeza = document.querySelector('.lepeza');
 const kartica = document.querySelectorAll('.kartica');
 
-console.log(kartica);
-
 let polozajKartica;
 
 function start() {
@@ -37,20 +35,14 @@ function postaviLisenere(kut) {
 function zarotiraj(e, kut) {
   polozajKartica = e.dataset.id;
   console.log('kartica koja je u polozaju za prikaz=', polozajKartica);
-  // polozajKartica=e.dataset.id
   e.setAttribute('style', `transform:rotate(0deg); transition: transform 1s;`);
 }
 
 function zarotirajKodUcitavanja(e, kut) {
-  e.setAttribute(
-    'style',
-    `transform:rotate(${kut}); transition: transform 5s;`
-  );
+  e.setAttribute( 'style',`transform:rotate(${kut}); transition: transform 5s;`);
 }
 
 function vratiKarticuNaPocetniPolozaj(e, polozajKartica) {
-  // console.log(polozajKartica, '--------------------', e);
-
   kartica.forEach((kartica) => {
     if (kartica.dataset.id === polozajKartica) {
       polozajKartica = parseInt(-polozajKartica) - 20;
