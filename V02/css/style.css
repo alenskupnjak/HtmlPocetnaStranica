@@ -29,6 +29,10 @@ body {
   position: relative;
 }
 
+#node{
+  position: relative;
+}
+
 #canvasjs {
  z-index: -5;
 }
