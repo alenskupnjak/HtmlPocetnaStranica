@@ -25,10 +25,11 @@
 
 <body data-spy="scroll" data-target="#main-nav" id="angular">
 
+
   <!-- Flash efekat  -->
   <div class="flash-efekat">
     <h1 id="flash3"><img src="img/javascript.png" alt="JS"></h1>
-    <h1 id="flash2"><img src="img/angular-icon.svg" alt="Angular"></h1>
+    <h1 id="flash2"><img src="img/angular.png" alt="Angular"></h1>
     <h1 id="flash1"><img src="img/nodejs.png" alt="NodeJS"></h1>
   </div>
 
@@ -82,7 +83,7 @@
         <div class="col-md-12 py-4 display-1 text-primary text-center">
           <h1 class="mt-5">
             <span><img class="img-thumbnail" src="img/javascript.png" width="40px" alt="Javascript"></span>
-            <span><img class="img-thumbnail" src="img/angularjs.png" width="40px" alt="Angular"></span>
+            <span><img class="img-thumbnail" src="img/angular.png" width="40px" alt="Angular"></span>
             <span><img class="img-thumbnail" src="img/nodejs.png" width="40px" alt="NodeJS"></span>
             <span><img class="img-thumbnail" src="img/html5.png" width="40px" alt="HTML"></span>
             <span class="txt-type" data-wait="2000"
@@ -145,37 +146,37 @@
               <h5><span>Kampovi za učenje</span></h5>
             </div>
             <div class="kartica" data-id="60">
-              <img src="img/angular-icon.svg" alt="">
+              <img src="img/angular.png" alt="">
               <h4><a href="#angular">Agular</a></h4>
               <h5><span>Tablica</span></h5>
             </div>
             <div class="kartica" data-id="65">
-              <img src="img/angular-icon.svg" alt="">
+              <img src="img/angular.png" alt="">
               <h4><a href="#angular">Agular</a></h4>
               <h5><span>Djelatnici</span></h5>
             </div>
             <div class="kartica" data-id="70">
-              <img src="img/angular-icon.svg" alt="">
+              <img src="img/angular.png" alt="">
               <h4><a href="#angular">Agular</a></h4>
               <h5><span>Evidencija treninga</span></h5>
             </div>
             <div class="kartica" data-id="75">
-              <img src="img/angular-icon.svg" alt="">
+              <img src="img/angular.png" alt="">
               <h4><a href="#angular">Agular</a></h4>
               <h5><span>Client panel</span></h5>
             </div>
             <div class="kartica" data-id="80">
-              <img src="img/angular-icon.svg" alt="">
+              <img src="img/angular.png" alt="">
               <h4><a href="#angular">Agular</a></h4>
               <h5><span>Pošta</span></h5>
             </div>
             <div class="kartica" data-id="85">
-              <img src="img/angular-icon.svg" alt="">
+              <img src="img/angular.png" alt="">
               <h4><a href="#angular">Agular</a></h4>
               <h5><span>Knjiga recepata</span></h5>
             </div>
             <div class="kartica" data-id="90">
-              <img src="img/angular-icon.svg" alt="">
+              <img src="img/angular.png" alt="">
               <h4><a href="#angular">Agular</a></h4>
               <h5><span>Nekoliko aplikacija</span></h5>
             </div>
@@ -236,7 +237,7 @@
               <img class="front" src="img/javascript.png" alt="">
               <hr>
               <!-- <h4><span>Angular</span></h4> -->
-              <img class="front" src="img/angular-icon.svg" alt="">
+              <img class="front" src="img/angular.png" alt="">
               <hr>
               <!-- <h4><span>NodeJS</span></h4> -->
               <img class="front" src="img/node-js.svg" width="60px" height="60px" alt="">
@@ -254,11 +255,17 @@
 
         <!-- ANGULAR  poglavlje-->
         <div class="container angulardark">
-          <h1 class="text-center "><img class="img-thumbnail logonaslov" src="img/angularjs.png" width="80px"
-              alt="Angular"> </h1>
 
+          
+          
+          
+          <h1 class="text-center"><img class="img-thumbnail logonaslov" src="img/angular.png" width="80px"
+            alt="Angular"> </h1>
+            
+            <canvas class="canvaspomak" id="canvasAngular"></canvas>
+            
           <div class="row mb-4">
-            <div class="col-md-4 py-2 text-center item shadow-lg p-2 rounded">
+            <div class="col-md-4 text-center item shadow-lg p-2 rounded" id="lijevo">
               <img class="logo mb-1" src="img/multiple-images.png">
               <h2><a target="_blank" href="https://www.ucim.eu/angularAll/index.html">Nekoliko aplikacija</a></h2>
               <p>Angular 10. NodeJS. MEAN.</p>
@@ -268,7 +275,7 @@
               </div>
               <div class="item-text">
                 <div class="item-text-wrap">
-                  <img src="img/angularjs.png" alt="Angular">
+                  <img src="img/angular.png" alt="Angular" class="logo">
                   <h1>
                     <a target="_blank" href="https://www.ucim.eu/angularAll/index.html">Nekoliko aplikacija</a>
                   </h1>
@@ -278,8 +285,8 @@
               </div>
             </div>
 
-            <div class="col-md-4 py-2 text-center item shadow-lg p-2 rounded">
-              <img class="logo mb-1" src="img/notepad.png">
+            <div class="col-md-4 text-center item shadow-lg p-2 rounded" id="sredina">
+              <img class="logo mb-1" src="img/notepad.png" >
               <h2><a target="_blank" href="https://www.ucim.eu/Angular/receptMax/index.html">Knjiga recepta</a></h2>
               <p>Angular 8. Firebase.</p>
               <p>Git:/receptMax</p>
@@ -289,7 +296,7 @@
               </div>
               <div class="item-text">
                 <div class="item-text-wrap">
-                  <img src="img/angularjs.png" alt="Angular">
+                  <img src="img/angular.png" alt="Angular" class="logo">
                   <h1>
                     <a target="_blank" href="https://www.ucim.eu/Angular/receptMax/index.html">Knjiga recepta</a>
                   </h1>
@@ -299,7 +306,7 @@
               </div>
             </div>
 
-            <div class="col-md-4 py-2 text-center item shadow-lg p-2 rounded">
+            <div class="col-md-4 text-center item shadow-lg p-2 rounded" id="desno">
               <img class="logo mb-1" src="img/send-mail.png">
               <h2><a target="_blank" href="https://www.ucim.eu/postanodeangular/index.html">Pošta</a></h2>
               <p>Angular 8. CRUD aplikacija. NodeJS. MongoDB.</p>
@@ -309,7 +316,7 @@
               </div>
               <div class="item-text">
                 <div class="item-text-wrap">
-                  <img src="img/angularjs.png" alt="Angular">
+                  <img src="img/angular.png" alt="Angular" class="logo">
                   <h1>
                     <a target="_blank" href="https://www.ucim.eu/postanodeangular/index.html">Pošta</a>
                   </h1>
@@ -318,13 +325,10 @@
                 </div>
               </div>
             </div>
-
-
-
           </div>
           <!-- drugi red ANGULAR -->
-          <div class="row mb-4">
-            <div class="col-md-4 py-2 text-center item shadow-lg p-2 rounded">
+          <div class="row mb-4" >
+            <div class="col-md-4 py-2 text-center item shadow-lg rounded">
               <img class="logo mb-1" src="img/clients.png">
               <h2><a target="_blank" class="resource__link"
                   href="https://www.ucim.eu/angular8ClientCloudFire/index.html">Client Panel</a>
@@ -337,7 +341,7 @@
               </div>
               <div class="item-text">
                 <div class="item-text-wrap">
-                  <img src="img/angularjs.png" alt="Angular">
+                  <img src="img/angular.png" alt="Angular" class="logo">
                   <h1>
                     <a target="_blank" href="https://www.ucim.eu/angular8ClientCloudFire/index.html">Client Panel</a>
                   </h1>
@@ -360,7 +364,7 @@
               </div>
               <div class="item-text">
                 <div class="item-text-wrap">
-                  <img src="img/angularjs.png" alt="Angular">
+                  <img src="img/angular.png" alt="Angular" class="logo">
                   <h1>
                     <a target="_blank" href="https://www.ucim.eu/angular10trening/index.html">Evidencija treninga</a>
                   </h1>
@@ -371,11 +375,7 @@
             </div>
 
             <!--   ZAPOSLENICI  -->
-            <div class="col-md-4 py-2 text-center item shadow-lg p-2 rounded">
-
-
-
-
+            <div class="col-md-4 py-2 text-center item shadow-lg p-2 rounded ">
               <img class="logo mb-1" src="img\zaposlenici.png">
               <h2> <a target="_blank" href="https://www.ucim.eu/angular10CRUDtablica/index.html">Djelatnici</a></h2>
               <p>Angular 10. Firebase.</p>
@@ -385,7 +385,7 @@
               </div>
               <div class="item-text">
                 <div class="item-text-wrap">
-                  <img src="img/angularjs.png" alt="Angular">
+                  <img src="img/angular.png" alt="Angular" class="logo">
                   <h1>
                     <a target="_blank" href="https://www.ucim.eu/angular10CRUDtablica/index.html">Djelatnici</a>
                   </h1>
@@ -393,11 +393,12 @@
                   <p class="item-text-category">Molim pričekajte par sekundi za učitavanje programa.</p>
                 </div>
               </div>
-
             </div>
+          </div>
 
             
             <!--   RAZNI PRIMJERI  -->
+          <div class="row mb-4" id="angularOkidac">
             <div class="col-md-4 py-2 text-center item shadow-lg p-2 rounded">
               <img class="logo mb-1" src="img\completed-task.png">
               <h2><a target="_blank" href="https://www.ucim.eu/Angular/crudFK/index.html">Tablica</a></h2>
@@ -409,7 +410,7 @@
               </div>
               <div class="item-text">
                 <div class="item-text-wrap">
-                  <img src="img/angularjs.png" alt="Angular">
+                  <img src="img/angular.png" alt="Angular" class="logo">
                   <h1>
                     <h2><a target="_blank" href="https://www.ucim.eu/Angular/crudFK/index.html">Tablica</a></h2>
                   </h1>
@@ -418,8 +419,6 @@
                 </div>
               </div>
             </div>
-
-
 
 
             <div class="col-md-4 py-2 text-center item shadow-lg p-2 rounded">
@@ -433,15 +432,15 @@
               </div>
               <div class="item-text">
                 <div class="item-text-wrap">
-                  <img src="img/angularjs.png" alt="Angular">
+                  <img src="img/angular.png" alt="Angular" class="logo">
                   <h1>
                     <a target="_blank" href="https://www.ucim.eu/Angular/Index.html">Razni primjeri</a>
                   </h1>
                   <h3 class="item-text-title">Desetak manjih vježbi...</h3>
-                  <!-- <p class="item-text-category">Molim pričekajte sekundi za učitavanje programa.</p> -->
                 </div>
               </div>
             </div>
+          </div>
 
           </div>
         </div>
@@ -453,6 +452,10 @@
             <h1 class="text-center"><img class="img-fluid img-thumbnail" width="80px" src="img/javascript.png"
                 alt="Javascript"> </h1>
           </div>
+
+          <!-- <canvas class="canvaspomak" id="canvasjs" width="800" height="1200"></canvas> -->
+          <canvas class="canvaspomak" id="canvasjs" ></canvas>
+          
           <div class="container py-2">
             <div class="row text-center">
               <!--  Prvi red javascript -->
@@ -848,6 +851,7 @@
 <script src="js/spinner.js"></script>
 <script src="js/lepeza.js"></script>
 <script src="js/typewriter.js"></script>
+<script src="js/leteceIkone.js"></script>
 <!-- <script src="js/hidemenu.js"></script> -->
 <script src="js/app.js"></script>
 

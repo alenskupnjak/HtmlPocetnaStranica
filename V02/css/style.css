@@ -3,18 +3,43 @@
 body {
   /* background-color: #f9fafa; */
   background: #ddd url(../img/pozadina.jpg) repeat top left;
-  font-family: 'Open Sans Condensed','Arial Narrow', serif;
+  font-family: 'Open Sans Condensed', 'Arial Narrow', serif;
   font-weight: 400;
   font-family: 'Roboto', 'Arial';
   min-height: 1200px;
   overflow: scroll;
-	overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 #navbarsakrij {
   position: fixed;
   width: 100%;
   top: 0;
+}
+
+.container {
+  position: relative;
+}
+
+.angulardark {
+  position: relative;
+}
+
+#js {
+  position: relative;
+}
+
+#canvasjs {
+ z-index: -5;
+}
+
+.canvaspomak {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  /* z-index: 10; */
 }
 
 .navbar-toggler {
@@ -51,8 +76,6 @@ body {
 .navbar .nav-item .nav-link:hover .sakrij-git {
   opacity: 1;
 }
-
-
 
 .navbar a {
   border-left: solid 2px #343a40;
@@ -103,6 +126,25 @@ body {
   margin-bottom: 50px;
 }
 
+/* #lijevo {
+  background-color:orange;
+  border-radius: 5px;
+  margin: 2.5% 2% 0 2%;
+  width:25% !important;
+}
+
+#sredina {
+  background-color:green;
+  border-radius: 5px;
+  margin: 2.5% 0 0 0;
+  width:25% !important;
+}
+#desno {
+  background-color:#39F;
+  border-radius: 5px;
+  margin: 2.5% 2.5% 0 2.5%;
+  width:25% !important;
+} */
 
 /* spinerr circle */
 .loader {
@@ -145,7 +187,6 @@ body {
   }
 }
 
-
 /* GITHUB */
 .git {
   opacity: 0;
@@ -156,12 +197,10 @@ body {
 }
 /* END GITHUB */
 
-
-.druga-icona{
+.druga-icona {
   height: 30px;
   display: none;
- }
-
+}
 
 .osobno {
   /* margin-top: 40px; */
@@ -170,17 +209,14 @@ body {
   justify-content: center;
 }
 
-
-logonaslov{
+logonaslov {
   opacity: 0.5 !important;
 }
 
 .img-thumbnail {
- border: none;
- background-color: transparent;
+  border: none;
+  background-color: transparent;
 }
-
-
 
 @media only screen and (max-width: 576px) {
   .navbar .nav-item .nav-link:hover {
@@ -191,11 +227,14 @@ logonaslov{
   }
 
   .git {
-   display: none;
+    display: none;
   }
 
-  .druga-icona{
-   display: inline-block;
+  .druga-icona {
+    display: inline-block;
+  }
+
+  canvas {
+    display: none;
   }
 }
-
