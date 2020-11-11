@@ -1,6 +1,6 @@
 // const canvas = document.querySelector('canvas');
-const canvas = document.getElementById('canvasAngular');
-const c = canvas.getContext('2d');
+const canvasAngular = document.getElementById('canvasAngular');
+const cAngular = canvasAngular.getContext('2d');
 
 const canvasJS = document.getElementById('canvasjs');
 const cJS = canvasJS.getContext('2d');
@@ -14,30 +14,28 @@ const nodeDOM = document.getElementById('node');
 
 canvasJS.width = window.innerWidth;
 canvasJS.height = window.innerHeight;
+canvasAngular.width = window.innerWidth;
+canvasAngular.height = window.innerHeight;
 
 let poljeAngular = [];
 let poljeJS = [];
 let poljeNodeJS = [];
 
 // Definiranje img
-const angular = new Image();
-angular.src = '../img/angular.png';
+const angularImg = new Image();
+angularImg.src = './img/angular.png';
 const javascript = new Image();
-javascript.src = '../img/javascript.png';
+javascript.src = './img/javascript.png';
 const nodejs = new Image();
-nodejs.src = '../img/nodejs.png';
+nodejs.src = './img/nodejs.png';
 
 // ANGULAR
 angularDOM.addEventListener('mouseenter', (e) => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  console.log('angular');
-  popuniPoljaAngular(0, 400, 500, 30, poljeAngular);
+  popuniPoljaAngular(0, 400, 500, 15, poljeAngular);
 });
 
 // JAVASCRIPT
 jsDOM.addEventListener('mouseenter', (e) => {
-  console.log('jsavascript');
   popuniPoljaJS(0, 400, 400, 15, poljeJS);
 });
 
@@ -45,8 +43,7 @@ jsDOM.addEventListener('mouseenter', (e) => {
 jsDOM.addEventListener('mouseenter', (e) => {
   canvasNode.width = window.innerWidth;
   canvasNode.height = window.innerHeight;
-  console.log('Nodejs');
-  popuniPoljaNode(0, 450, 300, 15, poljeNodeJS );
+  popuniPoljaNode(0, 450, 300, 15, poljeNodeJS);
 });
 
 // Crtanje ikone Angulara
@@ -58,7 +55,7 @@ function IkonaAngular(x, y, dx, dy, poljeX, poljeY, range) {
 
   // DRAW
   this.draw = function () {
-    c.drawImage(angular, this.x, this.y, 50, 20);
+    cAngular.drawImage(angularImg, this.x, this.y, 30, 20);
     this.x = this.x + 3;
   };
 
@@ -163,7 +160,7 @@ function popuniPoljaNode(poljeX, poljeY, range, brojIkona, program) {
 // Animacija angulara
 function animateAngular() {
   requestAnimationFrame(animateAngular);
-  c.clearRect(0, 0, canvas.width, canvas.height);
+  cAngular.clearRect(0, 0, canvasAngular.width, canvasAngular.height);
   for (let index = 0; index < poljeAngular.length; index++) {
     poljeAngular[index].draw();
     poljeAngular[index].update();
@@ -184,12 +181,15 @@ function animateJS() {
 function animateNode() {
   requestAnimationFrame(animateNode);
   cNode.clearRect(0, 0, canvasNode.width, canvasNode.height);
-  for (let index = 0; index <  poljeNodeJS.length; index++) {
+  for (let index = 0; index < poljeNodeJS.length; index++) {
     poljeNodeJS[index].draw();
     poljeNodeJS[index].update();
   }
 }
 
-animateAngular();
-animateJS();
-animateNode();
+window.onload = function () {
+  // crtanje..
+  animateAngular();
+  animateJS();
+  animateNode();
+};
