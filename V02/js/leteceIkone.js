@@ -16,6 +16,8 @@ canvasJS.width = window.innerWidth;
 canvasJS.height = window.innerHeight;
 canvasAngular.width = window.innerWidth;
 canvasAngular.height = window.innerHeight;
+canvasNode.width = window.innerWidth;
+canvasNode.height = window.innerHeight;
 
 let poljeAngular = [];
 let poljeJS = [];
@@ -41,9 +43,7 @@ jsDOM.addEventListener('mouseenter', (e) => {
 
 // NODEJS
 jsDOM.addEventListener('mouseenter', (e) => {
-  canvasNode.width = window.innerWidth;
-  canvasNode.height = window.innerHeight;
-  popuniPoljaNode(0, 450, 300, 15, poljeNodeJS);
+  popuniPoljaNode(0, 450, 300, 10, poljeNodeJS);
 });
 
 // Crtanje ikone Angulara
@@ -55,7 +55,7 @@ function IkonaAngular(x, y, dx, dy, poljeX, poljeY, range) {
 
   // DRAW
   this.draw = function () {
-    cAngular.drawImage(angularImg, this.x, this.y, 30, 20);
+    cAngular.drawImage(angularImg, this.x, this.y, 40, 15);
     this.x = this.x + 3;
   };
 
@@ -109,7 +109,7 @@ function IkonaNode(x, y, dx, dy, poljeX, poljeY, range) {
 
   // crtane NODE js
   this.draw = function () {
-    cNode.drawImage(nodejs, this.x, this.y, 40, 80);
+    cNode.drawImage(nodejs, this.x, this.y, 40, 90);
     this.x = this.x + 3;
   };
 
@@ -187,9 +187,8 @@ function animateNode() {
   }
 }
 
-window.onload = function () {
-  // crtanje..
+
   animateAngular();
   animateJS();
   animateNode();
-};
+
