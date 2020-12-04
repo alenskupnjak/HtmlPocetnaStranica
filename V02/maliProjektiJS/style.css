@@ -95,6 +95,7 @@ header {
 }
 
 .resource {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 15%;
@@ -135,6 +136,7 @@ header {
 .resource__text {
   font-size: 1.6rem;
   line-height: 1.8;
+  z-index: 1;
 }
 
 .social-plugins {
@@ -208,4 +210,17 @@ header {
 .logo {
   width: 25px;
   height: 25px;
+}
+
+
+.slika-sucelja {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  width: 140px;
+  height: 70px;
+  /* opacity: 0.; */
+  transform: translateX(-50%);
+  /* z-index: -1; */
+
 }

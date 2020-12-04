@@ -1,4 +1,3 @@
-// const canvas = document.querySelector('canvas');
 const canvasAngular = document.getElementById('canvasAngular');
 const cAngular = canvasAngular.getContext('2d');
 
@@ -100,7 +99,7 @@ function IkonaJS(x, y, dx, dy, poljeX, poljeY, range) {
   };
 }
 
-// Crtanje ikone javascript
+// Crtanje ikone NodeJS
 function IkonaNode(x, y, dx, dy, poljeX, poljeY, range) {
   this.x = x;
   this.y = y;
