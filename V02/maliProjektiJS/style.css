@@ -118,11 +118,14 @@ header {
 .resource__heading {
   font-size: 1.8rem;
   margin-bottom: 1rem;
+  z-index: 2;
 }
 
 .resource__link:link,
 .resource__link:visited {
-  color: #26afeb;
+  /* color: #26afeb; */
+  color: #FF951F;
+  /* color: #242333; */
   text-decoration: none;
   -webkit-transition: color 0.2s;
   transition: color 0.2s;
@@ -215,12 +218,18 @@ header {
 
 .slika-sucelja {
   position: absolute;
-  top: 60%;
+  top: 50px;
   left: 50%;
   width: 140px;
   height: 70px;
-  /* opacity: 0.; */
+  opacity: 0.5;
   transform: translateX(-50%);
   /* z-index: -1; */
+}
 
+
+.slika-sucelja:hover {
+  transform: scale(4) translateY(50%);
+  opacity: 1;
+  z-index: 10;
 }

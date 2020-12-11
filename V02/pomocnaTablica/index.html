@@ -29,10 +29,10 @@
           <th class="row">x</th>
           <td>Podešavanje Eslint-a i Prettier-a. Radi lokalno pa se za svaki projekt mora instalirati zasebno</td>
           <td>npm i eslint prettier eslint-config-prettier eslint-plugin-prettier eslint-config-airbnb
-            eslint-plugin-node
+            eslint-plugin-NodeJS
             eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react --save-dev
           </td>
-          <td>NODE</td>
+          <td>NodeJS</td>
         </tr>
 
 
@@ -43,6 +43,171 @@
           <td>Opis</td>
           <td>A</td>
         </tr>
+
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>Pronalazi sve zapise u kolekciji</td>
+          <td>db.collections.find().pretty() ili db.collections.find({}).pretty()</td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>FIND prema fiteru</td>
+          <td>db.collections.find({intercontinental: true})</td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>EMBEDED documents</td>
+          <td>db.collections.find({"rating.average": {$gt: 7}})</td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>ARRAY documents</td>
+          <td>db.collections.find({genres: 'Drama'})</td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>FIND Projections  (name=1) zapise u kolekciji</td>
+          <td>db.collections.find({},{name:1}).pretty()</td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>FIND projection; 1: true - prikaži , 0: false ne prikaži</td>
+          <td>db.collections.find({},{name:1, _id:0}).pretty()</td>
+          <td>MongoDB</td>
+        </tr>
+        <tr class="redak">
+          <th class="row"></th>
+          <td>FIND prema filteru (veći od 10000)</td>
+          <td>db.collections.find({distance: {$gt: 10000}}).pretty()</td>
+          <td>MongoDB</td>
+        </tr>
+        
+        <tr class="redak">
+          <th class="row"></th>
+          <td>FIND 1 (prvi) zapis u kolekciji</td>
+          <td>db.collections.findOne().pretty()</td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>FIND u rasponu manji od 5 i veći od 9</td>
+          <td>db.collections.find({$or:[{"rating.average": {$lt:5}}, {"rating.average": {$gt:9}}]}).count()</td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>INSERT 1 zapis u kolekciju</td>
+          <td>db.collections.insertOne({})</td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>INSERT više zapisa u kolekciju (zagrada [] je bitna)</td>
+          <td>db.collections.insertMany([{zapis JSON...}])</td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>Prikaži sve baze</td>
+          <td>show dbs</td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>Spoji se diretno na navedenu <strong style="color: blue;"> databaseName </strong></td>
+          <td>use <strong style="color: blue;"> databaseName </strong></td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>Obriši databazu, moraš se spojiti na nju (use)</td>
+          <td>db.dropDatabase()</td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>Brisanje collection</td>
+          <td>db.myCollection.drop()</td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>Prikaži collection u jednoj bazi baze</td>
+          <td>show collections</td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>Prikaži status databaze</td>
+          <td>db.stats()</td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>UPDATE ( prvi zapis distance=950, zamjeni ili dodaj ako nema marker='delete')</td>
+          <td>db.collections.updateOne({distance: 950}, {$set: {marker:'delete'}})</td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>UPDATE ( ObjectId Obavezno navesti!,)</td>
+          <td>db.collections.updateOne({_id: ObjectId("5fd07f0cd02161005cf3f1bf")}, {$set:{delayed:true}})</td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>UPDATE (selektira sve dokumente)</td>
+          <td>db.collections.updateMany({}, {$set: {marker:'delete'}})</td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>DELETE sve zapise u bazi</td>
+          <td>db.collections.deleteMany({})</td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>DELETE zapise u bazi gdje je (departureAirport="MUC") </td>
+          <td>db.collections.deleteOne({departureAirport: "MUC"})</td>
+          <td>MongoDB</td>
+        </tr>
+
+        <tr class="redak">
+          <th class="row"></th>
+          <td>Importiranje JSON datoteke (vidi dokumentaciju.....) </td>
+          <td>mongoimport tv-shows.json --db movieData -c movies --jsonArray --drop</td>
+          <td>MongoDB</td>
+        </tr>
+
+
+
+
         <tr class="redak">
           <th class="row"></th>
           <td>Predznak texta:<strong style="color: blue;"> square </strong> prikazuje</td>
@@ -140,7 +305,7 @@
           <th class="row"></th>
           <td>Upitnik predstavlja opciju, može i ne mora biti</td>
           <td>npr... street?: string</td>
-          <td>ANGULAR INTERFACE</td>
+          <td>Angular INTERFACE</td>
         </tr>
 
         <tr class="redak">
@@ -156,7 +321,7 @@
           <th class="row">x</th>
           <td>Inicijalizacija package.json</td>
           <td>npm init</td>
-          <td>NODE</td>
+          <td>NodeJS</td>
         </tr>
         <tr class="redak">
           <th class="row">x</th>
@@ -169,110 +334,110 @@
           <th class="row">2</th>
           <td>Verzija npm</td>
           <td>npm -v</td>
-          <td>NODE</td>
+          <td>NodeJS</td>
         </tr>
         <tr class="redak">
           <th class="row">2</th>
           <td>Prikazuje usporednu tablicu instaliranih verzija paketa iz package.json</td>
           <td>npm outdated</td>
-          <td>NODE</td>
+          <td>NodeJS</td>
         </tr>
         <tr class="redak">
           <th class="row">3</th>
-          <td>Verzija NODE</td>
-          <td>node -v</td>
-          <td>NODE</td>
+          <td>Verzija NodeJS</td>
+          <td>NodeJS -v</td>
+          <td>NodeJS</td>
         </tr>
         <tr class="redak">
           <th class="row">3</th>
           <td>Instalacija za EVIROMENT varijable</td>
           <td>npm i dotenv</td>
-          <td>NODE</td>
+          <td>NodeJS</td>
         </tr>
         <tr class="redak">
           <th class="row">4</th>
           <td>Kreiranje novog projekta</td>
           <td>ng new <strong style="color: green;">MojNoviProjekt</strong></td>
-          <td>ANGULAR</td>
+          <td>Angular</td>
         </tr>
         <tr class="redak">
           <th class="row">5</th>
           <td>Verzija Angular-CLI-a</td>
           <td>ng version</td>
-          <td>ANGULAR</td>
+          <td>Angular</td>
         </tr>
         <tr class="redak">
           <th class="row">6</th>
           <td>Prikazuje tabelu mogućih update verzija</td>
           <td>ng update</td>
-          <td>ANGULAR</td>
+          <td>Angular</td>
         </tr>
         <tr class="redak">
           <th class="row">7</th>
           <td>Instaliranje potrebnih modula LOKALNO (Imepaketa)</td>
           <td>npm install --save-dev <strong style="color: blue;">Imepaketa</strong> </td>
           </td>
-          <td>NODE</td>
+          <td>NodeJS</td>
         </tr>
         <tr class="redak">
           <th class="row">8</th>
           <td>Instaliranje potrebnih modula</td>
           <td>npm install</td>
-          <td>NODE</td>
+          <td>NodeJS</td>
         </tr>
         <tr class="redak">
           <th class="row">9</th>
           <td>Za instalirenje Jquery</td>
           <td>npm install jquery --save</td>
-          <td>NODE</td>
+          <td>NodeJS</td>
         </tr>
         <tr class="redak">
           <th class="row">10</th>
           <td>Za pokretanje skripte</td>
           <td>npm run NazivSkripte</td>
-          <td>NODE</td>
+          <td>NodeJS</td>
         </tr>
         <tr class="redak">
           <th class="row">11</th>
           <td>1) korak - Instaliranje (ne globalno! -g)</td>
-          <td>npm install babel-cli</td>
-          <td>BABEL</td>
+          <td>npm install Babel-cli</td>
+          <td>Babel</td>
         </tr>
         <tr class="redak">
           <th class="row">11</th>
           <td>Ispis verzije Babela</td>
-          <td>babel --version</td>
-          <td>BABEL</td>
+          <td>Babel --version</td>
+          <td>Babel</td>
         </tr>
         <tr class="redak">
           <th class="row">11</th>
           <td> 2) korak - Instaliranje</td>
-          <td>npm install babel-preset-env</td>
-          <td>BABEL</td>
+          <td>npm install Babel-preset-env</td>
+          <td>Babel</td>
         </tr>
         <tr class="redak">
           <th class="row">11</th>
           <td>Instaliranje</td>
-          <td>npm install --save-dev @babel/core @babel/preset-env babel-loader</td>
-          <td>BABEL</td>
+          <td>npm install --save-dev @Babel/core @Babel/preset-env Babel-loader</td>
+          <td>Babel</td>
         </tr>
         <tr class="redak">
           <th class="row">11</th>
           <td>3) korak Instaliranje (potpora za webpack)</td>
-          <td>npm install babel-loader</td>
-          <td>BABEL</td>
+          <td>npm install Babel-loader</td>
+          <td>Babel</td>
         </tr>
         <tr class="redak">
           <th class="row">12</th>
           <td>4) korak Install (sluzi za npr. konverziju async/await function, includes...)</td>
-          <td>npm install babel-polyfill</td>
-          <td>BABEL</td>
+          <td>npm install Babel-polyfill</td>
+          <td>Babel</td>
         </tr>
         <tr class="redak">
           <th class="row">12</th>
           <td>5) korak Install</td>
-          <td>npm install babel-plugin-transform-object-rest-spread</td>
-          <td>BABEL</td>
+          <td>npm install Babel-plugin-transform-object-rest-spread</td>
+          <td>Babel</td>
         </tr>
         <tr class="redak">
           <th class="row">12</th>
@@ -290,19 +455,19 @@
           <th class="row">13</th>
           <td>Za automatsko pokretanje stranice</td>
           <td>npm install live-server --global</td>
-          <td>NODE</td>
+          <td>NodeJS</td>
         </tr>
         <tr class="redak">
           <th class="row">14</th>
           <td>Za automatsko pokretanje stranice</td>
           <td>live-server</td>
-          <td>NODE</td>
+          <td>NodeJS</td>
         </tr>
         <tr class="redak">
           <th class="row">15</th>
           <td>Za stavljanje aplikacije na server</td>
           <td>ng build --prod --aot</td>
-          <td>ANGULAR</td>
+          <td>Angular</td>
         </tr>
         <tr class="redak">
           <th class="row">16</th>
@@ -315,48 +480,48 @@
           <th class="row">17</th>
           <td>Automatsko generiranje komponenti</td>
           <td>ng g c naziv-foldera</td>
-          <td>ANGULAR</td>
+          <td>Angular</td>
         </tr>
         <tr class="redak">
           <th class="row">18</th>
           <td>Automatsko generiranje directives</td>
           <td>ng g d naziv-directive</td>
-          <td>ANGULAR</td>
+          <td>Angular</td>
         </tr>
         <tr class="redak">
           <th class="row">19</th>
           <td>Automatsko generiranje potrebnih komponenti ako imamo vise modula u root-u. (--flat) znaci bez direktorija!</td>
           <td>ng g c naziv --module app.module --flat </td>
-          <td>ANGULAR</td>
+          <td>Angular</td>
         </tr>
         <tr class="redak">
           <th class="row">19</th>
           <td>Automatsko generiranje potrebnih komponenti (modul) ako imamo vise modula u root-u</td>
           <td>$ ng g m universitycourse/universitycourse --routing --flat --dry-run</td>
-          <td>ANGULAR</td>
+          <td>Angular</td>
         </tr>
         <tr class="redak">
           <th class="row">20</th>
           <td>Automatsko pokretanje programa u pregledniku</td>
           <td>ng serve</td>
-          <td>ANGULAR</td>
+          <td>Angular</td>
         </tr>
         <tr class="redak">
           <th class="row">21</th>
           <td>Automatsko generiranja novog projekta (Novaaplikacija) u postojećem folderu</td>
           <td>ng generate application Novaaplikacija</td>
-          <td>ANGULAR</td>
+          <td>Angular</td>
         </tr>
         <tr class="redak">
           <th class="row">22</th>
           <td>Automatsko pokretanje (Novaaplikacija) u pregledniku</td>
           <td>ng serve --project=Novaaplikacija</td>
-          <td>ANGULAR</td>
+          <td>Angular</td>
         </tr>
         <tr class="redak">
           <th class="row">23</th>
           <td>Instaliranje SASS-a</td>
-          <td>npm install node-sass --save-dev</td>
+          <td>npm install NodeJS-sass --save-dev</td>
           <td>SASS</td>
         </tr>
         <tr class="redak">
@@ -374,18 +539,18 @@
         <tr class="redak">
           <th class="row">26</th>
           <td>Instaliranje Angular material na postojeci projekt</td>
-          <td>ng add @angular/material@x.y.z</td>
+          <td>ng add @Angular/material@x.y.z</td>
           <td>MATERIAL</td>
         </tr>
         <tr class="redak">
           <th class="row">27</th>
-          <td>CDK za Angular material, obavezno ide uz instalaciju (ng add @angular/material)</td>
-          <td>ng add @angular/cdk@x.y.z</td>
+          <td>CDK za Angular material, obavezno ide uz instalaciju (ng add @Angular/material)</td>
+          <td>ng add @Angular/cdk@x.y.z</td>
           <td>MATERIAL</td>
         </tr>
         <tr class="redak">
           <th class="row">28</th>
-          <td>Instaliranje NODE Express-a</td>
+          <td>Instaliranje NodeJS Express-a</td>
           <td>npm install --save express</td>
           <td>EXPRESS</td>
         </tr>
@@ -403,15 +568,15 @@
         </tr>
         <tr class="redak">
           <th class="row">31</th>
-          <td>Instalacija modula koja automatski restarta NODE ili JS datoteke</td>
-          <td>npm install -g nodemon</td>
-          <td>NODE</td>
+          <td>Instalacija modula koja automatski restarta NodeJS ili JS datoteke</td>
+          <td>npm install -g NodeJSmon</td>
+          <td>NodeJS</td>
         </tr>
         <tr class="redak">
           <th class="row">31</th>
           <td>Prikazuje tablicu razlika instalacija iz package.json</td>
           <td>npm outdated</td>
-          <td>NODE</td>
+          <td>NodeJS</td>
         </tr>
         <tr class="redak">
           <th class="row">32</th>
@@ -423,37 +588,37 @@
           <th class="row">33</th>
           <td>Enkripcija za passworde</td>
           <td>npm install --save bcrypt</td>
-          <td>NODE</td>
+          <td>NodeJS</td>
         </tr>
         <tr class="redak">
           <th class="row">34</th>
           <td>Enkripcija za passworde za postavljanje na server</td>
           <td>npm install --save bcryptjs</td>
-          <td>NODE</td>
+          <td>NodeJS</td>
         </tr>
         <tr class="redak">
           <th class="row">35</th>
           <td>Usporeduje password u bazi sa paswordom iz logina</td>
           <td>npm install -save jsonwebtoken</td>
-          <td>NODE</td>
+          <td>NodeJS</td>
         </tr>
         <tr class="redak">
           <th class="row">36</th>
-          <td>Pokretanje angulara na portu npr.4141</td>
+          <td>Pokretanje Angulara na portu npr.4141</td>
           <td>ng serve --port 4141</td>
-          <td>ANGULAR</td>
+          <td>Angular</td>
         </tr>
         <tr class="redak">
           <th class="row">37</th>
           <td>Omogučuje rad sa tokenom</td>
-          <td>npm install angular2-jwt --save</td>
-          <td>ANGULAR</td>
+          <td>npm install Angular2-jwt --save</td>
+          <td>Angular</td>
         </tr>
         <tr class="redak">
           <th class="row">38</th>
           <td>Omogučuje rad sa tokenom</td>
-          <td>npm install angular2-jwt --save</td>
-          <td>ANGULAR</td>
+          <td>npm install Angular2-jwt --save</td>
+          <td>Angular</td>
         </tr>
         <tr class="redak">
           <th class="row">39</th>
@@ -469,8 +634,8 @@
         </tr>
         <tr class="redak">
           <th class="row">41</th>
-          <td>Deinstalacija angularfire2</td>
-          <td>npm uninstall angularfire2 --save</td>
+          <td>Deinstalacija Angularfire2</td>
+          <td>npm uninstall Angularfire2 --save</td>
           <td>FIREBASE</td>
         </tr>
       </tbody>
