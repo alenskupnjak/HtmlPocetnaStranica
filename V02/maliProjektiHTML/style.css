@@ -54,8 +54,8 @@ header {
   text-align: center;
   width: 100%;
   height: 10vh;
-  background-image: -webkit-linear-gradient(left, #4ed8f7, #26afeb 70%);
-  background-image: linear-gradient(to right, #4ed8f7, #26afeb 70%);
+  /* background-image: -webkit-linear-gradient(left, #4ed8f7, green 70%); */
+  background-image: linear-gradient(to right, #4ed8f7, green 70%);
   color: #f9fafa;
   /* padding-bottom: 60px; */
 }
@@ -100,7 +100,7 @@ header {
   flex-direction: column;
   width: 15%;
   float: left;
-  margin: 0 0.5%;
+  margin: 0 0.5% 3rem 0.5% ;
   justify-items: center;
   text-align: center;
 }
@@ -123,8 +123,8 @@ header {
 
 .resource__link:link,
 .resource__link:visited {
-  /* color: #26afeb; */
-  color: #FF951F;
+  color: #26afeb;  
+  /* color: #FF951F; */
   /* color: #242333; */
   text-decoration: none;
   -webkit-transition: color 0.2s;

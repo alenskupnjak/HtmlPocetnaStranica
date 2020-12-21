@@ -1,0 +1,65 @@
+/* https://www.youtube.com/watch?v=qYFkQa0Bbq0 */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+
+/* lagana podloga neprimjetna boja */
+#scrollPath {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 15px;
+  height: 100%;
+  background: rgba(25, 255, 255, 0.15);
+}
+
+#progressbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 15px;
+  height: 100%;
+  background: linear-gradient(to top, #008aff, #00ffe7);
+  animation: animate 5s linear infinite;
+}
+
+
+#progressbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: linear-gradient(to top, #008aff, red);
+  filter: blur(20px);
+} 
+
+#progressbar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: linear-gradient(to top, #008aff, #00ffe7);
+  filter: blur(30px);
+}
+
+
+@keyframes animate {
+  0%,
+  100% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+
