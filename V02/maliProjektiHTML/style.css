@@ -229,7 +229,7 @@ header {
 
 
  .resource:hover .slika-sucelja {
-  transform: scale(4) translateY(50%);
+  transform: scale(3) translateY(50%);
   opacity: 1;
   z-index: 10;
 }
