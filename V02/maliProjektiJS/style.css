@@ -53,7 +53,7 @@ header {
   justify-content: center;
   text-align: center;
   width: 100%;
-  height: 10vh;
+  height: 8vh;
   background-image: -webkit-linear-gradient(left, #4ed8f7, #26afeb 70%);
   background-image: linear-gradient(to right, #4ed8f7, #26afeb 70%);
   color: #f9fafa;
@@ -78,10 +78,11 @@ header {
 .group {
   margin: 5px !important;
   padding: 1rem 0;
+  height: 18vh;
 }
 
 .prvi {
-  padding-top: 100px;
+  padding-top: 70px;
 }
 
 .group:nth-child(odd) {
@@ -147,11 +148,6 @@ header {
   text-align: center;
 }
 
-#___plusone_0 {
-  margin-top: 3px !important;
-  margin-right: 30px !important;
-  width: 65px !important;
-}
 
 /**************************************************************************************************
 * MEDIA QUERIES
@@ -229,7 +225,9 @@ header {
 
 
  .resource:hover .slika-sucelja {
-  transform: scale(4) translateY(50%);
+  transform: scale(3) translateY(50%);
   opacity: 1;
   z-index: 10;
 }
+
+
