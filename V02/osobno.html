@@ -156,35 +156,9 @@
 </body>
 
 <script src="js/spinner.js"></script>
-<script src="js/typewriter.js"></script>
 <script src="js/odbrojavanje.js"></script>
+<script src="js/smooth-scroll.js"></script>
 <script src="js/app.js"></script>
 
-
-<script>
-
-  // Init Scrollspy
-  $('body').scrollspy({ target: '#main-nav' });
-
-  // Add smooth scrolling
-  $('#main-nav a').on('click', function (e) {
-    // Check for a hash value
-    if (this.hash !== '') {
-      // Prevent default behavior
-      e.preventDefault();
-
-      // Store hash
-      const hash = this.hash;
-
-      // Animate smooth scroll
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 800, function () {
-        // Add hash to URL after scroll
-        window.location.hash = hash;
-      });
-    }
-  });
-</script>
 
 </html>
