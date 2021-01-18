@@ -30,21 +30,6 @@ javascript.src = './img/javascript.png';
 const nodejs = new Image();
 nodejs.src = './img/nodejs.png';
 
-// ANGULAR
-angularDOM.addEventListener('mouseenter', (e) => {
-  popuniPoljaAngular(0, 400, 500, 15, poljeAngular);
-});
-
-// JAVASCRIPT
-jsDOM.addEventListener('mouseenter', (e) => {
-  popuniPoljaJS(0, 400, 400, 15, poljeJS);
-});
-
-// NODEJS
-jsDOM.addEventListener('mouseenter', (e) => {
-  popuniPoljaNode(0, 450, 300, 10, poljeNodeJS);
-});
-
 // Crtanje ikone Angulara
 function IkonaAngular(x, y, dx, dy, poljeX, poljeY, range) {
   this.x = x;
@@ -54,7 +39,7 @@ function IkonaAngular(x, y, dx, dy, poljeX, poljeY, range) {
 
   // DRAW
   this.draw = function () {
-    cAngular.drawImage(angularImg, this.x, this.y, 40, 15);
+    cAngular.drawImage(angularImg, this.x, this.y, 30, 15);
     this.x = this.x + 3;
   };
 
@@ -106,9 +91,9 @@ function IkonaNode(x, y, dx, dy, poljeX, poljeY, range) {
   this.dx = dx;
   this.dy = dy;
 
-  // crtane NODE js
+  // crtanje NODE js
   this.draw = function () {
-    cNode.drawImage(nodejs, this.x, this.y, 40, 90);
+    cNode.drawImage(nodejs, this.x, this.y, 30, 90);
     this.x = this.x + 3;
   };
 
@@ -156,7 +141,7 @@ function popuniPoljaNode(poljeX, poljeY, range, brojIkona, program) {
   }
 }
 
-// Animacija angulara
+// Animacija Angulara
 function animateAngular() {
   requestAnimationFrame(animateAngular);
   cAngular.clearRect(0, 0, canvasAngular.width, canvasAngular.height);
@@ -176,7 +161,7 @@ function animateJS() {
   }
 }
 
-// Animacija Javascripta
+// Animacija Node
 function animateNode() {
   requestAnimationFrame(animateNode);
   cNode.clearRect(0, 0, canvasNode.width, canvasNode.height);
@@ -186,8 +171,21 @@ function animateNode() {
   }
 }
 
+animateAngular();
+animateJS();
+animateNode();
 
-  animateAngular();
-  animateJS();
-  animateNode();
+// ANGULAR
+angularDOM.addEventListener('mouseenter', (e) => {
+  popuniPoljaAngular(0, 400, 500, 15, poljeAngular);
+});
 
+// JAVASCRIPT
+jsDOM.addEventListener('mouseenter', (e) => {
+  popuniPoljaJS(0, 400, 400, 15, poljeJS);
+});
+
+// NODEJS
+jsDOM.addEventListener('mouseenter', (e) => {
+  popuniPoljaNode(0, 450, 300, 10, poljeNodeJS);
+});
