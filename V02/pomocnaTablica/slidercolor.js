@@ -4,7 +4,7 @@ let totalHeight = document.body.scrollHeight - window.innerHeight;
 console.log('document.body.scrollHeight', document.body.scrollHeight);
 console.log(' window.innerHeight', window.innerHeight);
 
-window.addEventListener('scroll', filterEvent(pokazi, 1000));
+window.addEventListener('scroll', filterEvent(pokazi, 200));
 
 window.onscroll = function () {
   // pokazi();
