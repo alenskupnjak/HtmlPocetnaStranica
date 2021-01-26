@@ -38,7 +38,6 @@
   <nav id="main-nav" class="navbar navbar-expand-sm navbar-light bg-dark mb-3 bgcolor fixed-top">
     <div class="container ">
 
-
       <button class="navbar-toggler custom-toggler" data-toggle="collapse" data-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -96,7 +95,7 @@
             <div class="kartica ic-cog" data-id="10">
               <img src="img/html5.png" alt="">
               <!-- <h4><a href="#HTML">HTML</a></h4> -->
-              <h5><a href="#restoranHTML">Restoran</a></h5>
+              <h5><a href="#restoranHTML" prvi>Restoran</a></h5>
             </div>
             <div class="kartica" data-id="15">
               <img src="img/html5.png" alt="">
@@ -204,7 +203,8 @@
 
             <div class="kartica" data-id="140">
               <img src="img/javascript.png" alt="">
-              <h5><a href="#bacanjekocke">Bacanje kocke</a></h5>
+              <h3 class="front animated-bg">Klik!</h3>
+              <h5><a href="#bacanjekocke" zadnji>Bacanje kocke</a></h5>
             </div>
 
             <div class="kartica" data-id="145">
@@ -213,6 +213,8 @@
               <hr>
               <!-- <h4><span>Angular</span></h4> -->
               <img class="front" src="img/angular.png" alt="">
+              <hr>
+              <h3 class="front animated-bg">Klik!</h3>
               <hr>
               <!-- <h4><span>NodeJS</span></h4> -->
               <img class="front" src="img/node-js.svg" width="60px" height="60px" alt="">
@@ -231,7 +233,7 @@
           <canvas class="canvaspomak" id="canvasAngular"></canvas>
 
           <div class="row mb-4">
-            <div class="col-md-4 text-center item shadow-lg p-2 rounded" id="nekolikoaplikacija">
+            <div class="col-md-4 text-center item shadow-lg p-2 rounded" id="nekolikoaplikacija" >
               <img class="logo mb-1" src="img/multiple-images.png">
               <h2><a target="_blank" href="https://www.ucim.eu/angularAll/index.html">Nekoliko aplikacija</a></h2>
               <p>Angular 10. NodeJS. MEAN.</p>
@@ -251,7 +253,7 @@
               </div>
             </div>
 
-            <div class="col-md-4 text-center item shadow-lg p-2 rounded" id="knjigarecepata">
+            <div class="col-md-4 text-center item shadow-lg p-2 rounded" id="knjigarecepata" >
               <img class="logo mb-1" src="img/notepad.png">
               <h2><a target="_blank" href="https://www.ucim.eu/Angular/receptMax/index.html">Knjiga recepta</a></h2>
               <p>Angular 8. Firebase.</p>
@@ -537,7 +539,7 @@
             <span></span>
             <span></span>
             <img class="logo mb-1" src="img/js-format.png"><img src="img/javascript.png" class="logo druga-icona"
-            alt="Javascript">
+              alt="Javascript">
             <p class="lead">
               <a target="_blank" href="https://www.ucim.eu/V02/maliProjektiJS/index.html">Arhiva primjera</a>
             </p>
@@ -838,31 +840,29 @@
 
 
 <script>
-
-
-
   // ***************************
   // Flash efekat
   (function ($) {
+    const duljinatrajanja = 1000;
     const target1 = $("#flash1");
     const target2 = $("#flash2");
     const target3 = $("#flash3");
     const target4 = $(".flash-efekat");
     const target5 = $(".lepeza");
-    target1.animate({ opacity: 0 }, 1000,
+    target1.animate({ opacity: 0 }, duljinatrajanja,
       function () {
         target2.css("visibility", "visible")
         target2.animate({
           opacity: 0
-        }, 1500,
+        }, duljinatrajanja,
           function () {
             target3.css("visibility", "visible")
-            target3.animate({ opacity: 0 }, 1000,
+            target3.animate({ opacity: 0 }, duljinatrajanja,
               function () {
-                target4.animate({ opacity: 0 }, 1500,
+                target4.animate({ opacity: 0 }, duljinatrajanja + 200,
                   function () {
                     target4.remove();
-                    target5.animate({ opacity: 1 }, 1500)
+                    target5.animate({ opacity: 1 }, duljinatrajanja + 200)
                   })
                 target3.remove();
               });

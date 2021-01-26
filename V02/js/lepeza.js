@@ -6,7 +6,7 @@ let polozajKartica;
 function start() {
   setTimeout(() => {
     postaviLisenere(-190);
-  }, 5500);
+  }, 4000);
 }
 
 function postaviLisenere(kut) {
@@ -14,7 +14,6 @@ function postaviLisenere(kut) {
     e.addEventListener('click', (data) => {
       console.log('Kartica u položaju unutar', polozajKartica);
       if (polozajKartica) {
-        console.log('U liseneru sam', polozajKartica);
         vratiKarticuNaPocetniPolozaj(e, polozajKartica);
       }
       let id;
@@ -34,12 +33,35 @@ function postaviLisenere(kut) {
 
 function zarotiraj(e, kut) {
   polozajKartica = e.dataset.id;
+  // console.log(e.childNodes);
+  // console.log(e.previousSibling);
+  // console.log(e.previousElementSibling);
+  // console.log('Children= ', e.children);
+  // console.log(e.children[0]);
+  // console.log(e.children[1]);
+  // console.log('e.nextSibling', e.nextSibling);
+  // console.log(e.nextElementSibling);
+  // console.log(e.nextElementSibling.nextElementSibling);
+  // e.children[1].classList.add('animated-bg');
+
+  Array.from(e.children).forEach((data) => {
+    if (data.tagName === 'H5') {
+      data.classList.add('animated-bg');
+    }
+    if (data.tagName === 'H3') {
+      data.remove();
+    }
+  });
+
   console.log('kartica koja je u polozaju za prikaz=', polozajKartica);
   e.setAttribute('style', `transform:rotate(0deg); transition: transform 1s;`);
 }
 
 function zarotirajKodUcitavanja(e, kut) {
-  e.setAttribute( 'style',`transform:rotate(${kut}); transition: transform 5s;`);
+  e.setAttribute(
+    'style',
+    `transform:rotate(${kut}); transition: transform 5s;`
+  );
 }
 
 function vratiKarticuNaPocetniPolozaj(e, polozajKartica) {

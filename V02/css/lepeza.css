@@ -225,11 +225,19 @@
   height: 30px;
 }
 
+.front h3 {
+  color: #fff;
+}
+
 .x-container div img.front {
-  margin-top: 10px;
+  margin-top: 0;
   margin-left: 0px;
   width: 30px;
   height: 30px;
+}
+
+.front {
+  color: #fff;
 }
 
 .x-container div:last-child h4 {
@@ -288,7 +296,6 @@ span.x-icon:before {
   /* color: #dee2e6; */
 }
 
-
 /* $gray-100: #f8f9fa !default;
 $gray-200: #e9ecef !default;
 $gray-300: #dee2e6 !default;
@@ -298,4 +305,3 @@ $gray-600: #6c757d !default;
 $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default; */
-
