@@ -1,8 +1,7 @@
 /*  Loader Border Button zuto *********************** */
 .loaderBorderButton {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 100%;
   height: 200px;
   overflow: hidden;
     /*  poseban mirror efaket */
@@ -101,11 +100,10 @@
 
 /* HTML5  */
 
-/*  Loader Border Button zuto *********************** */
+/*  Loader Border Button smede *********************** */
 .loaderBorderButtonHTML {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 100%;
   height: 200px;
   overflow: hidden;
     /*  poseban mirror efaket */

@@ -29,12 +29,12 @@ body {
   position: relative;
 }
 
-#node{
+#node {
   position: relative;
 }
 
 #canvasjs {
- z-index: -5;
+  z-index: -5;
 }
 
 .canvaspomak {
@@ -69,6 +69,13 @@ body {
   transition: 1s ease-in-out;
 }
 
+
+
+.navbar {
+  padding: 10px;
+  transition: 1500ms ease-in-out;
+}
+
 .navbar .nav-item .nav-link:hover {
   color: #ffc107 !important;
   /* border-left: solid 2px #ffc107 !important; */
@@ -80,6 +87,14 @@ body {
 .navbar .nav-item .nav-link:hover .sakrij-git {
   opacity: 1;
 }
+
+.navbar.active {
+  padding: 2px;
+  box-shadow: 0 2px 5px #ffc107;
+  opacity: 0.8;
+}
+
+
 
 .navbar a {
   border-left: solid 2px #343a40;
@@ -149,8 +164,6 @@ body {
   margin: 2.5% 2.5% 0 2.5%;
   width:25% !important;
 } */
-
-
 
 /* spinerr circle */
 .loader {
