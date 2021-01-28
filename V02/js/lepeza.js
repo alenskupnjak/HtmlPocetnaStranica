@@ -6,7 +6,7 @@ let polozajKartica;
 function start() {
   setTimeout(() => {
     postaviLisenere(-190);
-  }, 40);
+  }, 4000);
 }
 
 function postaviLisenere(kut) {
