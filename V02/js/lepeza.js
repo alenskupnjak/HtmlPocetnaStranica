@@ -6,7 +6,7 @@ let polozajKartica;
 function start() {
   setTimeout(() => {
     postaviLisenere(-190);
-  }, 4000);
+  }, 40);
 }
 
 function postaviLisenere(kut) {
@@ -47,6 +47,7 @@ function zarotiraj(e, kut) {
   Array.from(e.children).forEach((data) => {
     if (data.tagName === 'H5') {
       data.classList.add('animated-bg');
+      
     }
     if (data.tagName === 'H3') {
       data.remove();

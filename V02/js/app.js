@@ -37,28 +37,71 @@ linkoviLepeza.forEach((e) => {
     dataHash = dataHash.replace(re, '');
 
     linkoviDOM.forEach((dataDOM) => {
-      
       // dataDOM.classList.remove('oznaci-program');
       if (dataDOM.getAttribute('id') === dataHash) {
-        console.log(dataDOM.innerHeight);
-        console.log(dataDOM.parentElement);
-        console.log(
-          dataDOM.screenY,
-          dataDOM.scrollTop,
-          dataDOM.offsetTop,
-          dataDOM.offsetLeft,
-          dataDOM.clientY,
-          dataDOM.clientX
-        );
+        // console.log(dataDOM.innerHeight);
+        // console.log(dataDOM.parentElement);
+        // console.log(
+        //   dataDOM.screenY,
+        //   dataDOM.scrollTop,
+        //   dataDOM.offsetTop,
+        //   dataDOM.offsetLeft,
+        //   dataDOM.clientY,
+        //   dataDOM.clientX
+        // );
         // dataDOM.scrollTop = '100px'
         dataDOM.classList.add('oznaci-program');
+
+        // Kreiram element
+        const div = document.createElement('div');
+        // Definiram klasu
+        div.classList.add('povratak');
+        // Create text node and append to li
+        // div.appendChild(document.createTextNode('Povratak'));
+
+        div.innerHTML = '<a href="#lepeza">Povratak na lepezu</a>';
+        div.addEventListener('click', povratakLepezi);
+
+        if (dataDOM.classList.contains('item')) {
+          console.log(dataDOM.children[5]);
+          dataDOM.children[5].appendChild(div);
+        } else {
+          dataDOM.appendChild(div);
+        }
         // dataDOM.style.setProperty('background', 'rgba(0,0,0,0.3)');
         // dataDOM.style.setProperty('top', '200px')
         // dataDOM.classList.add('mt-5');
         // window.pageYOffset = 2222
       } else {
         dataDOM.classList.remove('oznaci-program');
+        dataDOM.classList.remove('povratak');
       }
     });
   });
 });
+
+function povratakLepezi(e) {
+  if (e.target.classList.contains('povratak')) {
+    console.log(e.target);
+    console.log('kliknuo parent');
+  } else {
+    console.log(e.target.parentElement);
+    console.log('kliknuo link');
+    linkoviDOM.forEach((dataDOM) => {
+      // console.log(dataDOM);
+      dataDOM.classList.remove('oznaci-program');
+      dataDOM.classList.remove('povratak');
+    });
+    e.target.remove();
+  }
+}
+
+function pocistiklase() {
+  document.querySelectorAll('.povratak').forEach((data) => {
+    data.remove();
+  });
+  linkoviDOM.forEach((dataDOM) => {
+    dataDOM.classList.remove('oznaci-program');
+    dataDOM.classList.remove('povratak');
+  });
+}
