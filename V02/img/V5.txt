@@ -1,0 +1,1638 @@
+ 
+DECLARE SUB SOKKIA ()
+DECLARE SUB KOSADUZ ()
+
+ DEFDBL A-Z
+ COMMON SHARED BR AS INTEGER, IMEDAT AS STRING
+DECLARE SUB NAPRAVIDAT ()
+DECLARE SUB NIVELMAN ()
+DECLARE SUB TAHPOVVISRED ()
+DECLARE SUB ORTOGONALISKOL ()
+DECLARE SUB SINUSDALTA ()
+DECLARE SUB VLAK ()
+DECLARE SUB LUCNI ()
+DECLARE SUB ORTOGONAL ()
+DECLARE SUB SINUSNI ()
+DECLARE SUB DATOTEKE ()
+DECLARE SUB TAHIMETRIJA ()
+DECLARE SUB TRANSFORMACIJE ()
+DECLARE SUB PRAVCI ()
+DECLARE SUB TAHPOVIS ()
+DECLARE SUB CENTEXT (FIL#, SRED#, TEXT$)
+DECLARE SUB POVRSINE ()
+DECLARE SUB PREGLEDIREKT ()
+DECLARE SUB SMJERNIKUTEVI ()
+DECLARE SUB ISPRAVAK ()
+DECLARE SUB UPISPODATAKA ()
+DECLARE SUB Tahpov ()
+DECLARE SUB UPIS ()
+DECLARE SUB SMJERKUT (T1#, T2#, KUT#, D#)
+DECLARE SUB TOCKA (C#)
+DECLARE SUB PROMJENI (KT, X, Y, Z)
+REDIM SHARED Y(1 TO 2500) AS DOUBLE, X(1 TO 2500) AS DOUBLE
+ DIM SHARED I$(2500)
+ REDIM Duz(0 TO 60) AS DOUBLE, KUT(1 TO 60) AS DOUBLE
+ REDIM SHARED Z(1 TO 2500) AS DOUBLE
+ CONST PI = 3.14159265358979#
+
+DO  ' Pocetak programa
+ CLS : PRINT
+ COLOR 21: PRINT "    Izlaz iz programa - V5 ------------------ [111]"
+ COLOR 15: PRINT "    Tahpov  ---------------------------------  [1]"
+           PRINT "    Pravci i ostalo... ----------------------  [2]"
+           PRINT "    SOKKIA  ---------------------------------  [3]"
+           PRINT "    Transformacije --------------------------  [4]"
+           PRINT "    Sinus-DALTA i Wild instrum. -------------  [5]"
+           PRINT "    Nivelman --------------------------------  [6]"
+           PRINT "    Racunanje kose duzine -------------------  [7]"
+           PRINT "    Povrsine --------------------------------  [8]"
+           PRINT "    Ortogonal -------------------------------  [9]"
+           PRINT "    Visine Wild i Dalta --------------------- [10]"
+           PRINT "    Tahpov-visine --------------------------- [11]"
+           PRINT "    Smjerni kutevi -------------------------- [12]"
+           PRINT "    Direktan upis podataka ------------------ [13]"
+           PRINT "    Lucni presjek --------------------------- [14]"
+           PRINT "    Ispravak krivo upisanih podataka -------- [15]"
+           PRINT "    Vlak ------------------------------------ [16]"
+           PRINT "    Tah-pov-visine-reducirano --------------- [17]"
+           PRINT "    Ortogonal iskolcenje -------------------- [18]"
+           PRINT "    Sinus ----------------------------------- [19]"
+           PRINT ""
+ COLOR 11: PRINT "    Predmet: "; IMEDAT$;
+ COLOR 15: PRINT "       *** Broj UPISANIH tocaka : "; BR
+           PRINT "    Rad sa datotekama ----------------------- [20]"
+           INPUT "  Vas izbor ? "; X
+ IF X = 1 THEN CLS : Tahpov
+ IF X = 2 THEN CLS : PRAVCI
+ IF X = 3 THEN CLS : SOKKIA
+ IF X = 4 THEN CLS : TRANSFORMACIJE
+ IF X = 5 THEN CLS : SINUSDALTA
+ IF X = 6 THEN CLS : NIVELMAN
+ IF X = 7 THEN CLS : KOSADUZ
+ IF X = 8 THEN CLS : POVRSINE
+ IF X = 9 THEN CLS : ORTOGONAL
+ IF X = 10 THEN CLS : TAHIMETRIJA
+ IF X = 11 THEN CLS : TAHPOVIS
+ IF X = 12 THEN CLS : SMJERNIKUTEVI
+ IF X = 13 THEN CLS : UPISPODATAKA
+ IF X = 14 THEN CLS : LUCNI
+ IF X = 15 THEN CLS : ISPRAVAK
+ IF X = 16 THEN CLS : VLAK
+ IF X = 17 THEN CLS : TAHPOVVISRED
+ IF X = 18 THEN CLS : ORTOGONALISKOL
+ IF X = 19 THEN CLS : SINUSNI
+ IF X = 20 THEN CLS : DATOTEKE
+LOOP UNTIL (X = 111)
+  END     'Kraj programa
+
+SUB CENTEXT (FIL, SRED, TEXT$)
+ DO UNTIL (FIX(LEN(TEXT$) / 2) * 2 = LEN(TEXT$))
+      PRINT #FIL, SPC(SRED - FIX(LEN(TEXT$) / 2) - 1);
+      EXIT SUB
+ LOOP
+     PRINT #FIL, SPC(SRED - INT(LEN(TEXT$) / 2));
+END SUB
+
+SUB DATOTEKE
+   FIL = 4: FKT = 1
+     DO
+       PRINT "  Upis podataka u program ------------------------ [1]"
+       PRINT "  Ispis u datoteku ------------------------------- [9]"
+        INPUT "  Izlaz ------------------------------------------ [ENTER]"; X
+       IF X = 1 THEN GOSUB UPIS
+       IF X = 9 THEN GOSUB ISPIS
+     LOOP UNTIL (X = 0)
+    EXIT SUB
+ISPIS:
+  INPUT " Upisi ime datoteke za ispis podataka na disk "; DIME$
+    OPEN DIME$ + ".DAT" FOR OUTPUT AS #1
+       PRINT #1, BR
+         FOR X = 1 TO BR
+           PRINT #1, I$(X)
+           PRINT #1, USING "########.###  "; X(X); Y(X); Z(X)
+         NEXT X
+    CLOSE #1
+    OPEN "SKICA.DAT" FOR OUTPUT AS #1
+       PRINT #1, BR: BRO = 1
+         FOR X = 1 TO BR
+          IF MID$(I$(X), 1, 1) = "P" OR MID$(I$(X), 1, 2) = "MT" THEN
+                              PRINT #1, I$(X)
+                         ELSE PRINT #1, BRO: BRO = BRO + 1
+                         END IF
+                PRINT #1, USING "########.###  "; X(X); Y(X); Z(X)
+         NEXT X
+    CLOSE #1
+ OPEN "MJERILA" FOR OUTPUT AS #2
+  DO
+  CLS : PRINT "Upisi mjerila koja ces koristiti"
+    PRINT " 1 : 200  ------------------------- [1] "; D1$
+    PRINT " 1 : 250  ------------------------- [2] "; D2$
+    PRINT " 1 : 500  ------------------------- [3] "; D3$
+    PRINT " 1 : 1000  ------------------------ [4] "; D4$
+    PRINT " 1 : 2000  ------------------------ [5] "; D5$
+    PRINT " 1 : 2880  ------------------------ [6] "; D6$
+    PRINT " 1 : Upisi sam -------------------- [7]"
+      DO
+       INPUT " Upisi opciju"; X
+        IF X = 1 THEN D$ = "200": D1$ = "Upisano":  UDL = .2
+        IF X = 2 THEN D$ = "250": D2$ = "Upisano":  UDL = .25
+        IF X = 3 THEN D$ = "500": D3$ = "Upisano": UDL = .5
+        IF X = 4 THEN D$ = "1000": D4$ = "Upisano": UDL = 1
+        IF X = 5 THEN D$ = "2000": D5$ = "Upisano": UDL = 2
+        IF X = 6 THEN D$ = "2880": D6$ = "Upisano": UDL = 2.88
+        IF X = 7 THEN INPUT " Koliko "; D: UDL = D / 1000
+        IF X = 7 THEN D$ = MID$(STR$(D), 2, LEN(STR$(D)) - 1): FKT = 1
+      LOOP UNTIL (X > 0 AND X < 8)
+    PRINT #2, D$
+   INPUT " Daljni odabir (D)"; D$
+  LOOP UNTIL (D$ <> "D")
+ CLOSE #2
+ OPEN DIME$ + ".PRT" FOR OUTPUT AS #1
+   DO
+      DO UNTIL (BR2 <> 0)
+       PRINT #1,
+       PRINT #1, SPC(15); "Datoteka : "; DIME$; "   datum:"; DATE$
+       PRINT #1,
+       PRINT #1, SPC(12); "Ime tocke        Y              X              Z"
+        BR2 = 4
+      LOOP
+     BR1 = BR1 + 1: BR2 = BR2 + 1
+     PRINT #1, SPC(13); I$(BR1); SPC(11 - LEN(I$(BR1)));
+     PRINT #1, USING "########.###  "; X(BR1); Y(BR1); Z(BR1)
+         IF BR2 = 64 THEN BR2 = 0
+   LOOP UNTIL (BR1 = BR)
+ CLOSE #1
+ OPEN DIME$ + ".SCR" FOR OUTPUT AS #1
+        FOR X = 1 TO BR
+          PRINT #1, "POINT" + STR$(CDBL(X(X))) + ",";
+          PRINT #1, RIGHT$(STR$(CDBL(Y(X))), LEN(STR$(CDBL(Y(X)))) - 1)
+        NEXT X
+  OPEN "MJERILA" FOR INPUT AS #2
+    DO
+         INPUT #2, FA
+          D$ = "TOCKE-" + MID$(STR$(FA), 2, 10)
+          FA = FA * 1.3 / 1000 * FKT
+         PRINT #1, "LAYER MAKE "; D$
+         PRINT #1,
+      FOR X = 1 TO BR
+         X1 = X(X) + UDL: Y1 = Y(X) + UDL
+        PRINT #1, "TEXT" + STR$(CDBL(X1)) + ",";
+        PRINT #1, RIGHT$(STR$(CDBL(Y1)), LEN(STR$(CDBL(Y1))) - 1);
+        PRINT #1, STR$(CDBL(FA)) + " 0 " + I$(X)
+      NEXT X
+    LOOP UNTIL (EOF(2))
+  CLOSE #2
+  OPEN "MJERILA" FOR INPUT AS #2
+   DO
+         INPUT #2, FA
+           D$ = "VISINE-" + MID$(STR$(FA), 2, 10)
+           FA = FA * 1.3 / 1000 * FKT
+         PRINT #1, "LAYER MAKE "; D$
+         PRINT #1,
+     FOR X = 1 TO BR
+        X1 = X(X) + UDL: Y1 = Y(X) + UDL
+        PRINT #1, "TEXT" + STR$(CDBL(X1)) + ",";
+        PRINT #1, RIGHT$(STR$(CDBL(Y1)), LEN(STR$(CDBL(Y1))) - 1);
+        PRINT #1, STR$(CDBL(FA)) + " 0 ";
+        IF Z(X) >= 1000 THEN PRINT #1, USING "####.##"; Z(X)
+        IF Z(X) < 1000 AND Z(X) >= 100 THEN PRINT #1, USING "###.##"; Z(X)
+        IF Z(X) < 100 AND Z(X) >= 10 THEN PRINT #1, USING "##.##"; Z(X)
+        IF Z(X) < 10 THEN PRINT #1, USING "#.##"; Z(X)
+     NEXT X
+    LOOP UNTIL (EOF(2))
+  CLOSE #2
+ REM NOVI LAYER *****************************************
+ OPEN "LAYERI" FOR OUTPUT AS #3
+ INPUT " Formiranje novog layera ? (D) "; A$
+DO UNTIL (A$ <> "D")
+   DO
+    INPUT " Ime novog layera ? "; LAIME$
+     FIL = FIL + 1
+      OPEN LAIME$ FOR OUTPUT AS #FIL
+       INPUT "Upisi kljuc za selektiranje u layer "; KLJU$
+        FOR C = 1 TO BR
+          IF (MID$(I$(C), 1, LEN(KLJU$)) = KLJU$) THEN
+            PRINT #FIL, I$(C)
+            PRINT #FIL, USING "########.###  "; X(C); Y(C); Z(C)
+          END IF
+        NEXT C
+       CLOSE #FIL
+      PRINT #3, LAIME$
+      PRINT #3, FIL
+    INPUT "Daljni rad u formiranj novih layera, molim (N)"; A$
+   LOOP UNTIL (A$ = "N")
+  CLOSE #3
+ REM FORMIRANJE LAYERA**************************************
+        OPEN "LAYERI" FOR INPUT AS #3
+   DO
+        INPUT #3, LAIME$
+        INPUT #3, FIL
+     OPEN LAIME$ FOR INPUT AS #FIL
+     PRINT #1, "LAYER MAKE "; LAIME$
+     PRINT #1,
+     DO
+       INPUT #FIL, IME$
+      INPUT #FIL, X, Y, Z
+         PRINT #1, "POINT" + STR$(CDBL(X)) + ",";
+         PRINT #1, RIGHT$(STR$(CDBL(Y)), LEN(STR$(CDBL(Y))) - 1)
+     LOOP UNTIL (EOF(FIL))
+       CLOSE #FIL
+      LOOP UNTIL (EOF(3))
+     CLOSE #3
+  REM odvojeno ************************************
+      OPEN "LAYERI" FOR INPUT AS #3
+   DO
+        INPUT #3, LAIME$
+        INPUT #3, FIL
+     OPEN "MJERILA" FOR INPUT AS #2
+        DO
+          OPEN LAIME$ FOR INPUT AS #FIL
+           INPUT #2, FA
+             IME$ = LAIME$ + "-TXT-" + MID$(STR$(FA), 2, 5)
+             FA = FA * 1.3 / 1000 * FKT
+           PRINT #1, "LAYER MAKE "; IME$
+           PRINT #1,
+            DO
+              INPUT #FIL, IME$
+              INPUT #FIL, X, Y, Z
+                 X = X + UDL: Y = Y + UDL
+         PRINT #1, "TEXT" + STR$(CDBL(X)) + ",";
+         PRINT #1, RIGHT$(STR$(CDBL(Y)), LEN(STR$(CDBL(Y))) - 1);
+         PRINT #1, STR$(CDBL(FA)) + " 0 " + IME$
+            LOOP UNTIL (EOF(FIL))
+           CLOSE #FIL
+        LOOP UNTIL (EOF(2))
+       CLOSE #2
+    LOOP UNTIL (EOF(3))
+   CLOSE #3
+   REM DIO ZA VISINE **********************************
+   OPEN "LAYERI" FOR INPUT AS #3
+    DO
+        INPUT #3, LAIME$
+        INPUT #3, FIL
+      OPEN "MJERILA" FOR INPUT AS #2
+       DO
+         OPEN LAIME$ FOR INPUT AS #FIL
+          INPUT #2, FA
+          IME$ = LAIME$ + "-VIS-" + MID$(STR$(FA), 2, 5)
+          FA = FA * 1.3 / 1000 * FKT
+          PRINT #1, "LAYER MAKE "; IME$
+          PRINT #1,
+           DO
+             INPUT #FIL, IME$
+             INPUT #FIL, X, Y, Z
+               X = X + UDL: Y = Y + UDL
+        PRINT #1, "TEXT" + STR$(CDBL(X)) + ",";
+        PRINT #1, RIGHT$(STR$(CDBL(Y)), LEN(STR$(CDBL(Y))) - 1);
+        PRINT #1, STR$(CDBL(FA)) + " 0 ";
+        IF Z >= 1000 THEN PRINT #1, USING "####.##"; Z
+        IF Z < 1000 AND Z >= 100 THEN PRINT #1, USING "###.##"; Z
+        IF Z < 100 AND Z >= 10 THEN PRINT #1, USING "##.##"; Z
+        IF Z < 10 THEN PRINT #1, USING "#.##"; Z
+           LOOP UNTIL (EOF(FIL))
+         CLOSE #FIL
+       LOOP UNTIL (EOF(2))
+     CLOSE #2
+   LOOP UNTIL (EOF(3))
+  CLOSE #3
+            OPEN "LAYERI" FOR INPUT AS #3
+               DO
+                  INPUT #3, LAIME$
+                  INPUT #3, FIL
+                  KILL LAIME$
+               LOOP UNTIL (EOF(3))
+LOOP
+    CLOSE #3
+        PRINT #1, "LAYER SET 0 "
+        PRINT #1,
+        PRINT #1,
+        PRINT #1, "zoom e"
+ CLOSE #1
+ OPEN "SLOZ.DAT" FOR OUTPUT AS #1
+   PRINT #1, BR
+     FOR C = 65 TO 90
+       FOR X = 1 TO BR
+         DO UNTIL (MID$(I$(X), 1, 1) <> CHR$(C))
+           PRINT #1, I$(X)
+           PRINT #1, USING "########.###  "; X(X); Y(X); Z(X)
+           I$(X) = ""
+         LOOP
+       NEXT X
+     NEXT C
+       FOR X = 1 TO BR
+         DO UNTIL (I$(X) = "")
+           PRINT #1, I$(X)
+           PRINT #1, USING "########.###  "; X(X); Y(X); Z(X)
+           I$(X) = ""
+         LOOP
+       NEXT X
+   CLOSE #1
+  KILL "MJERILA"
+  KILL "LAYERI"
+ EXIT SUB
+UPIS:
+  COLOR 12: INPUT " TOCNO!!! IME DATOTEKE"; IMEDAT$
+   OPEN IMEDAT$ + ".DAT" FOR INPUT AS #1
+    INPUT #1, BR
+      FOR X = 1 TO BR
+        INPUT #1, I$(X)
+         DO UNTIL (I$(X) <> "")
+          CLS : PRINT " Ta datoteka ima gresku u "; 2 * X; " redu ":
+                PRINT " IZVRSI PROVJERU !!! ": BEEP: BEEP: END
+         LOOP
+       INPUT #1, X(X), Y(X), Z(X)
+      NEXT X
+    CLOSE #1
+END SUB
+
+SUB ISPRAVAK
+  DO
+       TOCKA U
+          INPUT " Koor. tocke Y "; X
+          INPUT " Koor. tocke X "; Y
+          INPUT " Koor. tocke Z "; Z
+            X(U) = X: Y(U) = Y: Z(U) = Z
+          INPUT " Dalje, molim (N)"; A$
+  LOOP UNTIL (A$ = "N")
+END SUB
+
+SUB KOSADUZ
+DO
+INPUT "Horizontalna duzina "; D
+   INPUT "Stupnjevi           "; Q1
+   INPUT "Minute              "; Q2
+   INPUT "Sekunde             "; Q3
+PRINT CDBL(D / COS((90 - Q1 - Q2 / 60 - Q3 / 3600) * PI / 180))
+  INPUT "Daljni rad (N)"; A$
+LOOP UNTIL (UCASE$(A$) = "N")
+END SUB
+
+SUB LUCNI
+ DO
+  CLS : PRINT " Ime tocke prve kruznice  ": TOCKA T1
+        INPUT " Radijus prve kruznice  "; R1
+      DO
+        PRINT " Ime tocke druge kruznice ": TOCKA T2
+      LOOP UNTIL (T1 <> T2)
+        INPUT " Radijus druge kruznice "; R2
+               D = SQR((X(T2) - X(T1)) ^ 2 + (Y(T2) - Y(T1)) ^ 2)
+  PRINT "Udaljenost kruznica D="; CDBL(D); "   Zbroj radijusa= "; R1 + R2
+    IF D > R1 + R2 THEN BEEP: INPUT "Nema presjeka!!! [ENTER]"; A$: LUCNI
+         B = 4 * (Y(T1) - Y(T2)) ^ 2
+         C = X(T2) ^ 2 - X(T1) ^ 2 + (Y(T1) - Y(T2)) ^ 2 + R1 ^ 2 - R2 ^ 2
+         D = X(T1) - X(T2)
+         AJ = 4 * D ^ 2 + B
+         BJ = 4 * D * C - 2 * B * X(T1)
+         CJ = C ^ 2 + X(T1) ^ 2 * B - B * R1 ^ 2
+         XR1 = (-BJ + (BJ ^ 2 - 4 * CJ * AJ) ^ .5) / (2 * AJ)
+         XR2 = (-BJ - (BJ ^ 2 - 4 * CJ * AJ) ^ .5) / (2 * AJ)
+      YR1 = Y(T1) - (R1 ^ 2 - (XR1 - X(T1)) ^ 2) ^ .5
+      YR2 = Y(T1) + (R1 ^ 2 - (XR1 - X(T1)) ^ 2) ^ .5
+      YR3 = Y(T1) - (R1 ^ 2 - (XR2 - X(T1)) ^ 2) ^ .5
+      YR4 = Y(T1) + (R1 ^ 2 - (XR2 - X(T1)) ^ 2) ^ .5
+   A = -1 / ((Y(T2) - Y(T1)) / (X(T2) - X(T1)))
+   A1 = (YR3 - YR1) / (XR2 - XR1): A2 = (YR4 - YR1) / (XR2 - XR1)
+   A3 = (YR3 - YR2) / (XR2 - XR1): A4 = (YR4 - YR2) / (XR2 - XR1)
+   XP = XR1: XD = XR2: D = R1 + R2 + 1
+     IF ABS((A1 - A)) < .1 THEN YP = YR1: YD = YR3
+     IF ABS((A2 - A)) < .1 THEN YP = YR1: YD = YR4
+     IF ABS((A3 - A)) < .1 THEN YP = YR2: YD = YR3
+     IF ABS((A4 - A)) < .1 THEN YP = YR2: YD = YR4
+   PRINT USING "Prvo  rjesenje  Y=########.### X=########.###"; XP; YP
+   PRINT USING "Drugo rjesenje  Y=########.### X=########.###"; XD; YD
+                 INPUT " Upis tocke u program (D) ??"; A$
+                   DO UNTIL (A$ <> "D" OR A$ = "DD" OR A$ = "PP")
+                           DO
+                            INPUT "  (PP)rvo - (DD)rugo  (PP/DD)"; A$
+                           LOOP UNTIL (A$ = "PP" OR A$ = "DD")
+                              UPIS
+         IF A$ = "PP" THEN X(BR) = XP: Y(BR) = YP ELSE X(BR) = XD: Y(BR) = YD
+                   LOOP
+   INPUT " Daljnji rad (N) ??"; A$
+ LOOP UNTIL (A$ = "N")
+END SUB
+
+SUB NIVELMAN
+DIM H(0 TO 50), DH(0 TO 50), D(0 TO 50), ZD(0 TO 50), P(0 TO 50) AS DOUBLE
+  INPUT "Ime datoteke za zapis na disk"; DAT$
+     OPEN DAT$ + ".NIV" FOR OUTPUT AS #1
+  INPUT "Ime pocetne tocke"; PO$
+  INPUT "Ime zavrsne tocke"; ZA$
+  INPUT "Broj stajalista"; N
+  INPUT "Pocetna visina="; H(0)
+  INPUT "Zavrsna visina="; H(N)
+  FOR X = 1 TO N
+    INPUT "Lzadnje "; Z(X)
+    INPUT "Lprednje"; P(X)
+    INPUT "D="; D(X)
+   DH(X) = Z(X) - P(X): SH = SH + DH(X): SD = SD + D(X)
+  NEXT X
+   TR = H(N) - H(0): FH = TR - SH
+   PRINT "Treba:"; CDBL(TR)
+   PRINT "Ima:"; CDBL(SH)
+   PRINT "Pogreska:"; CDBL(FH)
+   PRINT #1, PO$; SPC(6 - LEN(PO$));
+   FOR X = 1 TO N
+     IF X <> 1 THEN INPUT "Ime tocke"; A$: PRINT #1, A$; SPC(6 - LEN(A$));
+ PRINT #1, USING " ####.###  ####.### ####.### ####.###"; Z(X); P(X); D(X); H(X - 1)
+     H(X) = H(X - 1) + (FH / SD) * D(X) + DH(X)
+     PRINT USING "H=####.###"; H(X)
+ NEXT X
+ PRINT #1, ZA$; SPC(35 - LEN(PO$)); H(N)
+   PRINT #1, "Treba="; CDBL(TR)
+   PRINT #1, "Ima="; CDBL(SH)
+   PRINT #1, "Pogreska="; CDBL(FH); "  Max. pogreska="; 36 * SQR(SD / 1000)
+ CLOSE #1
+END SUB
+
+SUB ORTOGONAL
+DO
+      PRINT " Upisi stajaliste": TOCKA T1
+      LPRINT I$(T1); " NA ";
+    DO
+      PRINT " Upisi vizuru": TOCKA T2:
+    LOOP UNTIL (T1 <> T2)
+      LPRINT I$(T2);
+     SMJERKUT T1, T2, K, D: PRINT " D="; CDBL(D)
+         LPRINT USING "   D=#####.###"; D
+  DO
+               DO
+                 INPUT " Upisi (L)jevo ili (D)esno  (L/D) ??"; A$
+               LOOP UNTIL (A$ = "L" OR A$ = "D")
+      INPUT " Upisi duzinu po apcisi   "; DX:
+      INPUT " Upisi duzinu po ordinati "; DY
+      KO = ATN(DY / DX) * 180 / PI
+  IF A$ = "D" THEN AT = K - KO: SMJ$ = "DESNO" ELSE AT = K + KO: SMJ$ = "LJEVO"
+      D = SQR(DX ^ 2 + DY ^ 2)
+      Y = D * SIN(AT * PI / 180): X = D * COS(AT * PI / 180)
+      X = X(T1) + X: Y = Y(T1) + Y
+         PRINT " Y= "; CDBL(X); " X= "; CDBL(Y)
+                             INPUT " Upis tocke u program (N) ??"; A$
+         DO UNTIL (A$ = "N")
+          LPRINT "     "; SMJ$;
+          LPRINT USING " Apc=###.###  Ord=###.###  "; DX; DY;
+          LPRINT USING "Y=#######.## X=#######.## "; X; Y;
+                  UPIS
+              LPRINT I$(BR)
+             Y(BR) = Y: X(BR) = X: A$ = "N"
+         LOOP
+   INPUT " Daljnji rad na tom stajalistu (N) ??"; A$
+  LOOP UNTIL (A$ = "N")
+ INPUT " Novo stajaliste, molim? (N) ??"; A$
+LOOP UNTIL (A$ = "N")
+END SUB
+
+SUB ORTOGONALISKOL
+DO
+          PRINT "Upisi fiksni pravac": TOCKA T1
+                          X1 = X(T1): Y1 = Y(T1)
+        LPRINT
+        LPRINT "Stajaliste "; I$(T1);
+      DO
+        PRINT "Vizura": TOCKA T2
+      LOOP UNTIL (T1 <> T2)
+                          X2 = X(T2): Y2 = Y(T2)
+   LPRINT "  sa vizurom: "; I$(T2);
+                          K1 = (Y2 - Y1) / (X2 - X1)
+  PRINT "Udaljenost fiksnih tocaka"; CDBL(SQR((X1 - X2) ^ 2 + (Y1 - Y2) ^ 2))
+ LPRINT USING "  Duz=####.###"; CDBL(SQR((X1 - X2) ^ 2 + (Y1 - Y2) ^ 2))
+ LPRINT "    Tocka -van pravca"
+  DO
+  PRINT "Upisi tocku van pravca": TOCKA T3
+           XO = X(T3): YO = Y(T3): KO = -(1 / K1)
+           XT = (YO - Y1 + K1 * X1 - KO * XO) / (K1 - KO)
+           YT = KO * (XT - XO) + YO
+    PRINT USING " Apcisa  =###.###"; SQR((X1 - XT) ^ 2 + (Y1 - YT) ^ 2)
+    PRINT USING " Ordinata=###.###    "; SQR((XO - XT) ^ 2 + (YO - YT) ^ 2);
+    LPRINT SPC(6); I$(T3); SPC(4 - LEN(I$(T3)));
+    LPRINT USING " Apc=###.###"; SQR((X1 - XT) ^ 2 + (Y1 - YT) ^ 2);
+    LPRINT USING " Ord=###.###  "; SQR((XO - XT) ^ 2 + (YO - YT) ^ 2);
+     SMJERKUT T1, T2, KT1, D
+     SMJERKUT T1, T3, KT2, D
+ IF KT2 > KT1 AND KT2 < KT1 + 180 THEN PRINT "*Lijevo*" ELSE PRINT "*Desno*"
+ IF KT2 > KT1 AND KT2 < KT1 + 180 THEN LPRINT "*Lijevo*" ELSE LPRINT "*Desno*"
+    INPUT "Daljni upis tocke za trazenje presjeka (N)"; A$
+   LOOP UNTIL (A$ = "N")
+ INPUT "Novi fiksni pravac (N)"; A$
+LOOP UNTIL (A$ = "N")
+END SUB
+
+SUB POVRSINE
+ DIM B1(0 TO 50) AS DOUBLE, B(0 TO 50) AS DOUBLE
+        LPRINT "Ime datoteke:"; IMEDAT$; "   Datum:"; DATE$
+ DO
+   P2 = 0
+      INPUT " Broj tocaka povrsine ? "; V
+      LPRINT "Br.toc.="; V; " /";
+    FOR P = 1 TO V
+      PRINT "Tocka-"; P;
+            TOCKA T
+         LPRINT I$(T); "-";
+      B1(P) = X(T): B(P) = Y(T)
+    NEXT P
+    FOR X = 1 TO V
+      IF X = 1 THEN B(X - 1) = B(V)
+      IF X = V THEN B(X + 1) = B(1)
+      P2 = P2 + B1(X) * (B(X - 1) - B(X + 1))
+    NEXT X
+      P2 = ABS(P2 / 2)
+      PRINT " Povrsina P="; CDBL(P2)
+      LPRINT
+      LPRINT USING " Pv=######.##"; P2
+             INPUT " Daljni rad, molim? (N) "; A$: CLS
+ LOOP UNTIL (A$ = "N")
+END SUB
+
+SUB PRAVCI
+DIM PO(1 TO 1500)  AS INTEGER
+ DO
+  CLS : PRINT "  Izlaz u glavni meni programa  -----------[ENTER]"
+        PRINT "  Presjek pravca i pravca -----------------  [1]"
+        PRINT "  Presjek pravca i kruznice ---------------  [2]"
+        PRINT "  Presjek pravca i ravnine ----------------  [3]"
+   INPUT " Vas izbor ? "; X
+  ON X GOSUB PRAVCI, KRUZNICA, RAVNINA
+ LOOP UNTIL (X = 0)
+  EXIT SUB
+PRAVCI:  'Presjek s pravcima
+    DO
+              PRINT "Upisi PRVU tocku fiksnog pravca ": TOCKA T1
+     DO
+              PRINT "Upisi DRUGU tocku fiksnog pravca": TOCKA T2
+     LOOP UNTIL (T1 <> T2)
+REM VARIJABILNI ****
+  DO
+      CLS : PRINT "Upisi PRVU tocku varijabilnog pravca ": TOCKA V1
+     DO
+            PRINT "Upisi DRUGU tocku varijabilnog pravca": TOCKA V2
+     LOOP UNTIL (V1 <> V2)
+  IF X(T1) - X(T2) = 0 AND X(V1) - X(V2) = 0 THEN PRINT "Nema presjeka": PRAVCI
+     DO UNTIL (X(T2) - X(T1) <> 0)
+          XT = X(T1)
+          YT = (Y(V2) - Y(V1)) / (X(V2) - X(V1)) * (XT - X(V1)) + Y(V1)
+          GOTO 10
+     LOOP
+     DO UNTIL (X(V2) - X(V1) <> 0)
+          XT = X(V1)
+          YT = (Y(T2) - Y(T1)) / (X(T2) - X(T1)) * (XT - X(T1)) + Y(T1)
+          GOTO 10
+     LOOP
+          K = (Y(T2) - Y(T1)) / (X(T2) - X(T1))
+          L = Y(T1) - X(T1) * K
+          KW = (Y(V2) - Y(V1)) / (X(V2) - X(V1))
+          LW = Y(V1) - X(V1) * KW
+          XT = (LW - L) / (K - KW)
+          YT = KW * XT + LW
+10   PRINT " **** Tocka presjeka   Y="; CDBL(XT); "  X="; CDBL(YT)
+      INPUT "Zelis li upisati tocku presjeka u program  (D) "; A$
+       IF A$ = "D" THEN UPIS: X(BR) = XT: Y(BR) = YT
+                        INPUT "Daljni rad s varijabilnim pravcem  (N)"; A$
+  LOOP UNTIL (A$ = "N")
+                        INPUT "Novi fiksni pravac (N) "; A$
+ LOOP UNTIL (A$ = "N")
+EXIT SUB
+KRUZNICA:     'Presjek s kruznicom
+DO
+     PRINT "Upisi IME tocke sredista kruznice": TOCKA K1
+      INPUT " Upisi radijus "; R
+  PRINT "Koor.kruznice Y= "; X(K1); " X= "; Y(K1); " i radijus="; R
+  DO
+       PRINT "Upisi prvu tocku pravca": TOCKA T1
+     DO
+       PRINT "Upisi drugu tocku pravca": TOCKA T2
+     LOOP UNTIL (T1 <> T2)
+         CV = X(T2) - X(T1)
+         CB = R * R - (X(K1) - X(T1)) ^ 2
+       DO UNTIL (CV = 0 AND CB < 0)
+          L = (Y(T2) - Y(T1)) / (X(T2) - X(T1))
+          K = Y(T1) - X(T1) * L
+          D = K - Y(K1)
+          C = X(K1) ^ 2 + D * D - R * R
+          B = 2 * (L * D - X(K1))
+          CV = 0: CB = -1
+       LOOP
+      A = 1 + L * L
+      IF (B * B - 4 * A * C) < 0 THEN PRINT "NEMA PRIJESJEKA"
+    DO UNTIL ((B * B - 4 * A * C) < 0 OR A$ = "P" OR A$ = "D" OR A$ = "N")
+      Z1 = (-B - SQR(B * B - 4 * A * C)) / (2 * A)
+      Z2 = (-B + SQR(B * B - 4 * A * C)) / (2 * A)
+      C1 = L * Z1 + K: C2 = L * Z2 + K
+      PRINT " Prvo rijesenje  Y1= "; CDBL(Z1); "  X1="; CDBL(C1)
+      PRINT " Drugo rijesenje Y2= "; CDBL(Z2); "  X2="; CDBL(C2)
+      INPUT "Upis u datoteku (N)"; A$
+     DO UNTIL (A$ = "N" OR A$ = "P" OR A$ = "D")
+           INPUT "(P)rvo ili (D)rugo rjesenje"; A$
+                  UPIS
+      IF A$ = "P" THEN X(BR) = Z1: Y(BR) = C1 ELSE X(BR) = Z2: Y(BR) = C2
+     LOOP
+    LOOP
+     INPUT "Daljnji rad sa tom kruznicom (N)"; A$
+  LOOP UNTIL (A$ = "N")
+     INPUT "Ponovno biranje kruznice, molim? (N)"; A$
+ LOOP UNTIL (A$ = "N")
+EXIT SUB
+
+RAVNINA:   'Presjek s ravninom
+       DO
+   CLS : PRINT "    Izlaz u meni ----------------------------[ENTER]"
+         PRINT "    Presjek pravca i KOSE ravnine -----------  [1]"
+         PRINT "    Izohipse --------------------------------  [2]"
+         INPUT "    Izbor -----------------------------------  [?]"; X
+          ON X GOSUB KOSA, RAVNA
+       LOOP UNTIL (X = 0)
+         EXIT SUB  ' U glavni meni
+KOSA:
+  DO 'Glavna
+  CLS : PRINT "Upisi PRVU tocku ravnine": TOCKA T1
+     DO
+        PRINT "Upisi DRUGU tocku ravnine": TOCKA T1
+     LOOP UNTIL (T1 <> T2)
+     DO
+        PRINT "Upisi TRECU tocku ravnine": TOCKA T3
+     LOOP UNTIL (T1 <> T2 <> T3)
+  A = Y(T1) * (Z(T2) - Z(T3)) - Z(T1) * (Y(T2) - Y(T3))
+  A = A + (Y(T2) * Z(T3) - Z(T2) * Y(T3))
+  B = X(T1) * (Z(T2) - Z(T3)) - Z(T1) * (X(T2) - X(T3))
+  B = B + (X(T2) * Z(T3) - Z(T2) * X(T3))
+  C = X(T1) * (Y(T2) - Y(T3)) - Y(T1) * (X(T2) - X(T3))
+  C = C + (X(T2) * Y(T3) - Y(T2) * X(T3))
+  D = X(T1) * (Y(T2) * Z(T3) - Z(T2) * Y(T3))
+  D = D - Y(T1) * (X(T2) * Z(T3) - Z(T2) * X(T3))
+  D = D + Z(T1) * (X(T2) * Y(T3) - Y(T2) * X(T3))
+   DO    ' Rad sa pravcima
+  CLS : PRINT "Upisi PRVU tocku pravca": TOCKA P1
+     DO
+        PRINT "Upisi DRUGU tocku pravca": TOCKA P2
+     LOOP UNTIL (P1 <> P2)
+  T = -(D + A * X(P1) + B * Y(P1) + C * Z(P1))
+  T = T / (A * (X(P2) - X(P1)) + B * (Y(P2) - Y(P1)) + C * (Z(P2) - Z(P1)))
+  X = T * (X(P2) - X(P1)) + X(P1)
+  Y = T * (Y(P2) - Y(P1)) + Y(P1)
+  Z = T * (Z(P2) - Z(P1)) + Z(P1)
+   PRINT "Tocka presjeka   Y="; CDBL(X); "  X="; CDBL(Y); " Z="; Z
+      INPUT "Zelis li upisati tocku presjeka u program  (D) "; A$
+       IF A$ = "D" THEN UPIS: X(BR) = XT: Y(BR) = YT: Z(BR) = Z
+         INPUT "Daljnji rad sa PRAVCIMA? (N)"; A$
+   LOOP UNTIL (A$ = "N")
+    INPUT "Daljnji rad sa RAVNINOM (N)"; A$
+LOOP UNTIL (A$ = "N")
+EXIT SUB
+
+RAVNA:
+ BRO = 0
+    OPEN "IZOH" FOR OUTPUT AS #1
+     INPUT "Upisi delta Z u (metrima)"; KORAK
+DO
+         PRINT "Upisi POCETNU najnizu tocku pravca ": TOCKA P1
+     DO
+           DO
+             PRINT "Upisi DALNJU tocku pravca ": TOCKA P2
+           LOOP UNTIL (P1 <> P2)
+         MAX = Z(P2): MIN = Z(P1)
+         IF Z(P1) > Z(P2) THEN MAX = Z(P1): MIN = Z(P2)
+     PRINT USING "   Max=####.###    Min=####.###"; MAX; MIN
+       Z = FIX(MIN)
+        DO UNTIL (Z > MIN)
+          Z = Z + KORAK
+        LOOP
+   DO UNTIL (Z >= MAX)
+     T = (Z - Z(P1)) / (Z(P2) - Z(P1))
+     X = T * (X(P2) - X(P1)) + X(P1): Y = T * (Y(P2) - Y(P1)) + Y(P1)
+      PRINT #1, "X" + MID$(STR$(CDBL(Z)), 2, 5)
+      PRINT #1, USING "########.###"; X; Y; Z
+      BRO = BRO + 1: Z = Z + KORAK
+    LOOP
+       P1 = P2: INPUT "Prekid (P)"; A$
+ LOOP UNTIL (A$ = "P")
+    INPUT "Daljnji rad sa PRAVCEM? (N)"; A$
+LOOP UNTIL (A$ = "N")
+CLOSE #1
+ INPUT " Upisi ime datoteke za ispis podataka na disk "; DIME$
+         IME$ = DIME$ + ".DAT"
+ OPEN "IZOH" FOR INPUT AS #1
+ OPEN IME$ FOR OUTPUT AS #2
+   PRINT #2, BRO
+    DO
+      INPUT #1, A$
+      PRINT #2, A$
+      INPUT #1, X, Y, Z
+      PRINT #2, X, Y, Z
+    LOOP UNTIL (EOF(1))
+  CLOSE #1
+  CLOSE #2: KILL "IZOH"
+END SUB
+
+SUB PROMJENI (KT, X, Y, Z)
+  IF KT >= 360 THEN KT = KT - 360
+  IF KT < 0 THEN KT = KT + 360
+     X = KT - FIX(KT): Y = 60 * X
+     Z = Y - FIX(Y): Z = 60 * Z
+     Z = FIX(Z): Y = FIX(Y): X = FIX(KT)
+END SUB
+
+SUB SINUSDALTA
+   DO
+     INPUT " Instrument -(W)ild ili (D)alta?"; A$
+   LOOP UNTIL (A$ = "W" OR A$ = "D")
+     IF A$ = "W" THEN SMJER = 1 ELSE SMJER = -1
+DO
+  INPUT " Ime datoteke za zapis na disk (Printanje) "; A$
+        DATIM$ = A$ + ".PPL"
+  OPEN DATIM$ FOR OUTPUT AS #17
+      PRINT " Upisi stajaliste:": TOCKA T1
+        Y1 = Y(T1): X1 = X(T1): Z1 = Z(T1)
+ PRINT #17, "  -------------------------------------------------------"
+ PRINT #17, "         Racunanje koordinata tocaka POLARNO"
+ PRINT #17, "  -------------------------------------------------------"
+ PRINT #17, "  Stajaliste: "; I$(T1); SPC(6 - LEN(I$(T1))); "  (i)=";
+     INPUT " Upisi visinu instrumenta na stajalistu "; VIS
+     INPUT " Upisi orijentaciju sa stajalista (Stu,Min,Sek)"; Q1, Q2, Q3
+               QOS = Q1 + Q2 / 60 + Q3 / 3600
+ PRINT #17, USING "#.###"; VIS;
+ PRINT #17, USING "Orj.kut sta.: ###-##-##"; Q1; Q2; Q3;
+ PRINT #17, USING "Visina=####.###"; Z(T1)
+      DO
+        PRINT " Upisi vizuru": TOCKA T2
+      LOOP UNTIL (T1 <> T2)
+         Y2 = Y(T2): X2 = X(T2): Z2 = Z(T2)
+   PRINT #17, "  Vizura:     "; I$(T2); SPC(6 - LEN(I$(T2))); "  (i)=";
+     INPUT " Upisi visinu instrumenta na  vizuri"; VIV
+     INPUT " Upisi orijentaciju sa vizure (Stu,Min,Sek)"; Q1, Q2, Q3
+           QOV = Q1 + Q2 / 60 + Q3 / 3600
+   PRINT #17, USING "#.###"; VIV;
+   PRINT #17, USING "  Orj.kut viz.: ###-##-##"; Q1; Q2; Q3;
+   PRINT #17, USING "  Visina=####.###"; Z(T2)
+     SMJERKUT T1, T2, K, D
+     KT = 450 - K
+        PROMJENI KT, X, Y, Z
+   PRINT " Kut  "; I$(T1); " na "; I$(T2); " je "; X; "-"; Y; "-"; Z; "D="; D
+     PRINT " Duzina="; CDBL(D)
+     PRINT #17, "-------------------------------------------------------------------------"
+     PRINT #17, " Broj    H. kut st.   V. kut st.  H. kut vi   V. kut vi      visina"
+     PRINT #17,
+      PRINT " Koor. stajalista Y= "; CDBL(X1); " X="; CDBL(Y1); "Z="; CDBL(Z1)
+ DO
+        DO
+           PRINT " Upisi horizontalni kut sa trenutnog stajalista"
+           INPUT " Stupnjevi ..."; STSTH
+           INPUT " Minute ......"; STMIH
+           INPUT " Sekunde ....."; STSKH
+        LOOP UNTIL (STSTH < 360 AND STMIH < 60 AND STSKH < 60)
+                KST = STSTH + STMIH / 60 + STSKH / 3600
+        DO
+            PRINT " Vertikalni kut sa stajalista"
+            INPUT " Stupnjevi .."; STSTV
+            INPUT " Minute ....."; STMIV
+            INPUT " Sekunde ...."; STSKV
+        LOOP UNTIL (STSTV < 360 AND STMIV < 60 AND STSKV < 60)
+      CLS
+    DO
+      PRINT " Horizontalni kut sa vizure"
+      INPUT " Stupnjevi ..."; VIST
+      INPUT " Minute ......"; VIMI
+      INPUT " Sekunde ....."; VISK
+    LOOP UNTIL (VIST < 360 AND VIMI < 60 AND VISK < 60)
+          KVI = VIST + VIMI / 60 + VISK / 3600
+       DO
+         PRINT " Vertikalni kut sa vizure"
+         INPUT " Stupnjevi .."; VISTV
+         INPUT " Minute ....."; VIMIV
+         INPUT " Sekunde ...."; VISKV
+       LOOP UNTIL (VISTV < 360 AND VIMIV < 60 AND VISKV < 60)
+            DST = ABS(QOS - KST)
+            DVI = ABS(QOV - KVI)
+            IF DST > 180 THEN DST = 360 - DST
+            IF DVI > 180 THEN DVI = 360 - DVI
+            DS = ABS(D * SIN(DVI * PI / 180) / SIN((DVI + DST) * PI / 180))
+            DV = SQR(DS ^ 2 + D ^ 2 - 2 * DS * D * COS(DST * PI / 180))
+         KTV = 90 + (VISTV + VIMIV / 60 + VISKV / 3600) * SMJER
+         VTV = Z2 + VIV + TAN(KTV * PI / 180) * DV
+   REM **************************************************
+         KTS = 90 + (STSTV + STMIV / 60 + STSKV / 3600) * SMJER
+         VTS = Z1 + VIS + TAN(KTS * PI / 180) * DS
+           PRINT "Udaljenost stajalista od tocke:"; CDBL(DS)
+           PRINT "Udaljenost vizure od tocke    :"; CDBL(DV)
+         DX = DS * COS((K + QOS - KST) * PI / 180)
+         DY = DS * SIN((K + QOS - KST) * PI / 180)
+      XT = X1 + DX: YT = Y1 + DY
+      PRINT "Vrijednost nove tocke:  Y= "; CDBL(XT); " X= "; CDBL(YT)
+      PRINT "Visina sa vizure    :"; CDBL(VTV)
+      PRINT "Visina sa stajalista:"; CDBL(VTS)
+      SRE = (VTV + VTS) / 2
+      PRINT "Srednja visina:"; CDBL(SRE)
+      INPUT "Zelis li upisati tocku presjeka u program  (N) "; A$
+          DO UNTIL (A$ = "N")
+               UPIS
+          PRINT #17, "  "; I$; SPC(6 - LEN(I$));
+          PRINT #17, USING " ###-##-##  "; STSTH; STMIH; STSKH;
+          PRINT #17, USING " ###-##-##  "; STSTV; STMIV; STSKV;
+          PRINT #17, USING " ###-##-##  "; VIST; VIMI; VISK;
+          PRINT #17, USING " ###-##-##  "; VISTV; VIMIV; VISKV
+      PRINT #17, USING "          #####.###   #####.###   ###.###   ###.###          ###.###"; XT; YT; VTS; VTV; SRE
+             X(BR) = XT: Y(BR) = YT: Z(BR) = SRE: A$ = "N"
+          LOOP
+            INPUT "Daljni rad (N)"; A$
+  LOOP UNTIL (A$ = "N")
+       INPUT "Novo stajaliste (N)"; A$
+     CLOSE #17
+LOOP UNTIL (A$ = "N")
+END SUB
+
+SUB SINUSNI
+    PRINT " Stajaliste": TOCKA T1
+  DO
+     PRINT " Druga tocka": TOCKA T2
+  LOOP UNTIL (T1 <> T2)
+    SMJERKUT T1, T2, K, D1
+         KT = 450 - K
+    PROMJENI KT, KTST, KTMI, KTSK
+    INPUT "Smjer na trigonometar"; X, Y, Z
+    LPRINT USING "Smjer na trigonometar:###-###-###"; X; Y; Z
+    KUT = X + Y / 60 + Z / 3600
+    INPUT "Smjer na POLIGON"; X, Y, Z
+    LPRINT USING "Smjer na POLIGON     :###-##-###"; X; Y; Z
+    KUT = ABS(X + Y / 60 + Z / 3600 - KUT)
+      PROMJENI KUT, X, Y, Z
+      PRINT " Razlika kuteva    :"; X; "-"; Y; "-"; Z
+ INPUT " Upisi KOSU duzinu izmedju stajalista i POLIGONA"; D2
+ LPRINT " Upisi KOSU duzinu izmedju stajalista i POLIGONA:"; D2
+ INPUT "Vertikalni kut"; X, Y, Z
+ LPRINT USING "Vertikalni kut:###-##-##"; X; Y; Z
+   D2 = COS((90 - X - Y / 60 - Z / 3600) * PI / 180) * D2
+   K1 = (SIN(KUT * PI / 180) / D1) * D2
+   K2 = ATN(K1 / (1 - K1 * K1) ^ .5) * 180 / PI
+        PROMJENI K2, X, Y, Z
+     PRINT " Kut na  "; I$(T2); "- vizuri    :"; X; "-"; Y; "-"; Z
+                 K3 = 180 - K2 - KUT
+        PROMJENI K3, X, Y, Z
+     PRINT " Kut na  "; I$(T1); "- stajalistu:"; X; "-"; Y; "-"; Z
+ KUT1 = K + K3
+ X1 = X(T1) + D2 * (COS(KUT1 * PI / 180))
+ Y1 = Y(T1) + D2 * (SIN(KUT1 * PI / 180))
+  PRINT USING "Prvo rijesenje  Y1=#######.### X1=#######.## "; X1; Y1
+ KUT2 = K - K3
+ X2 = X(T1) + D2 * (COS(KUT2 * PI / 180))
+ Y2 = Y(T1) + D2 * (SIN(KUT2 * PI / 180))
+  PRINT USING "Drugo rijesenje Y2=#######.### X2=#######.### "; X2; Y2
+      INPUT "Zelis li upisati tocku u program  (P)rvo/(D)rugo/ENTER"; A$
+      IF (A$ <> "P" AND A$ <> "D") THEN EXIT SUB
+   LPRINT " Kut "; I$(T1); " na "; I$(T2); " :"; KTST; "-"; KTMI; "-"; KTSK; "  DUZINA="; CDBL(D1)
+   LPRINT "Kut izmedu trazene tocke i stajalista:"; KVSST; "-"; KVSMT; "-"; KVSSK; "  Duzina="; CDBL(D2)
+   LPRINT "Prvo rijesenje  Y1= "; CDBL(X1); " X1= "; CDBL(Y1)
+   LPRINT "Drugo rijesenje Y2= "; CDBL(X2); " X2= "; CDBL(Y2)
+         IF A$ = "P" THEN
+                       UPIS
+                        X(BR) = X1: Y(BR) = Y1
+                     ELSE UPIS
+                      X(BR) = X2: Y(BR) = Y2
+         END IF
+         LPRINT "IME TOCKE: "; I$(BR)
+END SUB
+
+SUB SMJERKUT (T1, T2, KUT, D)
+  DY = Y(T2) - Y(T1): DX = X(T2) - X(T1)
+  D = CDBL(SQR(DX * DX + DY * DY))
+   DO UNTIL (DX = 0)
+        IF DY > 0 AND DX > 0 THEN Q = 0
+        IF DY > 0 AND DX < 0 THEN Q = 180
+        IF DY < 0 AND DX < 0 THEN Q = 180
+        IF DY < 0 AND DX > 0 THEN Q = 360
+        KUT = ATN(DY / DX) * 180 / PI + Q
+     EXIT SUB
+   LOOP
+      IF DY > 0 THEN KUT = 90 ELSE KUT = 270
+END SUB
+
+SUB SMJERNIKUTEVI
+ INPUT "Ime datoteke za kontrolu upisa (Uvijek drugo ime!)"; IME$
+     OPEN IME$ FOR OUTPUT AS #66
+DO
+    PRINT " Kut izmedu tocke": TOCKA T1
+   DO
+    PRINT " Druga tocka": TOCKA T2
+   LOOP UNTIL (T1 <> T2)
+     SMJERKUT T1, T2, K, D
+      KT = 450 - K
+     PROMJENI KT, X, Y, Z
+PRINT "Kut "; I$(T1); " na "; I$(T2); ":"; X; "-"; Y; "-"; Z; " D="; CDBL(D)
+      INPUT "  Printanje (N) ? "; A$:
+     DO UNTIL (A$ = "N")
+          DO UNTIL (BRS <> 0)
+           LPRINT SPC(6); "Datoteka:"; IMEDAT$; " Datum:"; DATE$
+           LPRINT SPC(6); "Staj.   Vizura       Hor.Kut    Hor.Duz.       Y           X"
+           PRINT #66, SPC(6); "Datoteka:"; IMEDAT$; " Datum:"; DATE$
+           PRINT #66, SPC(6); "Staj.   Vizura       Hor.Kut    Hor.Duz.       Y           X"
+           BRS = 2
+          LOOP
+         BRS = BRS + 1
+    LPRINT SPC(8); I$(T1); SPC(8 - LEN(I$(T1)));
+    LPRINT I$(T2); SPC(8 - LEN(I$(T2)));
+    LPRINT USING "  ###-##-##  ####.###  ########.## ########.##"; X; Y; Z; D; X(T2); Y(T2)
+    PRINT #66, SPC(8); I$(T1); SPC(8 - LEN(I$(T1)));
+    PRINT #66, I$(T2); SPC(8 - LEN(I$(T2)));
+    PRINT #66, USING "  ###-##-##  ####.###  ########.## ########.##"; X; Y; Z; D; X(T2); Y(T2)
+           DO UNTIL (BRS <> 64)
+            INPUT " Ubaci novi papir i stisni ENTER "; A$
+            BRS = 0
+           LOOP
+    A$ = "N"
+     LOOP
+      INPUT " Daljni rad (N) ?"; A$
+   LOOP UNTIL (A$ = "N")
+   CLOSE #66
+END SUB
+
+SUB SOKKIA
+INPUT " Ime datoteke za zapis na disk (Printanje) "; A$
+        DATIM$ = A$ + ".SKK"
+OPEN DATIM$ FOR OUTPUT AS #17
+  GOSUB ZAGLAV
+DO          'GLAVNA
+   PRINT " Upisi stajaliste ": TOCKA T1
+      INPUT "Upisi visinu stajalista  :"; VS
+      INPUT "Upisi visinu instrumenta :"; VI
+    PRINT "Upisi vizuru": TOCKA T2
+    SMJERKUT T1, T2, K, DH
+    INPUT "Upisi orijentaciju (Stu,Min,Sek)"; Q1, Q2, Q3
+          GOSUB STAJAL
+       K = K + Q1 + Q2 / 60 + Q3 / 3600
+ DO
+    UPIS
+        DO
+           INPUT " Upisi stupnjeve:"; X
+           INPUT " Upisi minute   :"; Y
+           INPUT " Upisi sekunde  :"; Z
+        LOOP UNTIL (X < 360 AND Y < 60 AND Z < 60)
+      KI = X + Y / 60 + Z / 3600
+           INPUT " Upisi horizontalnu duzinu"; D
+           INPUT " Upisi    V  : "; V
+           INPUT " Upisi reper : "; R
+   XD = D * (COS((K - KI) * PI / 180)): YD = D * (SIN((K - KI) * PI / 180))
+   XR = X(T1) + XD: YR = Y(T1) + YD: ZR = V - R + VI + VS
+   PRINT " Y= "; CDBL(XR); "   X= "; CDBL(YR); "   Z= "; CDBL(ZR)
+             INPUT " Upis tocke u program ? (N)"; A$
+          BRS = BRS + 1
+               DO UNTIL (BRS < 64)
+                 GOSUB ZATVORI
+                 GOSUB ZAGLAV
+                 GOSUB STAJAL
+                 EXIT DO
+               LOOP
+   DO UNTIL (A$ = "N")   '1
+     X(BR) = XR: Y(BR) = YR: Z(BR) = ZR
+     PRINT #17, "  �      �";
+     CENTEXT 17, 3, I$(BR)
+     PRINT #17, I$(BR); SPC(3 - INT(LEN(I$(BR)) / 2));
+     PRINT #17, USING "�###�##�##�###.###�##.###�#.###"; X; Y; Z; D; V; R;
+     PRINT #17, USING "�#######.###�#######.###�###.###�"; XR; YR; ZR
+     A$ = "N"
+   LOOP                  '1
+                       INPUT "Daljni rad (N)"; A$
+ LOOP UNTIL (A$ = "N")
+                       INPUT "Novo stajaliste (N)"; A$
+        DO UNTIL (BRS < 60 OR A$ = "N")
+                 GOSUB ZATVORI
+                   DO UNTIL (BRS = 64)
+                     BRS = BRS + 1
+                     PRINT #17, ""
+                   LOOP
+                 GOSUB ZAGLAV
+                 GOSUB STAJAL
+        LOOP
+         DO UNTIL (A$ = "N" AND BRS < 59)
+          PRINT #17, "  ����������������������������������������������������������������������������Ĺ"
+          BRS = BRS + 1: EXIT DO
+         LOOP
+LOOP UNTIL (A$ = "N")
+ GOSUB ZATVORI
+  CLOSE #17
+   EXIT SUB
+
+ZAGLAV:
+ PRINT #17, "  ����������������������������������������������������������������������������ͻ"
+ PRINT #17, "  �         Racunanje koordinata tocaka - SOKKIA "; "Dat.:";
+ PRINT #17, IMEDAT$; SPC(8 - LEN(IMEDAT$)); SPC(17); "�"
+ PRINT #17, "  ����������������������������������������������������������������������������͹"
+ PRINT #17, "  � Staj.�Vizura� � �' �''�  Duz  �   V  �  S  �     Y     �     X     �   Z   �"
+ REM            123456/123456/123/12/12/1234567/123456/12345/12345678901/12345678901/1234567/
+      BRS = 4
+ RETURN
+
+STAJAL:
+  PRINT #17, "  �";
+  CENTEXT 17, 3, I$(T1)
+  PRINT #17, I$(T1); SPC(3 - INT(LEN(I$(T1)) / 2)); "�";
+  CENTEXT 17, 3, I$(T2)
+  PRINT #17, I$(T2); SPC(3 - INT(LEN(I$(T2)) / 2));
+  PRINT #17, USING "�###�##�##�###.###"; Q1; Q2; Q3; DH;
+  PRINT #17, USING "�      �     �Vst=###.###�Vins=#.### �       �"; VS; VI
+   BRS = BRS + 1
+RETURN
+
+ZATVORI:
+ PRINT #17, "  ����������������������������������������������������������������������������ͼ"
+ BRS = BRS + 1
+RETURN
+
+END SUB  'KRAJ POTPROGRAMA
+
+SUB TAHIMETRIJA
+     DO
+       INPUT " Rad sa (K)osom ili (H)orizontalnom duzinom? "; DUZN$
+     LOOP UNTIL (DUZN$ = "K" OR DUZN$ = "H")
+         DO
+           INPUT " Instrument- (W)ild ili (D)alta?"; INST$
+         LOOP UNTIL (INST$ = "W" OR INST$ = "D")
+     IF INST$ = "W" THEN SMJER = 1 ELSE SMJER = -1
+ INPUT " Ime datoteke za zapis na disk (Printanje) "; A$
+    DATIM$ = A$ + ".PP"
+  OPEN DATIM$ FOR OUTPUT AS #17
+ DO
+    PRINT " Upisi stajaliste": TOCKA T1
+  INPUT " Upisi visinu stajalista :"; VS
+  INPUT " Upisi visinu instrumenta:"; VI
+PRINT #17, "  -------------------------------------------------------"
+PRINT #17, "         Racunanje koordinata tocaka POLARNO  Dat:"; IMEDAT$
+PRINT #17, "  ----------------------------------------- Datum:"; DATE$
+PRINT #17, "   Stajal.:"; I$(T1); " (i)=";
+PRINT #17, USING "####.###  Vis.staj.=####.###"; VI; VS
+PRINT #17, "       vizura           Smj.kut         orij.kut"
+      DO
+        PRINT " Upisi vizuru": TOCKA T2
+      LOOP UNTIL (T1 <> T2)
+   SMJERKUT T1, T2, K, D
+       KT = 450 - K
+   PROMJENI KT, X, Y, Z
+  PRINT " Kut "; I$(T1); " na "; I$(T2); ":"; X; "-"; Y; "-"; Z; " D="; D
+     INPUT " Upisi orijentaciju (Stu,Min,Sek)"; Q1, Q2, Q3
+        K = K + Q1 + Q2 / 60 + Q3 / 3600
+     PRINT #17, SPC(8); I$(T2); SPC(14);
+     PRINT #17, USING "###-##-##"; X; Y; Z; SPC(7);
+     PRINT #17, USING "###-##-##"; Q1; Q2; Q3;
+     PRINT #17, "    -------------------------------------------------------------------------"
+     PRINT #17, "    Broj  hor.kut   ver.kut      d       l          y           x         h"
+     PRINT #17,
+DO
+    DO
+     PRINT " Za horizontalni kut upisi:"
+       INPUT " Stupnjeve:"; HOST
+       INPUT " Minute   :"; HOMI
+       INPUT " Sekunde  :"; HOSK
+    LOOP UNTIL (HOST < 360 AND HOMI < 60 AND HOSK < 60)
+      CLS
+      PRINT USING " Horizontalni kut ###-##-##"; HOST; HOMI; HOSK
+      KI = HOST + HOMI / 60 + HOSK / 3600
+    DO
+     PRINT " Za vertikalni kut upisi:"
+       INPUT " Stupnjeve:"; VEST
+       INPUT " Minute   :"; VEMI
+       INPUT " Sekunde  :"; VESK
+    LOOP UNTIL (VEST < 360 AND VEMI < 60 AND VESK < 60)
+      VE = VEST + VEMI / 60 + VESK / 3600
+      INPUT "Upisi duzinu"; DPRN
+IF DUZN$ = "H" THEN D = DPRN / ABS((COS((90 + VE * SMJER) * PI / 180)))
+IF DUZN$ = "K" THEN D = DPRN
+INPUT "Upisi reper: (AKO JE REPER JEDNAK VISINI INSTRUMENTA PRITISNI (ENTER)"; R
+      IF R = 0 THEN R = VI
+      KUT = 90 + VE * SMJER: T = K - KI
+      ZD = D * (SIN(KUT * PI / 180))
+      D1 = ABS(D * (COS(KUT * PI / 180)))
+      XD = D1 * (COS(T * PI / 180))
+      YD = D1 * (SIN(T * PI / 180))
+      X = X(T1) + XD: Y = Y(T1) + YD
+      Z = ZD - R + VI + VS
+      PRINT " Y= "; CDBL(X); "   X= "; CDBL(Y); "   Z= "; CDBL(Z)
+      INPUT " Upis tocke u program (N)"; A$
+      DO UNTIL (A$ = "N")
+             UPIS
+       X(BR) = X: Y(BR) = Y: Z(BR) = Z
+        PRINT #17, SPC(8 - LEN(I$(BR))); I$(BR);
+        PRINT #17, USING " ###-##-## "; HOST; HOMI; HOSK;
+        PRINT #17, USING "###-##-##"; VEST; VEMI; VESK;
+        PRINT #17, USING "####.###  #.### "; DPRN; R;
+        PRINT #17, USING "#######.### #######.###  ####.##"; X; Y; Z
+         A$ = "N"
+       LOOP
+      INPUT " Daljni rad, molim? (N)"; A$
+    LOOP UNTIL (A$ = "N")
+  INPUT "Novo stajaliste, molim? (N)"; A$
+ LOOP UNTIL (A$ = "N")
+CLOSE #17
+END SUB
+
+SUB Tahpov
+ INPUT "Ime datoteke za kontrolu upisa"; IME$
+     OPEN IME$ FOR OUTPUT AS #77
+   GOSUB 2  'Zaglavlje
+ DO   'Glavna petlja
+      CLS :  PRINT "  Upisi stajaliste:": TOCKA T1
+      DO
+             PRINT "  Upisi vizuru:": TOCKA T2
+      LOOP UNTIL (T1 <> T2)
+    SMJERKUT T1, T2, K, D
+       KT = 450 - K
+    PROMJENI KT, X, Y, Z
+     PRINT " Kut   "; I$(T1); "  na  "; I$(T2); "  je  "; X; "-"; Y; "-"; Z;
+     PRINT "     Duzina= "; CDBL(D)
+     INPUT "Upisi orijentaciju (Stu,Min,Sek)  "; Q1, Q2, Q3
+            GOSUB 4
+      K = K + Q1 + Q2 / 60 + Q3 / 3600
+  DO
+      DO
+       INPUT "Upisi tocku:Vec (I)zracunata ili (U)pisati novu "; KONTROLA$
+      LOOP UNTIL KONTROLA$ = "U" OR KONTROLA$ = "I"
+               DO UNTIL KONTROLA$ <> "I"   'GRUPA2
+                        DO
+                         PRINT " Druga tocka": TOCKA T2
+                        LOOP UNTIL (T1 <> T2)
+                    SMJERKUT T1, T2, KK, D
+                      KT = 450 - KK
+                    PROMJENI KT, X, Y, Z
+                 INDEX = T2
+                EXIT DO
+               LOOP   'GRUPA2
+           DO UNTIL KONTROLA$ <> "U"   'GRUPA1
+                UPIS
+                 DO
+                   INPUT " Upisi stupnjeve:"; X
+                   INPUT " Minute --------:"; Y
+                   INPUT " Sekunde -------:"; Z
+                   INPUT " Duzina --------:"; D
+                 LOOP UNTIL (X < 360 AND Y < 60 AND Z < 60 AND D > 0)
+                INDEX = BR
+            EXIT DO
+           LOOP                        'GRUPA1
+     PRINT #77, "  �      �"; SPC(6 - LEN(I$(INDEX))); I$(INDEX);
+     PRINT #77, USING "�###�##�##�####.###�"; X; Y; Z; D; SPC(3);
+              KU = K - X - Y / 60 - Z / 3600
+              XX = X(T1) + COS(KU * (PI / 180)) * D
+              YY = Y(T1) + SIN(KU * (PI / 180)) * D
+                 IF KONTROLA$ = "U" THEN
+                    X(BR) = XX   'Rem* Ako racunamo novu tocku
+                    Y(BR) = YY
+                 END IF
+       PRINT #77, USING " ########.### � #########.###  �"; XX; YY
+       PRINT " Y= "; CDBL(XX); " X= "; CDBL(YY)
+          BRS = BRS + 1
+               DO UNTIL (BRS < 63)
+                 GOSUB 3
+                 GOSUB 2
+                 GOSUB 4
+               LOOP
+         INPUT " Daljni rad ? (N) "; A$
+   LOOP UNTIL (A$ = "N")
+          INPUT " Novo stajaliste ? (N)"; A$
+        DO UNTIL (BRS < 61 OR A$ = "N")
+            GOSUB 3
+            GOSUB 2
+            GOSUB 4
+        LOOP
+          STANJE = 0
+        DO UNTIL (A$ = "N" AND BRS < 60 OR STANJE = 1)
+ PRINT #77, "  �������������������������������������������������������������������Ĺ"
+        STANJE = 1: BRS = BRS + 1
+        LOOP
+LOOP UNTIL (A$ = "N")      'Glavna petlja
+        GOSUB 3  ' Zatvori
+    CLOSE #77
+   EXIT SUB
+
+2 REM Zaglavlje
+ PRINT #77, "  �������������������������������������������������������������������ͻ"
+ PRINT #77, "  �         Racunanje koordinata tocaka POLARNO "; "Dat.:";
+ PRINT #77, IMEDAT$; SPC(8 - LEN(IMEDAT$)); SPC(9); "�"
+ PRINT #77, "  �������������������������������������������������������������������͹"
+ PRINT #77, "  � Staj.�Vizura� � �' �''�  Duz   �        Y        �        X       �"
+      BRS = 4
+ RETURN
+
+3 REM ZATVORI
+ PRINT #77, "  �������������������������������������������������������������������ͼ"
+RETURN
+
+4 REM STAJALISTE
+  PRINT #77, "  �";
+  CENTEXT 77, 3, I$(T1)
+  PRINT #77, I$(T1); SPC(3 - INT(LEN(I$(T1)) / 2)); "�";
+  CENTEXT 77, 3, I$(T2)
+  PRINT #77, I$(T2); SPC(3 - INT(LEN(I$(T2)) / 2));
+  PRINT #77, USING "�###�##�##�####.###�"; Q1; Q2; Q3; D;
+  PRINT #77, SPC(17); "�"; SPC(16); "�"
+  PRINT #77, "  �      �      �   �  �  �        �"; SPC(17); "�"; SPC(16); "�"
+   BRS = BRS + 2
+RETURN
+END SUB
+
+SUB TAHPOVIS
+INPUT " Ime datoteke za zapis na disk (Printanje) "; A$
+        DATIM$ = A$ + ".VV"
+OPEN DATIM$ FOR OUTPUT AS #17
+DO          'GLAVNA
+   PRINT " Upisi stajaliste ": TOCKA T1
+      INPUT "Upisi visinu stajalista  :"; VS
+      INPUT "Upisi visinu instrumenta :"; VI
+    PRINT "Upisi vizuru": TOCKA T2
+   PRINT #17, "     Datoteka:"; IMEDAT$; "  Datum:"; DATE$
+   PRINT #17, "Stajaliste: "; I$(T1); " --> "; "Vizura: "; I$(T2)
+    SMJERKUT T1, T2, K, D
+   INPUT "Upisi orijentaciju (Stu,Min,Sek)"; Q1, Q2, Q3
+     PRINT #17, "Orijentacija:"; Q1; "-"; Q2; "-"; Q3; "    ";
+       K = K + Q1 + Q2 / 60 + Q3 / 3600
+     PRINT #17, "  VS="; VS; "  VI="; VI
+     PRINT #17, "  Ime    Kut      Rep  VK     Ho      D           X          Y            Z"
+ DO
+        DO
+          CLS :  PRINT
+           INPUT " Upisi stupnjeve:"; X
+           INPUT " Upisi minute   :"; Y
+           INPUT " Upisi sekunde  :"; Z
+        LOOP UNTIL (X < 360 AND Y < 60 AND Z < 60)
+      KI = X + Y / 60 + Z / 3600
+           INPUT " Upisi reper: "; R
+           INPUT " Upisi    VK: "; VK
+           INPUT " Upisi    HO: "; HO
+   DE = VK * HO
+      INPUT "Upisi horizontalnu duzinu"; D
+   XD = D * (COS((K - KI) * PI / 180))
+   YD = D * (SIN((K - KI) * PI / 180))
+   XR = X(T1) + XD: YR = Y(T1) + YD
+   ZR = DE - R + VI + VS
+   PRINT " Y= "; CDBL(XR); "   X= "; CDBL(YR); "   Z= "; CDBL(ZR)
+             INPUT " Upis tocke u program ? (N)"; A$
+   DO UNTIL (A$ = "N")
+         UPIS
+     X(BR) = XR: Y(BR) = YR: Z(BR) = ZR
+    PRINT #17, SPC(6 - LEN(I$(BR))); I$(BR);
+    PRINT #17, USING " ###-##-## #.##"; X; Y; Z; R;
+    PRINT #17, USING "#### ###.### ####.### "; VK; HO; D;
+    PRINT #17, USING "########.###"; XR; YR; ZR
+     A$ = "N"
+   LOOP
+                       INPUT "Daljni rad (N)"; A$
+ LOOP UNTIL (A$ = "N")
+                       INPUT "Novo stajaliste (N)"; A$
+LOOP UNTIL (A$ = "N")
+  CLOSE #17
+END SUB
+
+SUB TAHPOVVISRED
+INPUT " Ime datoteke za zapis na disk"; DATIM$
+OPEN DATIM$ + ".P" FOR OUTPUT AS #17
+DO
+    PRINT " Upisi stajaliste": TOCKA T1
+PRINT #17, "  ----------------------------------------------------------"
+PRINT #17, "         RACUNJANJE KOORDINATA TOCAKA POLARNO"
+PRINT #17, "  ----------------------------------------------------------"
+PRINT #17, "         STAJALISTE broj :  "; I$(T1); "      (i)= ";
+      INPUT " Upisi visinu instrumenta:"; VI
+      INPUT " Upisi visinu stajalista :"; VS
+ PRINT #17, USING "###.##"; VI
+ PRINT #17, "    orijent.tocka      hor.kut         orij.kut"
+     PRINT " Upisi vizuru: ": TOCKA T2
+PRINT #17, "        "; I$(T2); SPC(12);
+    SMJERKUT T1, T2, K, D
+     KT = 450 - K
+          PROMJENI KT, X, Y, Z
+     PRINT " Kut  "; I$(T1); " na "; I$(T2); " :"; X; "-"; Y; "-"; Z; "D="; D
+      INPUT "Upisi orijentaciju (Stu,Min,Sek)"; Q1, Q2, Q3
+     PRINT #17, USING "###.##"; KIS; SPC(10);
+     PRINT #17, USING "###-##-##"; Q1; Q2; Q3
+     PRINT #17, "    -------------------------------------------------------------------------"
+     PRINT #17, "    Broj hor. kut DELTA-H   d       l         y         x         h      "
+     PRINT #17,
+       K = K + Q1 + Q2 / 60 + Q3 / 3600
+DO
+      INPUT " UPISI HORIZONTALNI KUT - STUPNJEVE "; X
+      INPUT " UPISI MINUTE"; Y
+      INPUT " UPISI SEKUNDE"; Z
+CLS : PRINT STR$(X) + STR$(Y) + STR$(Z)
+      KI = X + Y / 60 + Z / 3600
+      INPUT "Upisi horizontalnu duzinu"; D
+      INPUT "Upisi visinsku razliku"; VR
+      INPUT "Upisi reper"; R
+      IF R = 0 THEN R = VI
+      PRINT STR$(X) + STR$(Y) + STR$(Z) + STR$(D) + STR$(CDBL(R))
+      T = K - KI
+      XD = D * (COS(T * PI / 180))
+      YD = D * (SIN(T * PI / 180))
+      X = X(T1) + XD: Y = Y(T1) + YD
+      Z = VR - R + VI + VS
+      PRINT " Y= "; CDBL(X); "   X= "; CDBL(Y); "   Z= "; CDBL(Z)
+      INPUT " Upis tocke u program (D)"; A$
+        DO UNTIL (A$ = "")
+                UPIS
+            X(BR) = X: Y(BR) = Y: Z(BR) = Z
+           PRINT #17, SPC(8 - LEN(I$)); I$;
+           PRINT #17, USING "####.###"; KI;
+           PRINT #17, USING "#####.### ####.###"; VR; D;
+           PRINT #17, USING "###.##   "; R;
+           PRINT #17, USING "########.##   ########.## ####.##"; X; Y; Z
+           A$ = ""
+        LOOP
+        INPUT "Daljni rad (N)"; A$
+LOOP UNTIL (A$ = "N")
+      INPUT "Novo stajaliste (N)"; A$
+LOOP UNTIL (A$ = "N")
+CLOSE #17
+END SUB
+
+SUB TOCKA (C)
+ DO   'Glavna
+     COLOR 12: PRINT "Ime tocke";
+   DO
+     INPUT I$
+   I$ = UCASE$(I$)
+   LOOP UNTIL (I$ <> "")
+    FOR C = 1 TO BR
+     DO UNTIL (I$(C) <> I$)
+      PRINT SPC(3); I$; SPC(7 - LEN(I$)); : COLOR 14
+      PRINT USING "Y=########.### X=########.### Z=####.###"; X(C); Y(C); Z(C)
+      EXIT SUB
+     LOOP
+    NEXT C
+   COLOR 28: PRINT " Tocka dosad NIJE upisana!"
+ LOOP UNTIL (C - 1 <> BR)      'Glavna
+END SUB
+
+SUB TRANSFORMACIJE
+DO
+  CLS
+  PRINT "        TRANSFORMACIJE       "
+  PRINT "   Izlaz u glavni meni ---- [0]"
+  PRINT "   KI-GK ------------------ [1]"
+  PRINT "   GK-KI ------------------ [2]"
+  PRINT "   GK-KCP ----------------- [3]"
+  PRINT "   KCP-GK ----------------- [4]"
+  PRINT "   GK-ST-Zg-1000 ---------- [5]"
+  PRINT "   GK-KI-2000 ------------- [6]"
+      INPUT " Odabir ???"; X
+   ON X GOSUB KIUGK, GKUKI, GKKCP, KCPGK, GKSTZG10, GKKI20
+  LOOP UNTIL (X = 0)
+     EXIT SUB
+KIUGK:     '  KI-GK KOORDINATE
+  DO
+      XO = 3000: YO = 6000
+      A1 = -1.8963073#: B1 = .0337291
+      A2 = -.0337171: B2 = -1.8963661#
+      YC = 99543.2: XC = 61138.3
+           TOCKA T1
+      YN = YC + A1 * (X(T1) - YO) + B1 * (Y(T1) - XO)
+      XN = XC + A2 * (X(T1) - YO) + B2 * (Y(T1) - XO)
+      PRINT " Koor. u GK-sistemu Y= "; CDBL(YN); " X="; CDBL(XN)
+     OPEN "KIUGK" FOR APPEND AS #1
+          PRINT #1, I$(T1)
+          PRINT #1, USING "########.###  "; YN; XN; 0
+     CLOSE #1
+   INPUT " Daljni rad (N)  "; A$
+  LOOP UNTIL (A$ = "N")
+RETURN
+
+GKUKI:  ' GK-KI TRANSFORMACIJE
+  DO
+          XO = 51000: YO = 59000
+          A1 = -.5271714#: B1 = -.0093746#
+          A2 = .0093726#: B2 = -.5271611#
+          XC = 7964.54: YC = 27468.27
+             TOCKA T1
+        YN = YC + A1 * (X(T1) - YO) + B1 * (Y(T1) - XO)
+        XN = XC + A2 * (X(T1) - YO) + B2 * (Y(T1) - XO)
+      PRINT " Koor. u GK-sistemu  Y= "; X(T1); " X= "; Y(T1)
+      PRINT " Koor. u KI-sistemu  Y= "; CDBL(YN); "X= "; CDBL(XN)
+      LPRINT " Koor. tocke  "; I$(T1); "  u GK-sistemu  Y= "; CDBL(X(T1)); " X= "; CDBL(Y(T1))
+      LPRINT " Koor. tocke  "; I$(T1); "  u KI-sistemu  Y= "; CDBL(YN); "X= "; CDBL(XN)
+    INPUT " Zelis li daljnj rad (N) "; A$
+  LOOP UNTIL (A$ = "N")
+RETURN
+
+GKKCP:   'GK-KCP
+  DO
+            XO = 63000: YO = 52000
+            A1 = -.5267027#: B1 = -.0266329#
+            A2 = .0266249#: B2 = -.5266951#
+            XC = 7964.54: YC = 27468.27
+             TOCKA T1
+        YN = YC + A1 * (X(T1) - YO) + B1 * (Y(T1) - XO)
+        XN = XC + A2 * (X(T1) - YO) + B2 * (Y(T1) - XO)
+      PRINT " Koor. u GK -sistemu  Y= "; X(T1); " X= "; Y(T1)
+      PRINT " Koor. u KCP-sistemu  Y= "; CDBL(YN); "X= "; CDBL(XN)
+    INPUT " Zelis li daljni rad (N) "; A$
+   LOOP UNTIL (A$ = "N")
+RETURN
+
+KCPGK:   'KCP-GK **********
+ DO
+           XO = -10000: YO = 121000
+           A1 = -1.8937635#: B1 = .0957592#
+           A2 = -.0957321#: B2 = -1.8937906#
+           XC = 63522.3: YC = 86006.67#
+      INPUT "Upisi koor. tocke "; Y, X
+        YN = YC + A1 * (Y - YO) + B1 * (X - XO)
+        XN = XC + A2 * (Y - YO) + B2 * (X - XO)
+      PRINT " Koor. u KCP-sistemu  Y= "; Y; " X= "; X
+      PRINT " Koor. u GK-sistemu   Y= "; YN; "X= "; XN
+        Y(BR) = XN: X(BR) = YN
+    INPUT " Zelis li daljnji rad? (N) "; A$
+  LOOP UNTIL (A$ = "N")
+RETURN
+
+GKSTZG10:  'GK-ST-ZG-1000 *******************
+ DO
+            XO = 63000: YO = 52000
+            A1 = -.9988832#: B1 = -.0505088
+            A2 = .0504937#: B2 = -.9988688
+            XC = -20160.23: YC = 263469.63#
+                    TOCKA T1
+        YN = YC + A1 * (X(T1) - YO) + B1 * (Y(T1) - XO)
+      PRINT " Koor. u GK-sistemu     Y= "; CDBL(X(T1)); " X= "; CDBL(Y(T1))
+        XN = XC + A2 * (X(T1) - YO) + B2 * (Y(T1) - XO)
+      PRINT " Koor. u ST-ZG-sistemu  Y= "; CDBL(YN); "X= "; CDBL(XN)
+    INPUT " Zelis li daljni rad? (N) "; A$
+   LOOP UNTIL (A$ = "N")
+RETURN
+
+GKKI20:  'GK-KI-2000 ******************
+ DO
+          XO = 63000: YO = 52000
+          A1 = -.9988832#: B1 = -.0505089#
+          A2 = .0504937#: B2 = -.9988688#
+          YC = 263469.63#: XC = -20160.23
+                 TOCKA T1
+        YN = YC + A1 * (X(T1) - YO) + B1 * (Y(T1) - XO)
+        XN = XC + A2 * (X(T1) - YO) + B2 * (Y(T1) - XO)
+      PRINT " Koor. u GK-sistemu  Y= "; CDBL(X(T1)); " X= "; CDBL(Y(T1))
+      PRINT " Koor. u KI-2000     Y= "; CDBL(YN); "X= "; CDBL(XN)
+      LPRINT " Koor. tocke  "; I$(T1); "  u GK-sistemu  Y= "; CDBL(X(T1)); " X= "; CDBL(Y(T1))
+      LPRINT " Koor. tocke  "; I$(T1); "  u KI-2000     Y= "; CDBL(YN); " X= "; CDBL(XN)
+    INPUT " Zelis li daljnji rad (N) "; A$
+   LOOP UNTIL (A$ = "N")
+RETURN
+END SUB
+
+SUB UPIS
+1  COLOR 10: PRINT " Upisi ime tocke "
+   DO
+      INPUT I$
+     I$ = UCASE$(I$)
+   LOOP UNTIL (I$ <> "")
+    FOR C = 1 TO BR
+     DO UNTIL (I$(C) <> I$)
+      COLOR 3: PRINT SPC(13); "Tocka  "; I$; " je upisana!!!"
+      COLOR 15: PRINT USING " Y=########.### "; X(C);
+                PRINT USING " X=########.### "; Y(C);
+                PRINT USING " Z=#####.### "; Z(C)
+         GOTO 1
+     LOOP
+    NEXT C
+     COLOR 28: PRINT " Tocka dosad NIJE upisana !!!"
+     COLOR 15
+         BR = BR + 1
+         I$(BR) = I$
+END SUB
+
+SUB UPISPODATAKA
+ DO
+    UPIS
+      INPUT " Koor. tocke Y:"; X
+      INPUT " Koor. tocke X:"; Y
+      INPUT " Koor. tocke Z:"; Z
+       X(BR) = X: Y(BR) = Y: Z(BR) = Z
+   INPUT " Daljni rad, molim ? (N) "; A$
+ LOOP UNTIL (A$ = "N")
+END SUB
+
+SUB VLAK
+ DIM KUT(1 TO 60), Duz(1 TO 60) AS DOUBLE
+  INPUT " UPISI ime datoteka za ispis na disk"; IME$
+ OPEN IME$ FOR OUTPUT AS #18
+   IME$ = IME$ + ".ULZ"
+    OPEN IME$ FOR OUTPUT AS #19
+ DO
+  PRINT #18, "  -----------------------------------------------------------"
+  PRINT #18, "  RACUNJANJE KOOR. POLIGONSKIH TOCAKA-TRIG.FORM. BR. 19"
+  PRINT #18, "  -----------------------------------------------------------"
+  PRINT #18, "   Broj  Pr. i Vez. Smjerni   Duzina     DY      DX          DEF. KOOR"
+  PRINT #18, "   Toc.    Kutevi   Kutevi                       Y            X"
+  PRINT #18,
+        PRINT "Upisi orijentacijsku tocku": TOCKA UA
+     PRINT #18, "  "; I$(UA); SPC(14);
+       DO
+        PRINT "Upisi stajaliste": TOCKA UB
+       LOOP UNTIL (UA <> UB)
+      XB = X(UB): YB = Y(UB): KUT = 0
+    SMJERKUT UB, UA, K, D
+     NI1 = 630 - K
+     IF NI1 > 360 THEN NI1 = NI1 - 360
+     PRINT #18, USING "#####.###"; NI1; SPC(16);
+     PRINT #18, USING "#####.###  #####.###  "; X(UA); Y(UA);
+     PRINT #18, I$(UA)
+     PRINT #18,
+     PRINT #18, SPC(2); I$(UB); SPC(6);
+       PRINT "Upisi zavrsnu tocku vlaka (Pom. stajaliste)": TOCKA UC
+      XC = X(UC): YC = Y(UC)
+      DO
+       PRINT "Upisi orijentaciju sa zavrsne tocke vlaka": TOCKA UD
+      LOOP UNTIL (UC <> UD)
+      XD = X(UD): YD = Y(UD)
+   SMJERKUT UC, UD, K, D
+     NI2 = 450 - K
+     IF NI2 > 360 THEN NI2 = NI2 - 360
+     DU = 0: BRKUT = 0
+     INPUT "Broj tocaka vlaka"; Q
+        PRINT #19, "Prelazni kutevi i duzine"
+      FOR X = 1 TO Q
+          PRINT "Upisi"; X; "prelomni kut"
+          INPUT K1, K2, K3
+          PRINT #19, USING "###-##-##"; K1; K2; K3
+          KUT(X) = K1 + K2 / 60 + K3 / 3600
+          BRKUT = BRKUT + KUT(X)
+          IF X = Q THEN GOTO 80
+          INPUT " Upisi duzinu"; D
+          PRINT #19, USING "####.###"; D
+          DU = DU + D
+          Duz(X) = D
+80   NEXT X
+      KUT = NI1: TOO = 0
+      FOR X = 1 TO Q
+        KUT = KUT(X) + KUT - 180
+        IF KUT < 0 THEN KUT = KUT + 360: TOO = TOO + 1
+        IF KUT > 360 THEN KUT = KUT - 360: TOO = TOO - 1
+      NEXT X
+     FBETA = NI2 - (NI1 + BRKUT) + Q * 180 - TOO * 360
+      POGBETA = FBETA / Q
+      PRINT "Pogreska beta"; POGBETA
+      KUT = NI1
+      SDX = 0: SDY = 0
+      FOR X = 1 TO Q - 1
+        KUT = POGBETA + KUT(X) + KUT - 180
+        IF KUT < 0 THEN KUT = KUT + 360
+        IF KUT > 360 THEN KUT = KUT - 360
+        DX = COS((450 - KUT) * PI / 180) * Duz(X)
+        DY = SIN((450 - KUT) * PI / 180) * Duz(X)
+        SDX = SDX + DX: SDY = SDY + DY
+      NEXT X
+      SDX = (XC - XB) - SDX: SDY = (YC - YB) - SDY
+      PRINT "SDX="; CDBL(SDX); "   SDY="; CDBL(SDY)
+      FD = SQR(SDX * SDX + SDY * SDY)
+      XB1 = XB: YB1 = YB
+      DOZ = 45 * SQR(Q)
+   REM ********************************************
+        PROMJENI KUT(1), X, Y, Z
+      PRINT #18, USING "###-##-##"; X; Y; Z; SPC(26);
+      PRINT #18, USING "#####.##   #####.## "; X(UB); Y(UB);
+      PRINT #18, I$(UB)
+   REM ********************************************
+      KUT = NI1
+ FOR X = 1 TO Q - 1
+      KUT = POGBETA + KUT(X) + KUT - 180
+      IF KUT < 0 THEN KUT = KUT + 360
+      IF KUT > 360 THEN KUT = KUT - 360
+      DX = COS((450 - KUT) * PI / 180) * Duz(X)
+      DY = SIN((450 - KUT) * PI / 180) * Duz(X)
+      VX1 = SDX * Duz(X) / DU + DX
+      VY1 = SDY * Duz(X) / DU + DY
+      PRINT #18, SPC(19);
+      PRINT #18, USING "####.###"; KUT; SPC(2);
+      PRINT #18, USING "####.##"; Duz(X); SPC(2);
+      PRINT #18, USING "####.## ####.##  ####.##    ####.##"; DX; DY; VX1; VY1
+      VX1 = VX1 + XB1: VY1 = VY1 + YB1
+      XX = X
+      DO UNTIL (XX > Q - 2)
+        INPUT " Ime nove tocke:"; A$
+        PRINT #18, SPC(2); A$; SPC(7 - LEN(A$));
+           PROMJENI KUT(X + 1), XX, Y, Z
+        PRINT #18, USING "###-##-##"; XX; Y; Z; SPC(26);
+        PRINT #18, USING "#####.##   #####.##  "; VX1; VY1;
+        PRINT #18, A$
+        XX = Q
+      LOOP
+      XB1 = VX1: YB1 = VY1
+ NEXT X
+      PRINT #18, SPC(2); I$(UC); SPC(7 - LEN(I$(UC)));
+         PROMJENI KUT(Q), X, Y, Z
+      PRINT #18, USING "###-##-##"; X; Y; Z; SPC(26);
+      PRINT #18, USING "#####.##   #####.##  "; X(UC); Y(UC);
+      PRINT #18, I$(UC)
+      PRINT #18, USING "###.###"; SPC(20); NI2
+      PRINT #18, SPC(2); I$(UD); SPC(18 - LEN(I$(UD)));
+      PRINT #18, USING "Ukup.Duz=#####.##"; DU; SPC(4);
+      PRINT #18, USING "FD=#.####"; FD; SPC(2);
+      PRINT #18, USING "#####.##  #####.##  "; X(UD); Y(UD);
+      PRINT #18, I$(UD)
+      PRINT #18, "---------------------------------------------------------"
+      FBDZ = .001 * SQR(DU) + .00012 * DU + .03
+      VA = NI1 + BRKUT - Q * 180
+        PROMJENI VA, X, Y, Z
+      PRINT #18, "  Ima   "; X; "-"; Y; "-"; Z; SPC(7);
+      PRINT #18, USING " FD dozvoljeno=##.####"; FBDZ
+        PROMJENI NI2, X, Y, Z
+      PRINT #18, "  Treba "; X; "-"; Y; "-"; Z
+        PROMJENI ABS(FBETA), X, Y, Z
+      PRINT #18, "  Fb=   "; X; "-"; Y; "-"; Z
+        PROMJENI 45 * SQR(Q) / 3600, X, Y, Z
+      PRINT #18, " BETA DOZVOLJENO ="; X; "-"; Y; "-"; Z;
+      INPUT " Daljni rad (N) "; A$
+   LOOP UNTIL (A$ = "N")
+      CLOSE #19
+     CLOSE #18
+END SUB
+

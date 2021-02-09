@@ -30,31 +30,42 @@ javascript.src = './img/javascript.png';
 const nodejs = new Image();
 nodejs.src = './img/nodejs.png';
 
-// Crtanje ikone Angulara
-function IkonaAngular(x, y, dx, dy, poljeX, poljeY, range) {
-  this.x = x;
-  this.y = y;
-  this.dx = dx;
-  this.dy = dy;
+// Crtanje ikone Angulara (class)
+class IkonaAngular {
+  constructor(x, y, dx, dy, poljeX, poljeY, range) {
+    this.x = x;
+    this.y = y;
+    this.dx = dx;
+    this.dy = dy;
+    this.poljeX = poljeX;
+    this.poljeY = poljeY;
+    this.range = range;
+  }
 
   // DRAW
-  this.draw = function () {
+  draw() {
     cAngular.drawImage(angularImg, this.x, this.y, 30, 15);
     this.x = this.x + 3;
-  };
+  }
 
   // UPDATE
-  this.update = function () {
-    if (this.x > poljeX + range || this.x < poljeX - range) {
+  update() {
+    if (
+      this.x > this.poljeX + this.range ||
+      this.x < this.poljeX - this.range
+    ) {
       this.dx = -this.dx;
     }
 
-    if (this.y > poljeY + range || this.y < poljeY - range) {
+    if (
+      this.y > this.poljeY + this.range ||
+      this.y < this.poljeY - this.range
+    ) {
       this.dy = -this.dy;
     }
     this.x += this.dx;
     this.y += this.dy;
-  };
+  }
 }
 
 // Crtanje ikone javascript
