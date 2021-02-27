@@ -12,11 +12,19 @@
   height: 200px;
 }
 
+.flash-efekat #flashNODE {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
 .flash-efekat #flash1 {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
+  visibility: hidden;
 }
 
 .flash-efekat #flash2 {
@@ -27,10 +35,10 @@
   visibility: hidden;
 }
 
-.flash-efekat #flash3 {
+.flash-efekat #flashJS {
   position: absolute;
-  visibility: hidden;
   transform: translateX(-50%) translateY(-50%);
   top: 50%;
   left: 50%;
+  visibility: hidden;
 }

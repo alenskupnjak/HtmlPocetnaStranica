@@ -1,0 +1,92 @@
+    <!--  REACT REACT REACT REACT-->
+    <section id="react">
+      <div class="mt-5 pt-5">
+        <h1 class="text-center"><img class="img-fluid img-thumbnail" width="80px" src="img/react.png" alt="React">
+        </h1>
+      </div>
+      <canvas class="canvaspomak" id="canvasreact"></canvas>
+
+      <div class="container py-2">
+        <div class="row text-center">
+          <div class="col-md-3 text-center item shadow-lg  rounded" id="react1">
+            <img class="logo mb-1" src="img/book.png"><img src="img/react.svg" class="logo druga-icona" alt="React">
+            <p class="lead">
+              <a target="_blank" href="https://campbrad.herokuapp.com/api/v1/view/index">Zadatak MONO</a>
+            </p>
+            <h6>React.</h6>
+            <p class="resource__text">Git:/nodecoursebrad</p>
+            <div class="item-text">
+              <div class="item-text-wrap">
+                <img src="img/nodejs.png" class="mt-4" width="70px" alt="NodeJS">
+                <h5>
+                  <a target="_blank" href="https://campbrad.herokuapp.com/api/v1/view/index">Zadatak mono</a>
+                </h5>
+                <p class="item-text-category bg-danger text-white">Potrebno je i do 10 sekundi za učitavanje.
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-3 text-center item shadow-lg  rounded">
+            <img class="logo mb-1" src="img/working_icon.png"><img src="img/react.png" class="logo druga-icona"
+              alt="NodeJS">
+            <p class="lead">
+              <a target="_blank" href="">U pripremi</a>
+            </p>
+            <h6>U pripremi</h6>
+            <p class="resource__text">Git:/</p>
+            <!-- <div class="item-text">
+                  <div class="item-text-wrap">
+                    <img src="img/nodejs.png" class="mt-4" width="70px" alt="NodeJS">
+                    <h4>
+                      <a target="_blank" href="https://naturcamp.herokuapp.com/">Kampovi</a>
+                    </h4>
+                    <p class="item-text-category bg-danger text-white">Potrebno je do 10 sekundi za učitavanje programa.
+                    </p>
+                  </div>
+                </div> -->
+          </div>
+
+          <div class="col-md-3 text-center item shadow-lg  rounded">
+            <img class="logo mb-1" src="img/working_icon.png"><img src="img/node-js.svg" class="logo druga-icona"
+              alt="NodeJS">
+            <p class="lead">
+              <a target="_blank" href="">U pripremi</a>
+            </p>
+            <h6>U pripremi</h6>
+            <p class="resource__text">Git:/</p>
+            <!-- <div class="item-text">
+                  <div class="item-text-wrap">
+                    <img src="img/nodejs.png" class="mt-4" width="70px" alt="NodeJS">
+                    <h4>
+                      <a target="_blank" href="https://naturcamp.herokuapp.com/">Kampovi</a>
+                    </h4>
+                    <p class="item-text-category bg-danger text-white">Potrebno je do 10 sekundi za učitavanje programa.
+                    </p>
+                  </div>
+                </div> -->
+          </div>
+
+          <div class="col-md-3 text-center item shadow-lg rounded">
+            <img class="logo mb-1" src="img/working_icon.png"><img src="img/react.svg" class="logo druga-icona"
+              alt="React">
+            <p class="lead">
+              <a target="_blank" href="">U pripremi</a>
+            </p>
+            <h6>U pripremi.</h6>
+            <p class="resource__text">Git:/</p>
+            <!-- <div class="item-text">
+                  <div class="item-text-wrap">
+                    <img src="img/nodejs.png" class="mt-4" width="70px" alt="NodeJS">
+                    <h4>
+                      <a target="_blank" href="https://naturcamp.herokuapp.com/">Kampovi</a>
+                    </h4>
+                    <p class="item-text-category bg-danger text-white">Potrebno je do 10 sekundi za učitavanje programa.
+                    </p>
+                  </div>
+                </div> -->
+          </div>
+        </div>
+      </div>
+    </section>

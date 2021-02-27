@@ -188,15 +188,15 @@ animateNode();
 
 // ANGULAR
 angularDOM.addEventListener('mouseenter', (e) => {
-  popuniPoljaAngular(0, 400, 500, 10, poljeAngular);
+  popuniPoljaAngular(0, 400, 500, 5, poljeAngular);
 });
 
 // JAVASCRIPT
 jsDOM.addEventListener('mouseenter', (e) => {
-  popuniPoljaJS(0, 400, 400, 10, poljeJS);
+  popuniPoljaJS(0, 400, 400, 5, poljeJS);
 });
 
 // NODEJS
 jsDOM.addEventListener('mouseenter', (e) => {
-  popuniPoljaNode(0, 450, 300, 10, poljeNodeJS);
+  popuniPoljaNode(0, 450, 300, 5, poljeNodeJS);
 });

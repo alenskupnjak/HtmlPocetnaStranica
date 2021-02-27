@@ -24,14 +24,15 @@
 </head>
 
 
-<body data-spy="scroll" data-target="#main-nav" id="angular">
+<body data-spy="scroll" data-target="#main-nav">
 
 
   <!-- Flash efekat  -->
   <div class="flash-efekat">
-    <h1 id="flash3"><img src="img/javascript.png" alt="JS"></h1>
+    <h1 id="flashJS"><img src="img/javascript.png" alt="JS"></h1>
     <h1 id="flash2"><img src="img/angular.png" alt="Angular"></h1>
-    <h1 id="flash1"><img src="img/nodejs.png" alt="NodeJS"></h1>
+    <h1 id="flash1"><img src="img/react.png" alt="React"></h1>
+    <h1 id="flashNODE"><img src="img/nodejs.png" alt="NodeJS"></h1>
   </div>
 
   <!-- NAVIGACIJA -->
@@ -50,7 +51,10 @@
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link text-white" onclick="pocistiklase()" href="#angular">Angular</a>
+            <a class="nav-link text-white" href="#react">React</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#angular">Angular</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="#js">Javascript</a>
@@ -76,12 +80,13 @@
   <div class="spinner">
     <div class="container mt-1">
       <!-- ANGULAR-->
-      <section id="angular">
+      <section>
         <div class="col-md-12 py-4 display-1 text-primary text-center">
           <h1 class="mt-5">
             <span><img class="img-thumbnail" src="img/javascript.png" width="40px" alt="Javascript"></span>
             <span><img class="img-thumbnail" src="img/angular.png" width="40px" alt="Angular"></span>
             <span><img class="img-thumbnail" src="img/nodejs.png" width="40px" alt="NodeJS"></span>
+            <span><img class="img-thumbnail" src="img/react.png" width="40px" alt="HTML"></span>
             <span><img class="img-thumbnail" src="img/html5.png" width="40px" alt="HTML"></span>
             <span class="txt-type" data-wait="2000"
               data-words='["Learning page", "Presentation page","Program storage page","Useful links"]'>
@@ -194,7 +199,7 @@
             </div>
             <div class="kartica" data-id="130">
               <img src="img/javascript.png" alt="">
-              <h5><a href="#igravjesanja" onclick="pocistiklase()" >Igra vješanja</a></h5>
+              <h5><a href="#igravjesanja" onclick="pocistiklase()">Igra vješanja</a></h5>
             </div>
             <div class="kartica" data-id="135">
               <img src="img/javascript.png" alt="">
@@ -225,15 +230,111 @@
           </div>
         </section>
 
+
+        <!--  REACT REACT REACT REACT-->
+        <section id="react">
+          <div class="mt-5 pt-5">
+            <h1 class="text-center"><img class="img-fluid img-thumbnail" width="80px" src="img/react.png" alt="React">
+            </h1>
+          </div>
+          <!-- <canvas class="canvaspomak" id="canvasreact"></canvas> -->
+
+          <div class="container py-2">
+            <div class="row text-center">
+
+              <div class="col-md-3 text-center item shadow-lg  rounded" id="react1">
+                <img class="logo mb-1" src="img/book.png"><img src="img/react.png" class="logo druga-icona" alt="React">
+                <p class="lead">
+                  <a target="_blank" href="https://www.ucim.eu/react/burger/index.html">Zadatak MONO</a>
+                </p>
+                <h6>React.</h6>
+                <p class="resource__text">Git:</p>
+                <div class="item-text">
+                  <div class="item-text-wrap">
+                    <img src="img/react.png" class="mt-4" width="40px" alt="React">
+                    <h5>
+                      <a target="_blank" href="https://www.ucim.eu/react/burger/index.html">Zadatak MONO</a>
+                    </h5>
+                    <p class="item-text-category bg-danger text-white">... nekoliko sekundi za učitavanje...</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3 text-center item shadow-lg  rounded" id="react1">
+                <img class="logo mb-1" src="img/burger.png"><img src="img/react.png" class="logo druga-icona" alt="React">
+                <p class="lead">
+                  <a target="_blank" href="https://www.ucim.eu/react/burger/index.html">Burger</a>
+                </p>
+                <h6>Burger</h6>
+                <p class="resource__text">Git:</p>
+                <div class="item-text">
+                  <div class="item-text-wrap">
+                    <img src="img/react.png" class="mt-4" width="40px" alt="React">
+                    <h5>
+                      <a target="_blank" href="https://www.ucim.eu/react/burger/index.html">Burger</a>
+                    </h5>
+                    <p class="item-text-category bg-danger text-white">... 10sec za učitavanje...</p>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-3 text-center item shadow-lg  rounded">
+                <img class="logo mb-1" src="img/working_icon.png"><img src="img/react.png" class="logo druga-icona"
+                  alt="React">
+                <p class="lead">
+                  <a target="_blank" href="">Priprema.</a>
+                </p>
+                <h6>Priprema.</h6>
+                <p class="resource__text">Git:/</p>
+                <!-- <div class="item-text">
+                  <div class="item-text-wrap">
+                    <img src="img/react.png" class="mt-4" width="40px" alt="NodeJS">
+                    <h4>
+                      <a target="_blank" href="https://naturcamp.herokuapp.com/">Kampovi</a>
+                    </h4>
+                    <p class="item-text-category bg-danger text-white">... 10sec za učitavanje...
+                    </p>
+                  </div>
+                </div> -->
+              </div>
+
+              <div class="col-md-3 text-center item shadow-lg  rounded">
+                <img class="logo mb-1" src="img/working_icon.png"><img src="img/react.png" class="logo druga-icona"
+                  alt="React">
+                <p class="lead">
+                  <a target="_blank" href="">Priprema.</a>
+                </p>
+                <h6>Priprema.</h6>
+                <p class="resource__text">Git:/</p>
+                <!-- <div class="item-text">
+                  <div class="item-text-wrap">
+                    <img src="img/react.png" class="mt-4" width="40px" alt="NodeJS">
+                    <h4>
+                      <a target="_blank" href="https://naturcamp.herokuapp.com/">Kampovi</a>
+                    </h4>
+                    <p class="item-text-category bg-danger text-white">... 10sec za učitavanje...
+                    </p>
+                  </div>
+                </div> -->
+              </div>
+
+
+            </div>
+          </div>
+        </section>
+
+
+
         <!-- ANGULAR  poglavlje-->
-        <div class="container angulardark">
+        <div class="container angulardark" id="angular">
           <h1 class="text-center"><img class="img-thumbnail logonaslov" src="img/angular.png" width="80px"
               alt="Angular"> </h1>
 
           <canvas class="canvaspomak" id="canvasAngular"></canvas>
 
           <div class="row mb-4">
-            <div class="col-md-4 text-center item shadow-lg p-2 rounded" id="nekolikoaplikacija" >
+            <div class="col-md-4 text-center item shadow-lg p-2 rounded" id="nekolikoaplikacija">
               <img class="logo mb-1" src="img/multiple-images.png">
               <h2><a target="_blank" href="https://www.ucim.eu/angularAll/index.html">Nekoliko aplikacija</a></h2>
               <p>Angular 10. NodeJS. MEAN.</p>
@@ -253,7 +354,7 @@
               </div>
             </div>
 
-            <div class="col-md-4 text-center item shadow-lg p-2 rounded" id="knjigarecepata" >
+            <div class="col-md-4 text-center item shadow-lg p-2 rounded" id="knjigarecepata">
               <img class="logo mb-1" src="img/notepad.png">
               <h2><a target="_blank" href="https://www.ucim.eu/Angular/receptMax/index.html">Knjiga recepta</a></h2>
               <p>Angular 8. Firebase.</p>
@@ -551,6 +652,8 @@
       </div>
     </section>
 
+
+
     <!--  NODEJS  NODEJS NODEJS NODEJS-->
     <section id="node">
       <div class="mt-5 pt-5">
@@ -575,7 +678,7 @@
                 <h5>
                   <a target="_blank" href="https://campbrad.herokuapp.com/api/v1/view/index">Kampovi za učenje</a>
                 </h5>
-                <p class="item-text-category bg-danger text-white">Potrebno je i do 10 sekundi za učitavanje programa.
+                <p class="item-text-category bg-danger text-white">... 10 sekundi za učitavanje programa.
                 </p>
               </div>
             </div>
@@ -595,7 +698,7 @@
                 <h4>
                   <a target="_blank" href="https://onlineshopmongoose.herokuapp.com">Online Shop</a>
                 </h4>
-                <p class="item-text-category bg-danger text-white">Potrebno je i do 10 sekundi za učitavanje programa.
+                <p class="item-text-category bg-danger text-white">... 10 sekundi za učitavanje programa.
                 </p>
               </div>
             </div>
@@ -615,7 +718,7 @@
                   <a target="_blank" href="https://naturcamp.herokuapp.com/">Kampovi</a>
                 </h4>
                 <!-- <h3 class="item-text-title">Angular 8</h3> -->
-                <p class="item-text-category bg-danger text-white">Potrebno je i do 10 sekundi za učitavanje programa.
+                <p class="item-text-category bg-danger text-white">... 10 sekundi za učitavanje programa.
                 </p>
               </div>
             </div>
@@ -635,7 +738,7 @@
                     <h4>
                       <a target="_blank" href="https://naturcamp.herokuapp.com/">Kampovi</a>
                     </h4>
-                    <p class="item-text-category bg-danger text-white">Potrebno je do 10 sekundi za učitavanje programa.
+                    <p class="item-text-category bg-danger text-white">... 10 sekundi za učitavanje programa.
                     </p>
                   </div>
                 </div> -->
@@ -780,41 +883,30 @@
       <div class="container">
         <div class="row text-center">
 
-          <div class="col-md-2 shadow-sm rounded my-2 osobno">
+          <div class="col-md-3 shadow-sm rounded my-2 osobno">
             <p class="lead my-2">
               <a target="_blank" href="img/AlenSkupnjakCV.pdf">CV</a>
             </p>
           </div>
 
-          <div class="col-md-2 shadow-sm rounded my-2 osobno">
-            <p class="lead my-2">
-              <a target="_blank" href="img/CoverLetter.pdf">Cover letter</a>
-            </p>
-          </div>
-          
-          <div class="col-md-2 shadow-sm rounded my-2 osobno">
+          <div class="col-md-3 shadow-sm rounded my-2 osobno">
             <p class="lead my-2">
               <a target="_blank" href="img/PreporukaKoncarSkupnjak.pdf">Preporuka Končar</a>
             </p>
           </div>
-          
-          <div class="col-md-2 shadow-sm rounded my-2 osobno">
+
+          <div class="col-md-3 shadow-sm rounded my-2 osobno">
             <p class="lead my-2">
               <a target="_blank" href="img/Preporuka.pdf">Preporuka GEO</a>
             </p>
           </div>
 
-          <div class="col-md-2 shadow-sm rounded my-2 osobno">
+          <div class="col-md-3 shadow-sm rounded my-2 osobno">
             <p class="lead my-2">
               <a target="_blank" href="img/V5.txt">QBasic 1988g.</a>
             </p>
           </div>
 
-          <div class="col-md-2 shadow-sm rounded my-2 osobno">
-            <p class="lead my-2">
-              <a target="_blank" href="#"></a>
-            </p>
-          </div>
         </div>
     </section>
   </div>
@@ -856,32 +948,40 @@
   // Flash efekat
   (function ($) {
     const duljinatrajanja = 1000;
+    const targetNODE = $("#flashNODE");
     const target1 = $("#flash1");
     const target2 = $("#flash2");
-    const target3 = $("#flash3");
+    const targetJS = $("#flashJS");
     const target4 = $(".flash-efekat");
     const target5 = $(".lepeza");
-    target1.animate({ opacity: 0 }, duljinatrajanja,
+
+
+
+    targetNODE.animate({ opacity: 0 }, duljinatrajanja,
       function () {
-        target2.css("visibility", "visible")
-        target2.animate({
-          opacity: 0
-        }, duljinatrajanja,
+        target1.css("visibility", "visible")
+        target1.animate({ opacity: 0 }, duljinatrajanja,
           function () {
-            target3.css("visibility", "visible")
-            target3.animate({ opacity: 0 }, duljinatrajanja,
+            target2.css("visibility", "visible")
+            target2.animate({ opacity: 0 }, duljinatrajanja,
               function () {
-                target4.animate({ opacity: 0 }, duljinatrajanja + 200,
+                targetJS.css("visibility", "visible")
+                targetJS.animate({ opacity: 0 }, duljinatrajanja,
                   function () {
-                    target4.remove();
-                    target5.animate({ opacity: 1 }, duljinatrajanja + 200)
-                  })
-                target3.remove();
+                    target4.animate({ opacity: 0 }, duljinatrajanja + 200,
+                      function () {
+                        target4.remove();
+                        target5.animate({ opacity: 1 }, duljinatrajanja + 200)
+                      })
+                    targetJS.remove();
+                  });
+                target2.remove();
               });
-            target2.remove();
+            target1.remove();
           });
-        target1.remove();
+        targetNODE.remove();
       });
+
   })(jQuery);
 
 </script>

@@ -96,7 +96,11 @@ function povratakLepezi(e) {
   }
 }
 
+
+
 function pocistiklase() {
+  console.log('tu sam');
+  
   document.querySelectorAll('.povratak').forEach((data) => {
     data.remove();
   });
