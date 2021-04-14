@@ -252,23 +252,14 @@
                   <a target="_blank" href="https://www.ucim.eu/react/mono/index.html">Zadatak MONO</a>
                 </p>
                 <h6>React.</h6>
-                <a class="resource__text"  href="https://github.com/alenskupnjak/reactZadatakMono"  >GIT-Link</a>
-                <!-- <div class="item-text">
-                  <div class="item-text-wrap">
-                    <img src="img/react.png" class="mt-4" width="40px" alt="React">
-                    <h5>
-                      <a target="_blank" href="https://www.ucim.eu/react/mono/index.html">Zadatak MONO</a>
-                    </h5>
-                    <p class="item-text-category bg-danger text-white">... nekoliko sekundi za učitavanje...</p>
-                  </div>
-                </div> -->
+                <a class="resource__text" href="https://github.com/alenskupnjak/reactZadatakMono">GIT-Link</a>
               </div>
 
               <div class="col-md-3 text-center item shadow-lg  rounded " id="react1">
-
-                <img class="logo mb-1" src="img/burger.png"><img src="img/react.png" class="logo druga-icona" alt="React">
+                <img class="logo mb-1" src="img/burger.png"><img src="img/react.png" class="logo druga-icona"
+                  alt="React">
                 <p class="lead">
-                  <a target="_blank" href="https://www.ucim.eu/react/burger/index.html">Burger</a>
+                  <a target="_blank" href="https://www.ucim.eu/react/burger/build/index.html">Burger</a>
                 </p>
                 <h6>Burger</h6>
                 <p class="resource__text">Git:</p>
@@ -284,47 +275,47 @@
               </div>
 
 
-              <div class="col-md-3 text-center item shadow-lg  rounded">
-                <img class="logo mb-1" src="img/working_icon.png"><img src="img/react.png" class="logo druga-icona"
-                  alt="React">
-                <p class="lead">
-                  <a target="_blank" href="">Priprema.</a>
-                </p>
-                <h6>Priprema.</h6>
-                <p class="resource__text">Git:/</p>
-                <!-- <div class="item-text">
-                  <div class="item-text-wrap">
-                    <img src="img/react.png" class="mt-4" width="40px" alt="NodeJS">
-                    <h4>
-                      <a target="_blank" href="https://naturcamp.herokuapp.com/">Kampovi</a>
-                    </h4>
-                    <p class="item-text-category bg-danger text-white">... 10sec za učitavanje...
-                    </p>
-                  </div>
-                </div> -->
-              </div>
 
               <div class="col-md-3 text-center item shadow-lg  rounded">
                 <img class="logo mb-1" src="img/working_icon.png"><img src="img/react.png" class="logo druga-icona"
                   alt="React">
                 <p class="lead">
-                  <a target="_blank" href="">Priprema.</a>
+                  <a target="_blank" href="">Widgets</a>
                 </p>
                 <h6>Priprema.</h6>
                 <p class="resource__text">Git:/</p>
-                <!-- <div class="item-text">
+                <div class="item-text">
                   <div class="item-text-wrap">
                     <img src="img/react.png" class="mt-4" width="40px" alt="NodeJS">
                     <h4>
-                      <a target="_blank" href="https://naturcamp.herokuapp.com/">Kampovi</a>
+                      <a target="_blank" href="https://www.ucim.eu/react/widgets/index.html">Widgets</a>
+                    </h4>
+                    <p class="item-text-category bg-danger text-white">... 1 sec. za učitavanje...
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-3 text-center item shadow-lg  rounded">
+                <img class="logo mb-1" src="img/working_icon.png"><img src="img/react.png" class="logo druga-icona"
+                  alt="React">
+                <p class="lead">
+                  <a target="_blank" href="">Pokus</a>
+                </p>
+                <h6>Priprema. 02</h6>
+                <p class="resource__text">Git:/</p>
+                <div class="item-text">
+                  <div class="item-text-wrap">
+                    <img src="img/react.png" class="mt-4" width="40px" alt="NodeJS">
+                    <h4>
+                      <a target="_blank" href="https://www.ucim.eu/react/xxx/build/index.html">Pokus</a>
                     </h4>
                     <p class="item-text-category bg-danger text-white">... 10sec za učitavanje...
                     </p>
                   </div>
-                </div> -->
+                </div>
               </div>
-
-
             </div>
           </div>
         </section>
@@ -875,7 +866,7 @@
         </div>
     </section>
 
-    <!--  LINKOVI -->
+    <!-- LINKOVI
     <section id="pomoc">
       <div class="container">
         <div class="row text-center">
@@ -905,14 +896,18 @@
           </div>
 
         </div>
-    </section>
+    </section> -->
   </div>
   </div>
+
+
   <!--  FOOTER  -->
   <footer id="main-footer" class="fixed-bottom bg-dark">
     <div class="container">
       <div class="col text-center col-md-12 m-auto text-white py-1">
-        <small> alenskupnjak@yahoo.com <span style="color: green;">&#9752;</span>&nbspv2.49</small>
+        <small> alenskupnjak@yahoo.com <span style="color: green;">&#9752;</span>&nbspv2.49 - Visitors:
+          <span id="visits" style="color:#fff"></span>
+        </small>
       </div>
   </footer>
   </div>
@@ -940,11 +935,20 @@
 <script src="js/app.js"></script>
 
 
+<!-- For visitors  -->
+<script>
+  function cb(response) {
+    document.getElementById('visits').innerText = response.value;
+  }
+</script>
+<script async src="https://api.countapi.xyz/hit/ucim.eu/visits?callback=cb"></script>
+
+
 <script>
   // ***************************
   // Flash efekat
   (function ($) {
-    const duljinatrajanja = 1000;
+    const duljinatrajanja = 300;
     const targetNODE = $("#flashNODE");
     const target1 = $("#flash1");
     const target2 = $("#flash2");
@@ -965,10 +969,10 @@
                 targetJS.css("visibility", "visible")
                 targetJS.animate({ opacity: 0 }, duljinatrajanja,
                   function () {
-                    target4.animate({ opacity: 0 }, duljinatrajanja + 200,
+                    target4.animate({ opacity: 0 }, duljinatrajanja + 100,
                       function () {
                         target4.remove();
-                        target5.animate({ opacity: 1 }, duljinatrajanja + 200)
+                        target5.animate({ opacity: 1 }, duljinatrajanja + 100)
                       })
                     targetJS.remove();
                   });
@@ -982,5 +986,6 @@
   })(jQuery);
 
 </script>
+
 
 </html>
