@@ -10,7 +10,7 @@ window.onscroll = function () {
   // pokazi();
 };
 
-// dogadaj
+// dogadaj debouncing
 function filterEvent(funkcijaIzvana, wait = 20) {
   let timeout;
   return function () {
