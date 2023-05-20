@@ -28,7 +28,6 @@ function fixNav() {
 //
 const linkoviLepeza = document.querySelectorAll('.kartica a');
 const linkoviDOM = document.querySelectorAll('[id]');
-console.log(linkoviDOM);
 
 linkoviLepeza.forEach((e) => {
   e.addEventListener('click', (data) => {

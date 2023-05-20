@@ -11,28 +11,21 @@ function start() {
 
 function postaviLisenere(kut) {
   kartica.forEach((e) => {
-    e.addEventListener('click', (data) => {
-      console.log('Kartica u položaju unutar', polozajKartica);
+    e.addEventListener('click', () => {
       if (polozajKartica) {
         vratiKarticuNaPocetniPolozaj(e, polozajKartica);
       }
-      let id;
-      br = -1;
-      do {
-        br = br + 1;
-        id = data.path[br].getAttribute('data-id');
-      } while (!data.path[br].getAttribute('data-id'));
-      zarotiraj(e, id + 'deg');
+      zarotiraj(e);
     });
-
-    kut = kut - 5;
+    kut = kut - 5;    
     kutDOM = kut + 'deg';
     zarotirajKodUcitavanja(e, kutDOM);
   });
 }
 
-function zarotiraj(e, kut) {
+function zarotiraj(e) {
   polozajKartica = e.dataset.id;
+  console.log(polozajKartica);
   // console.log(e.childNodes);
   // console.log(e.previousSibling);
   // console.log(e.previousElementSibling);
